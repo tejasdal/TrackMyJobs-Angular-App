@@ -1,0 +1,15 @@
+.container{
+    min-height: 100%;
+}
+.job-search-input{
+    border-radius: 25px;
+}
+.job-page-title{
+    text-align:center; font-size:24px; font-weight: 700;
+}
+.apply-job-btn{
+    background-color: blue;
+    color: white;
+    border-radius: 25px;
+    margin-left: 10px;
+}

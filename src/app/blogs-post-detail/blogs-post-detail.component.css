@@ -1,0 +1,16 @@
+.container{
+    min-height: 100%;
+}
+
+.page-title{
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Lato',sans-serif; 
+    font-weight: 700;
+}
+
+.page-content{
+    margin-top: 15px;
+    font-size: 18px;
+    font-family: 'Roboto',sans-serif;
+}

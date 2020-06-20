@@ -1,0 +1,34 @@
+.container{
+    min-height: 100%;
+}
+.blog-search-input{
+    border-radius: 25px;
+}
+.create-blog-btn{
+    background-color: gray;
+    color: white;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+
+.page-heading{
+    text-align:center; 
+    font-size:24px; 
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.search-div{
+    text-align: right;
+}
+
+.blog-card{
+    margin:10px;
+    box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.font-style{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}

@@ -1,0 +1,7 @@
+.container{
+    min-height: 100%;
+}
+.signup-btn{
+    border-radius: 25px;
+    text-transform: capitalize;
+}

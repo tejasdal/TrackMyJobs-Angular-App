@@ -1,0 +1,48 @@
+.header-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.navbar-logo{
+    width: 30px;
+    height:30px;
+}
+
+.toggle-img{
+    width: 30px;
+    height: 30px;
+}
+
+.nav-link-menu{
+    border-radius: 25px;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 15px;
+    white-space: nowrap;
+}
+
+.nav-link-menu:hover{
+    background-color: rgb(254, 227, 184);
+}
+
+.nav-active{
+    background-color: rgb(254, 227, 184);
+}
+.signin{
+    border-radius: 25px;;
+}
+.signin:hover{
+    color: white;
+    background-color: blue;
+}
+
+.signup{
+    border-radius: 25px;
+    margin-left: 5px;
+}
+
+.signup:hover{
+    color: white;
+    background-color: blue;
+}

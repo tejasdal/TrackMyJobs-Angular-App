@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card" style="margin:10px; box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);">
+        <div class="card-header">
+            Apply for this Job Role
+        </div>
+        <img class="card-img-top" style="margin-top: 5px;" width="150" height="150" src={{job.img}} alt="job-img">
+        <div class="card-body">
+            <p class="card-text"><strong>Company Name: </strong>{{job.company}}
+            </p>
+            <p class="card-text"><strong>Role: </strong>{{job.post}}
+            </p>
+            <p class="card-text"><strong>Location: </strong>{{job.location}}
+            </p>
+            <p class="card-text"><strong>Salary: </strong>{{job.salary}}
+            </p>
+            <p class="card-text"><strong>Role description: </strong>,<br>{{job.roledesc}}
+            </p>
+            <button class="btn btn-primary mr-sm-2 signin" style="border-radius: 25px;" type="button">Apply</button>
+            <button class="btn btn-primary mr-sm-2 signin" style="border-radius: 25px;" type="button">Visit company
+                website</button>
+        </div>
+    </div>
+</div>
