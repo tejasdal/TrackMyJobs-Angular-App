@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +37,10 @@ import { JobSearchComponent } from './job-search/job-search.component';
 import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
 import { JobBoardAnalysisComponent } from './job-board-analysis/job-board-analysis.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
+import { JobBoardComponent } from './job-board/job-board.component';
+import { JobActivityComponent } from './job-activity/job-activity.component';
+import { CreateJobDialogComponent } from './create-job-dialog/create-job-dialog.component';
+import { CreateActivityDialogComponent } from './create-activity-dialog/create-activity-dialog.component';
 
 
 @NgModule({
@@ -59,6 +66,10 @@ import { DialogsComponent } from './dialogs/dialogs.component';
     WriteBlogsComponent,
     JobBoardAnalysisComponent,
     DialogsComponent,
+    JobBoardComponent,
+    JobActivityComponent,
+    CreateJobDialogComponent,
+    CreateActivityDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +86,10 @@ import { DialogsComponent } from './dialogs/dialogs.component';
     MatTabsModule,
     MatSidenavModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

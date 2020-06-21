@@ -1,0 +1,26 @@
+<h3 mat-dialog-title class="text-center">Add new Job Application</h3>
+<div class="d-flext text-center justify-content-center mb-3">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Company Name</mat-label>
+            <input #companyName="ngModel" matInput required ngModel name="companyName" [(ngModel)]="data.company">
+            <mat-error *ngIf="companyName.touched && !companyName.valid">
+                <div *ngIf="companyName.errors.required">Company name is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Job Title</mat-label>
+            <input #jobTitle="ngModel" matInput required ngModel name="jobTitle" [(ngModel)]="data.jobTitle">
+            <mat-error *ngIf="jobTitle.touched && !jobTitle.valid">
+                <div *ngIf="jobTitle.errors.required">Job title is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button class="btn btn-outline-dark" mat-button (click)="onNoClick()">Cancel</button>
+        <button class="btn btn-dark" mat-button [mat-dialog-close]="data" cdkFocusInitial
+            [disabled]="!companyName.valid || !jobTitle.valid">Ok</button>
+    </div>
+</div>
