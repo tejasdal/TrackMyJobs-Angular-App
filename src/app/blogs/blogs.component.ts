@@ -32,5 +32,8 @@ export class BlogsComponent implements OnInit {
 
   }
 
+  onWriteBlog(){
+    this.router.navigate(['/writeBlog']);
+  }
 
 }

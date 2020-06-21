@@ -46,3 +46,10 @@
     color: white;
     background-color: blue;
 }
+
+.signup-btn{
+    border-radius: 25px;
+    color: black;
+    border:  #fdbd56;
+    background-color: #fdbd56;
+}

@@ -8,7 +8,7 @@
             <!--Search Bar and Create Blog button-->
             <div class="search-div">
                 <input class="blog-search-input" type="text" [(ngModel)]="blogSearch" placeholder="Search">
-                <button class="create-blog-btn"> Create Blog</button>
+               <button class="create-blog-btn" (click)="onWriteBlog()"> Create Blog </button>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                         <h4 class="card-title font-style">{{blog.title}}</h4>
                         <p class="card-text">{{blog.description}}
                         </p>
-                        <button (click)="onBlogCard(blog)" class="btn btn-primary">View More</button>
+                        <button (click)="onBlogCard(blog)" class="btn create-blog-btn">View More</button>
                     </div>
                 </div>
             </div>
