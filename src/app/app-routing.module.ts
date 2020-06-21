@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { JobBoardAnalysisComponent } from './job-board-analysis/job-board-analysis.component';
+import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BlogsComponent } from './blogs/blogs.component';
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'writeBlog', component: WriteBlogsComponent },
+  { path: 'analysis', component: JobBoardAnalysisComponent },
   { path: '**', component: NotfoundComponent }
 ];
 

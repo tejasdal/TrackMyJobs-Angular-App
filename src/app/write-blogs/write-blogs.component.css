@@ -1,0 +1,49 @@
+body
+{
+    background:  rgb(254, 227, 184) !important;
+}
+.container-fluid
+{        
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+   
+    width:100%; 
+    background: rgb(253,189,86);
+    background: linear-gradient(0deg, rgba(253,189,86,0.5525560566023284) 39%, rgba(226,181,109,1) 81%);
+}
+
+.panel{
+    width:100%; 
+    background-color: white;
+     padding: 20px;
+     margin-bottom: 50px;
+      margin-top: 50px; 
+      border-radius: 15px;
+}
+.btn{   
+    margin: 10px; 
+}
+.btn:hover{
+    background-color: #fdbd56;
+}
+.h2{
+    font-size: 2.0rem;
+   }
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
+}
+.btn.submitBtn
+{
+         margin-top: 30px;
+        width: auto;
+        border: 0px;
+        color: black;
+        background-color: #fdbd56;     
+}
+
+
+
+

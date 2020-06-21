@@ -24,6 +24,10 @@ import { BlogsPostDetailComponent } from './blogs-post-detail/blogs-post-detail.
 import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
 import { JobsfilterPipe } from './jobs/jobsfilter.pipe';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
+import { JobBoardAnalysisComponent } from './job-board-analysis/job-board-analysis.component';
+import { DialogsComponent } from './dialogs/dialogs.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -43,6 +47,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BlogsPostDetailComponent,
     JobsDetailComponent,
     JobsfilterPipe,
+    WriteBlogsComponent,
+    JobBoardAnalysisComponent,
+    DialogsComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule,
+    MatSnackBarModule,MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
