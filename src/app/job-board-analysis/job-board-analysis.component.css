@@ -1,0 +1,26 @@
+
+/*------General of styling ------*/ 
+body
+{
+  margin:2rem;
+}
+.h1{
+    text-align: center;
+    font-size: 2.0rem;
+}
+
+
+  
+/*------End of general of styling ------*/ 
+
+.cardStyle
+{
+  box-shadow: 0 2px 4px 0 rgba(131, 131, 131, 0.61),0 3px 10px 0 rgba(112, 112, 112, 0.192);
+}
+
+.cardStyle:hover {
+  box-shadow: 0 4px 8px 0 rgba(96, 100, 136, 0.61),0 6px 20px 0 rgba(156, 62, 62, 0.192);
+  cursor: pointer;
+  transform: scale(1.08);
+  color: #fdbd56;
+}

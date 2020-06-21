@@ -31,6 +31,9 @@ import { NavSearchComponent } from './nav-search/nav-search.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { JobSearchComponent } from './job-search/job-search.component';
+import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
+import { JobBoardAnalysisComponent } from './job-board-analysis/job-board-analysis.component';
+import { DialogsComponent } from './dialogs/dialogs.component';
 
 
 @NgModule({
@@ -53,6 +56,9 @@ import { JobSearchComponent } from './job-search/job-search.component';
     ForgetPasswordDialogComponent,
     NavSearchComponent,
     JobSearchComponent,
+    WriteBlogsComponent,
+    JobBoardAnalysisComponent,
+    DialogsComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,8 @@ import { JobSearchComponent } from './job-search/job-search.component';
     MatDialogModule,
     MatTabsModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

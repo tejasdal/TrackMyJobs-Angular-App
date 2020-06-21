@@ -1,4 +1,4 @@
-.home-container{
+/* .home-container{
     width: inherit;
     padding: 40px;
 }
@@ -18,10 +18,7 @@
     margin-left: 25px;
     margin-right: 25px;
     padding: 4rem 0;
-    /* background-color: rgb(254, 227, 184);
-    background-image: linear-gradient(to right bottom rgb(254,
-    227, 184),rgb(254, 227, 184),);     
-     transform: skewY(7deg); */
+ 
    
 }
 
@@ -29,28 +26,246 @@
     transform: skewY(7deg);
     margin: 20px;
 }
-/* .contact-form{
-    transform: skewY(-7deg);
-} */
+
 
 .feature-card{
     box-shadow: 2px 4px 4px 4px gray;
-    /* transition: 3s; */
+    
 }
 
-/* .feature-card:hover{
-    transform: translateY(-1.5rem) scale(1.05px);
-} */
- 
+
 .feature-card-title{
     text-align: center;
     font-size: medium;
     font-weight: 700;
 }
-/* @media screen and (max-width: 991.98px){
-    .feature-section{
-        transform: skewY(0deg);
+
+ */
+ 
+ *{
+   
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /*------General of styling of Main header------*/ 
+  .h2{
+    font-size: 2.0rem;
+  
+  }
+  
+  .h3{
+    font-size: 1.0rem;
+  }
+  
+  .btn{
+    margin: auto;
+    width: 100px;
+    border: 0px;
+    color: black;
+    background-color: #fdbd56;
+ 
+  }
+
+  
+  .h1
+  {
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.5rem;
+    margin-bottom: 25px;
+    /* font-family: "Droid Serif"; */
+  }
+  
+  
+  .btn:hover {
+    opacity: 0.8;
+    background-color: #fdbd56ee;
+  }
+  
+   /*------Start of styling of Main header------*/ 
+    header.masthead {
+      padding-top: 10.5rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      /* color: #fff; */
+      /* background-color:#809bff; */
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: center center;
+      background-size: cover;
     }
-} */
-
-
+    header.masthead .masthead-subheading {
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5rem;
+      margin-bottom: 25px;
+      /* font-family: "Droid Serif"; */
+    }
+    header.masthead .masthead-heading {
+      font-size: 3.25rem;
+      font-weight: 700;
+      line-height: 3.25rem;
+      margin-bottom: 2rem;
+      /* font-family: "Montserrat"; */
+    }
+  
+    #customeButton {
+      display: inline-block;
+      background: #fdbd56;
+      padding: 0.8rem 1.8rem;
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+  
+    /*------ End of styling of Main header ------*/  
+  
+   /*------Start of styling of feature list------*/ 
+  .icon-boxes {
+    margin-top:50px;
+  }
+  img {
+    width: 100%;
+  }
+  
+  .icon-box {
+  
+    padding: 50px 30px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    margin: 10px;
+    background: rgb(254, 227, 184);
+    /* box-shadow: 0 0 29px 0 rgba(230, 177, 94, 0.11); */
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+  }
+  
+  .icon-box .title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .icon-box .title a {
+    color: black;
+    transition: 0.3s;
+  }
+  
+  .icon-box .description {
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 0;
+  }
+  
+  
+   .icon-box:hover {
+    cursor: pointer;
+    transform: scale(1.08);
+  }
+  
+  .icon-box:hover .title a {
+    color: #fdbd56;
+  }
+  
+   /*------End of styling of feature list------*/ 
+  
+  
+   /*------Start of styling of detailed feature list with image------*/ 
+  
+   #imagecontainer
+   {
+     margin-top: 100px;
+   }
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    border: 0;
+    padding: 2rem;
+     background-color: #fdbd5610; 
+    margin-bottom: 2rem;
+  }
+  
+  .card h3 {
+    /* font-weight: 700; */
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .card img {
+    height: 250px;
+  }
+  
+  .card > div {
+    padding: 1rem;
+  }
+  
+  .card:nth-child(even) img {
+    order: 2;
+  }
+   /*------End of styling of detailed feature list with image------*/ 
+  
+  
+  
+  
+    /*------Start of styling of Contact us form control ------*/ 
+  .form-control.ng-touched.ng-invalid
+  {
+  border: 1.5px solid red ;
+  }
+  .form-control.ng-touched.ng-valid
+  {
+  border: 1.5px solid green ;
+  }
+    /*------End of styling of Contact us form control ------*/ 
+  
+  /*------Use of media query  for styling of smaller screen size------*/ 
+    @media (max-width: 800px) {
+      header.masthead .masthead-heading {
+        font-size: 2.00rem;
+        font-weight: 700;
+        line-height: 3.25rem;
+        margin-bottom: 2rem;
+        /* font-family: "Montserrat"; */
+      }
+      header.masthead .masthead-subheading {
+        font-size: 1.0rem;
+        font-style: italic;
+        line-height: 1.5rem;
+        margin-bottom: 25px;
+        /* font-family: "Droid Serif"; */
+      }
+      .card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        border: 0;
+        padding: 2rem;
+         background-color: #fdbd56; 
+        margin-bottom: 2rem;
+      }
+      .card img {
+        height: 150px;
+      }
+      .card:nth-child(even) img {
+        order: 0;
+      }
+    }
+    /* IE10+ specific styles go here */  
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+    .ie-block {
+        display:block;
+    }
+    .ie-wrapper {
+        display: flex;
+    }
+    .ie-inner {
+        flex-basis:100%;
+    }
+    .card img{
+      height:0.01px;
+    }
+  }

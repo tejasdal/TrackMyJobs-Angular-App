@@ -1,0 +1,56 @@
+
+
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 card-deck">
+            <div class="card cardStyle">
+                <div class="card-header" style="background-color: white;">
+                    <h2 class="h2"> Blog Writting Analysis</h2>
+                  </div>
+                <div class="card-body">
+                    <canvas id="lineGraph"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-5" style="margin: 5px;">
+            <div class=" card cardStyle">
+                <div class="card-header" style="background-color: white;">
+                   <h2 class="h2">Your Job application stage Analysis</h2> 
+                    </div>
+                <div class="card-body">
+                    <canvas id="horizontalBar"></canvas>
+                    <select  (change)="applyDateFilter($event.target.value)">
+                        <option value="1">This Month</option>
+                        <option value="2">Last Month</option>
+                        <option value="3">Past Three months</option>
+                        <option value="4">Half Year</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-8 col-12" style=" margin-top: 30px; margin-bottom: 50px;">
+            <div class="cardStyle">
+                <div class="card-header" style="background-color: white;">
+                    <h2 class="h2">Your Job activity completion graph</h2>
+                    </div>
+            <div class="card-body"><canvas id="stackedBar"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+console.log("document is ready");
+  $( ".card" ).hover(
+  function() {
+    $(this).addClass('shadow-lg').css('cursor', 'pointer'); 
+  }, function() {
+    $(this).removeClass('shadow-lg');
+  }
+);
+  
+// document ready  
+});
+</script>

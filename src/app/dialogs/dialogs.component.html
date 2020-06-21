@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog view</title>
+</head>
+<body>
+  <div *ngIf="data.id==1">    
+    <mat-dialog-content class="mat-typography">
+    <h2 mat-dialog-title class="h2">
+        Organize your search
+    </h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+        enim laudantium, animi veniam libero eveniet culpa unde perferendis
+        illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+        officia. Ab, delectus.
+      </p>
+      <ul>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+        <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+      </ul>
+      <input type="button" class="btn btn-primary" (click)="onNoClick()" value="Close">
+    </mat-dialog-content>
+    </div>
+    
+
+    
+    <div *ngIf="data.id===2"> 
+         
+      <mat-dialog-content class="mat-typography">
+    <h2 mat-dialog-title class="h2">
+      Manage your job application
+    </h2>
+ 
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+        enim laudantium, animi veniam libero eveniet culpa unde perferendis
+        illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+        officia. Ab, delectus.
+      </p>
+      <ul>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+        <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+      </ul>
+      <input type="button" class="btn btn-primary" value="close" (click)="onNoClick()">
+    </mat-dialog-content>
+    </div>
+    
+    
+    <div *ngIf="data.id==3"> 
+      <mat-dialog-content class="mat-typography">
+            
+    <h2 mat-dialog-title class="h2">
+        Apply for jobs
+    </h2>
+  
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+        enim laudantium, animi veniam libero eveniet culpa unde perferendis
+        illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+        officia. Ab, delectus.
+      </p>
+      <ul>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+        <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+      </ul>
+      <input type="button" class="btn btn-primary" value="close" (click)="onNoClick()">
+    </mat-dialog-content>
+    </div>
+    
+    
+    <div *ngIf="data.id==5">    
+      <h2 mat-dialog-title class="h2">
+          You have successfully Registered
+      </h2>
+      <div class="center-block" style="text-align: center;
+      display: block;"><img style="margin-bottom: 20px; width: 100px;height: 100px;" src="https://image.flaticon.com/icons/svg/845/845646.svg" alt="Success"></div>
+         <input type="button" class="btn btn-primary" value="close" (click)="onNoClick()">
+      </div>
+    
+      <div *ngIf="data.id==6">    
+        <h2 class="h2">
+            You have successfully submitted your blog
+        </h2>
+        <div class="center-block" style="text-align: center;
+        display: block;"><img style="margin-bottom: 20px; width: 100px;height: 100px;" src="https://image.flaticon.com/icons/svg/845/845646.svg" alt="Success"></div>
+          <input type="button" class="btn btn-primary" (click)="onNoClick()" routerLink="/home" value="close">
+        </div>
+      
+    
+    
+      <div *ngIf="data.id==10"> 
+        <mat-dialog-content class="mat-typography">
+        <h2 mat-dialog-title class="h2">
+            Help section for Write blog
+        </h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+            enim laudantium, animi veniam libero eveniet culpa unde perferendis
+            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+            officia. Ab, delectus.
+          </p>
+          <ul>
+            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+            <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+          </ul>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+            enim laudantium, animi veniam libero eveniet culpa unde perferendis
+            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+            officia. Ab, delectus.
+          </p>
+          <input type="button" class="btn btn-primary" value="close" (click)="onNoClick()">
+        </mat-dialog-content>
+        </div>
+    
+    
+</body>
+</html>
