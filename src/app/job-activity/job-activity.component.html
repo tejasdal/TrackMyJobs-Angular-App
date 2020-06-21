@@ -1,0 +1,33 @@
+<div class="container my-4">
+    
+    <div class="row">
+        <div class="col-8">
+            <h3 >Activities</h3>
+        </div>
+        <div class="col-4 offset-md-0">
+            <button id="addActivity" class="btn btn-primary btn-sm float-right" (click)="addNewActivity()">Add Activity</button>
+        </div>
+    </div>
+    <br>
+    <h5 >ToDo Items</h5>
+    <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activityItem of toDoItems">   
+        <div class="col-8">
+            <input type="checkbox" class="form-check-input " id="exampleCheck1" (change)="moveToCompleted($event, activityItem.id)">
+            <label class="form-check-label " for="exampleCheck1">{{activityItem.activity}}</label>
+        </div>
+        <div class="col-6 col-sm-4">
+            <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'due on '+ activityItem.deadline | date:'MMM dd, yyyy'}}</p>
+        </div>
+    </div>
+    <br><br>
+    <h5 >Completed Items</h5>
+    <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activityItem of completedItems">   
+        <div class="col-8">
+            <input type="checkbox"  class="form-check-input" id="exampleCheck1" (change)="moveToToDo($event, activityItem.id)" checked>
+            <label class="form-check-label " for="exampleCheck1"> <del>{{activityItem.activity}}</del></label>
+        </div>
+        <div class="col-6 col-sm-4">
+            <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'on ' + activityItem.completedOn | date:'MMM dd, yyyy'}}</p>
+        </div>
+    </div>
+</div>

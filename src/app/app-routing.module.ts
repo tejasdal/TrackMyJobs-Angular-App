@@ -11,6 +11,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { BlogsPostDetailComponent } from './blogs-post-detail/blogs-post-detail.component';
 import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
 import { JobSearchComponent } from './job-search/job-search.component';
+import { JobBoardComponent } from './job-board/job-board.component';
+import { JobActivityComponent } from './job-activity/job-activity.component';
 
 
 
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
+  { path: "job-board", component: JobBoardComponent},
+  { path: "job-activity", component: JobActivityComponent},
   { path: '**', component: NotfoundComponent }
 ];
 

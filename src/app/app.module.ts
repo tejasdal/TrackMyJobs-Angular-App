@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +34,10 @@ import { NavSearchComponent } from './nav-search/nav-search.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { JobSearchComponent } from './job-search/job-search.component';
+import { JobBoardComponent } from './job-board/job-board.component';
+import { JobActivityComponent } from './job-activity/job-activity.component';
+import { CreateJobDialogComponent } from './create-job-dialog/create-job-dialog.component';
+import { CreateActivityDialogComponent } from './create-activity-dialog/create-activity-dialog.component';
 
 
 @NgModule({
@@ -53,6 +60,10 @@ import { JobSearchComponent } from './job-search/job-search.component';
     ForgetPasswordDialogComponent,
     NavSearchComponent,
     JobSearchComponent,
+    JobBoardComponent,
+    JobActivityComponent,
+    CreateJobDialogComponent,
+    CreateActivityDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,10 @@ import { JobSearchComponent } from './job-search/job-search.component';
     MatDialogModule,
     MatTabsModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

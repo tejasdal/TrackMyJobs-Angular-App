@@ -15,6 +15,8 @@ export class HeaderNavbarComponent implements OnInit {
   about = 'About';
   sign_in_btn = "Sign in";
   sign_up_btn = "Sign up";
+  job_board = "Job Board";
+  job_activity = "Job Activity";
 
 
 

@@ -1,0 +1,26 @@
+ .btn-outline-dark{
+      border-color: #fdbd56;
+      border: 1px solid #fdbd56;
+  }
+  .btn-outline-dark:hover, .btn-outline-dark:focus, .btn-outline-dark:active:focus, .open>.dropdown-toggle.btn-outline-dark {
+    border-color: #fdbd56;
+    background-color: #fdbd56;
+    box-shadow: none;
+ }
+ .btn-dark, .btn-dark:hover, .btn-dark:active:focus, .btn-dark:focus{
+    border-color: #fdbd56;
+    background-color: #fdbd56;
+    box-shadow: none;
+ }
+
+ ::ng-deep .mat-focused .mat-form-field-label {
+    color: #fdbd56 !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    background-color: #fdbd56 !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   background-color: #fdbd56 !important;;
+  }
