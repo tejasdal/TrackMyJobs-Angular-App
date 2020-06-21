@@ -41,6 +41,6 @@ export class HomeComponent implements OnInit {
    
   registerNavigate():void
   {
-    this._router.navigate(['/register']);
+    this._router.navigate(['/sign-up']);
   }
 }
