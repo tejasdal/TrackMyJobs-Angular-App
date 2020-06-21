@@ -1,36 +1,114 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras, ParamMap, Params, Data } from '@angular/router'
+import { JobService } from '../services/job.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.css']
 })
-export class JobsComponent implements OnInit {
+export class JobsComponent implements OnInit, OnDestroy{
 
-  constructor(private router: Router) { }
+  subscription: Subscription;
+
+  clickedCard: boolean[];
+  searchJobs$: any;
+  selectedJob: any;
+  jobsLength: number;
+  clickedIndex: number = 0;
+
+  // splicedJob: any[];
+  // pageSize: number = 5;
+
+  constructor(private _jobService: JobService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.subscription = this._jobService.getJobs().subscribe(jobs => {
+      this.searchJobs$ = jobs.results;
+    });
+
+    this.jobsLength = this.searchJobs$.length;
+    // this.splicedJob = this.searchJobs$.slice(((0 + 1) - 1) * this.pageSize).slice(0, this.pageSize);
+
+    this.clickedCard = new Array(this.searchJobs$.length);
+
+    var queryParamJobKey = this._activatedRoute.snapshot.paramMap.get('jobkey');
+    var queryJobKey = queryParamJobKey == null ? null : +queryParamJobKey;
+
+    // showing job detail
+    if(this.searchJobs$.length > 0){
+      if(queryJobKey != null){ // showing job in jobkey on URL
+        let count = 0;
+        for (let job of this.searchJobs$){
+          if (job.jobkey == +queryJobKey){
+            this.onClickCard(count);
+            this.showDetail(job);
+            break;
+          }
+          count = count + 1;
+        }
+      } else { // showing first job in the list
+        this.onClickCard(this.clickedIndex);
+        this.showDetail(this.searchJobs$[this.clickedIndex]);
+      }
+    }
   }
 
-  jobs: any[] = [
-    { id: "1", company: 'Google', post: "Software Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/googlelogo.svg" },
-    { id: "2", company: 'Microsoft', post: "Software Developer", salary: "150k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/microsoftlogo.svg" },
-    { id: "3", company: 'Google', post: "IOT Developer", salary: "120k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/googlelogo.svg" },
-    { id: "4", company: 'Microsoft', post: "IOT Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/microsoftlogo.svg" },
-    { id: "5", company: 'Google', post: "UI/UX Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/googlelogo.svg" },
-    { id: "6", company: 'Microsoft', post: "UI/UX Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/microsoftlogo.svg" },
-    { id: "7", company: 'Google', post: "Cloud Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/googlelogo.svg" },
-    { id: "8", company: 'Microsoft', post: "Cloud Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", img: "/assets/microsoftlogo.svg" },
-    { id: "9", company: 'Google', post: "Cloud Developer", salary: "100k $", location: "Canada", roledesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.s", img: "/assets/googlelogo.svg" },
-  ];
-
-  jobSearch: string;
-
-  onjobCard(job) {
-    this.router.navigate(['/jobs', job.id])
-
+  onClickCard(index){
+    this.resetCard();
+    // set clicked card background color
+    this.clickedCard[index] = !this.clickedCard[index];
+    this.clickedIndex = index;
   }
 
+  resetCard(){
+    // reset all card to be unclick
+    for(var i = 0; i<this.clickedCard.length; i++) { 
+      this.clickedCard[i] = false;
+    }
+  }
 
+  getSearchJobsLength(){
+    if (this.jobsLength == 0){
+      return "No Job Found.";
+    } else if (this.jobsLength == 1){
+      return this.jobsLength + " Job Found";
+    } else {
+      return this.jobsLength + " Jobs Found";
+    }
+  }
+
+  // pageChangeEvent(event) {
+  //   const offset = ((event.pageIndex + 1) - 1) * event.pageSize;
+  //   this.splicedJob = this.searchJobs$.slice(offset).slice(0, event.pageSize);
+  //   // click the first card when change page
+  //   this.onClickCard(0);
+  //   this.showDetail(this.searchJobs$[offset]);
+  // }
+
+  showDetail(job){
+    this.selectedJob = job;
+
+    var queryParamKeyword = this._activatedRoute.snapshot.paramMap.get('keyword');
+    var queryParamLocation = this._activatedRoute.snapshot.paramMap.get('location');
+
+    var queryKeyword = queryParamKeyword == null ? '' : queryParamKeyword;
+    var queryLocation = queryParamLocation == null ? '' : queryParamLocation;
+
+
+    this._router.navigate(['/jobs', { keyword: queryKeyword, location: queryLocation, jobkey: job.jobkey }]);
+  }
+
+  goToJobsDetail(selectedJobkey){
+    this._router.navigate(['/jobs-detail', { jobkey: selectedJobkey }]);
+  }
+
+  saveToWishList(){
+    alert("Save to Wish List");
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
 }
