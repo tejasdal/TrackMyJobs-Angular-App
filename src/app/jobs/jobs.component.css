@@ -1,15 +1,43 @@
-.container{
-    min-height: 100%;
-}
-.job-search-input{
-    border-radius: 25px;
-}
 .job-page-title{
     text-align:center; font-size:24px; font-weight: 700;
 }
-.apply-job-btn{
-    background-color: blue;
-    color: white;
-    border-radius: 25px;
-    margin-left: 10px;
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-dark-blue{
+    background-color: #084970;
+}
+
+.bg-light-grey{
+    background-color: #ebebeb;
+}
+
+.bg-yellow{
+    background-color: #fdbd56;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.drawer-container{
+    height: 800px;
+    /* border: 1px solid #8497b0; */
+}
+
+.material-icons.color_yellow { 
+    color: #ffc000; 
+}
+
+/* small screen */
+@media screen and (max-width: 600px) {
+    .mat-drawer-content {
+      display: none;
+    }
+
+    .mat-drawer {
+        width: 100%;
+    }
 }

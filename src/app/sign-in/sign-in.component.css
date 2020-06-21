@@ -1,3 +1,7 @@
+.pointer{
+    cursor: pointer;
+}
+
 .signin-btn{
     border-radius: 25px;
     text-transform: capitalize;

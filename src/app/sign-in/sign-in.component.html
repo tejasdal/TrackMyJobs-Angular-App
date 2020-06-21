@@ -43,10 +43,10 @@
                             <button [disabled]="signin.form.invalid" class="btn btn-lg btn-primary btn-block signin-btn"
                                 type="submit" (click)="signinconfirmation()">SIGN IN</button>
                         </div>
-                        <p style="margin-top:10px;text-align: center;font-size: 16px ;">Don't have an account?<a
+                        <p style="margin-top:10px;text-align: center;font-size: 16px ;">Don't have an account? <a
                                 routerLink="/sign-up">Sign up</a></p>
-                        <p style="margin-top:5px;text-align: center;font-size: 16px;"><a routerLink="/sign-up">forgot
-                                password</a></p>
+                        <p style="margin-top:5px;text-align: center;font-size: 16px;"><a class="text-primary pointer" (click)="openForgetPasswordDialog()">Forgot
+                                Password</a></p>
                     </form>
                 </div>
             </div>

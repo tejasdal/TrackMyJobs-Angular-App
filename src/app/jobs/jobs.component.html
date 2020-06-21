@@ -1,34 +1,96 @@
-<!--Job's Page-->
-<div class="container">
-    <div>
-        <div>
-            <h2 class="job-page-title">Find Your Dream Job
-            </h2>
-        </div>
-    </div>
-    <!--Search Bar-->
-    <input class=" form-control job-search-input" type="text" [(ngModel)]="jobSearch"
-        placeholder="Search Based on Job Role">
-    <div>
-        <!--Jobs Card-->
-        <div class="row" style="margin-top:25px;">
-            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let job of jobs | jobsfilter:jobSearch"
-                (click)="onjobCard(job)">
-                <div class="card" style="margin:10px;box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);">
-                    <img class=" card-img-top" width="150" height="150" src={{job.img}} alt="job-card-img">
-                    <div class="card-body">
-                        <h4 style="font-family:'Lato',sans-serif;font-weight: 700;" class="card-title">{{job.company}}
-                        </h4>
-                        <p style="font-family:'Lato',sans-serif;" class="card-text">{{job.post}},
-                            <span>{{job.location}}</span>
-                        </p>
-                        <span style="font-family:'Lato',sans-serif;">Salary: {{job.salary}}</span><br>
-                        <div>
-                            <button (click)="onjobCard(job)" class="btn btn-primary">Apply</button>
-                        </div>
-                    </div>
-                </div>
+<header>
+  <h2 class="job-page-title">Find Your Dream Job</h2>
+</header>
+<!-- Search Bar -->
+<app-nav-search></app-nav-search>
+
+<!-- Content -->
+<main class="container">
+  
+  <section *ngIf="searchJobs$.length == 0">
+    <h2 class="text-center m-3">No job found</h2>
+  </section>
+  
+  <mat-drawer-container *ngIf="searchJobs$.length > 0" class="drawer-container">
+    <!-- drawer content -->
+      <mat-drawer mode="side" opened class="col-12 col-md-3 col-lg-4">
+        <header class="text-center m-2">
+          <p>{{getSearchJobsLength()}}</p>
+        </header>
+        <section>
+          <mat-card-content>
+            <div *ngFor="let job of searchJobs$; let i = index">
+              <mat-card class="pointer" [ngClass]="{'bg-light-grey' : clickedCard[i], 'bg-white' : !clickedCard[i]}"
+                (click)="showDetail(job); onClickCard(i)">
+                <header class="row">
+                  <aside class="col-3 col-md-1 col-lg-3">
+                    <img class="img-fluid" src="../../assets/images/company-logo.png">
+                  </aside>
+                  <div class="col-9 col-md-11 col-lg-9">
+                    <mat-card-title>
+                      <h4>{{job.jobtitle}}</h4>
+                    </mat-card-title>
+                    <mat-card-content>
+                      <p>
+                        {{job.company}}
+                        <br>
+                        {{job.formattedLocation}}
+                      </p>
+                    </mat-card-content>
+                  </div>
+                </header>
+                <footer class="row">
+                  <button class="btn btn-block bg-dark-blue text-white pointer mx-1 my-1 d-md-none" (click)="goToJobsDetail(job.jobkey)">
+                    Show Job Detail
+                  </button>
+                </footer>
+              </mat-card>
             </div>
-        </div>
-    </div>
-</div>
+          </mat-card-content>
+        </section>
+        <!-- <mat-paginator (page)="pageChangeEvent($event)" [length]="jobsLength" [pageSize]="pageSize">
+        </mat-paginator> -->
+      </mat-drawer>
+
+    <!-- main content -->
+      <mat-drawer-content class="col-1 col-md-9 col-lg-8">
+        <section>
+          <div *ngIf="searchJobs$.length == 0"><p class="text-center">No job found.</p></div>
+          <div class="row">
+            <header class="col-9 m-3">
+              <h1>{{selectedJob.jobtitle}}</h1>
+              <h3>{{selectedJob.company}}</h3>
+              <h5>{{selectedJob.formattedLocation}}</h5>
+            </header>
+            <aside class="col-2">
+              <div class="row">
+                <button class="btn bg-yellow pointer m-3">
+                  <mat-icon [ngStyle]="{'color':'white'}" aria-hidden="false" aria-label="save to wish list" (click)="saveToWishList()">favorite
+                  </mat-icon>
+                </button>
+                <p>{{selectedJob.formattedRelativeTime}}</p>
+              </div>
+            </aside>
+            <section>
+              <mat-tab-group>
+                <mat-tab label="Role Description">
+                  <article class="m-4">
+                    <p>
+                      {{selectedJob.snippet}}
+                    </p>
+                  </article>
+                </mat-tab>
+                <mat-tab label="Company Feedbacks">
+                  <article class="m-4">
+                    <p>
+                      Feedbacks
+                    </p>
+                  </article>
+                </mat-tab>
+              </mat-tab-group>
+            </section>
+          </div>
+        </section>
+      </mat-drawer-content>
+  </mat-drawer-container>
+</main>
