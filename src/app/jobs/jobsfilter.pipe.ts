@@ -9,7 +9,7 @@ export class JobsfilterPipe implements PipeTransform {
     if (keyword === undefined) return jobs;
 
     return jobs.filter(function (job) {
-      return job.post.toLowerCase().includes(keyword.toLowerCase())
+      return job.jobtitle.toLowerCase().includes(keyword.toLowerCase())
     })
   }
 }

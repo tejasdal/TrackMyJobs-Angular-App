@@ -8,6 +8,7 @@ import { Router, ActivatedRoute, ParamMap, Params, Data } from '@angular/router'
   styleUrls: ['./nav-search.component.css']
 })
 export class NavSearchComponent implements OnInit {
+  jobSearch: string;
 
   queryParams: any;
 

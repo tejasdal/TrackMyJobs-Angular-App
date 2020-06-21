@@ -5,5 +5,8 @@
 .signin-btn{
     border-radius: 25px;
     text-transform: capitalize;
+    color: black;
+    border:  #fdbd56;
+    background-color: #fdbd56;
 }
 

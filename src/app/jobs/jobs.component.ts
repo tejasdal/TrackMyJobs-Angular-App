@@ -18,6 +18,8 @@ export class JobsComponent implements OnInit, OnDestroy{
   jobsLength: number;
   clickedIndex: number = 0;
 
+  // jobSearch: string;
+
   // splicedJob: any[];
   // pageSize: number = 5;
 
@@ -35,6 +37,8 @@ export class JobsComponent implements OnInit, OnDestroy{
 
     var queryParamJobKey = this._activatedRoute.snapshot.paramMap.get('jobkey');
     var queryJobKey = queryParamJobKey == null ? null : +queryParamJobKey;
+
+    // this.jobSearch = this._activatedRoute.snapshot.paramMap.get('keyword');
 
     // showing job detail
     if(this.searchJobs$.length > 0){
@@ -95,7 +99,6 @@ export class JobsComponent implements OnInit, OnDestroy{
 
     var queryKeyword = queryParamKeyword == null ? '' : queryParamKeyword;
     var queryLocation = queryParamLocation == null ? '' : queryParamLocation;
-
 
     this._router.navigate(['/jobs', { keyword: queryKeyword, location: queryLocation, jobkey: job.jobkey }]);
   }
