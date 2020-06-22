@@ -13,82 +13,39 @@
                 style="border: 0;border-radius: 16px;box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);">
                 <div class="card-body">
                     <p style="text-align: center;font-size: 24px;font-weight: 600;">Sign Up</p>
-                    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-
+                    <div class="alert alert-danger" *ngIf="error">
+                        <p> {{ error }}</p>
+                    </div>
+                    <form #signup="ngForm" (ngSubmit)="onSubmit(signup)" style="width: 100%;">
                         <div class="form-group">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email address"
-                                formControlName="email" required>
-                            <div class="text-danger ml-2" *ngIf="submitted && signupFormControl.email.errors?.required">
-                                <small>
-                                    Email is required.
-                                </small>
-                            </div>
-                            <div class="text-danger ml-2"
-                                *ngIf="submitted && signupFormControl.email.errors?.invalidEmail">
-                                <small>
-                                    Email must be a valid email address.
-                                </small>
-                            </div>
+                            <mat-form-field appearance="outline" style="width: 100%; border-radius:25px !important;">
+                                <mat-label>Email</mat-label>
+                                <input type="email" #email="ngModel" matInput required ngModel name="email"
+                                    placeholder="abc@abc.com" pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
+                                <mat-icon matSuffix>email</mat-icon>
+                                <mat-error *ngIf=" !email.touched && email.invalid">Email is required</mat-error>
+                                <mat-error *ngIf=" email.touched && email.invalid">
+                                    <div *ngIf="email.errors.required">Email is required</div>
+                                    <div *ngIf="email.errors.pattern">Enter valid Email id(abc@abc.com)</div>
+                                </mat-error>
+                            </mat-form-field>
                         </div>
-
                         <div class="form-group">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Name"
-                                formControlName="name" required>
-                            <div class="text-danger ml-2" *ngIf="submitted && signupFormControl.name.errors?.required">
-                                <small>
-                                    Name is required.
-                                </small>
-                            </div>
-                            <div class="text-danger ml-2" *ngIf="submitted && signupFormControl.name.errors?.minlength">
-                                <small>
-                                    Minimum characters are {{MIN_NAME_LENGTH}}.
-                                </small>
-                            </div>
-                            <div class="text-danger ml-2" *ngIf="submitted && signupFormControl.name.errors?.maxlength">
-                                <small>
-                                    Maximum characters are {{MAX_NAME_LENGTH}}.
-                                </small>
-                            </div>
+                            <mat-form-field appearance="outline" style="width: 100%; border-radius: 25px">
+                                <mat-label>Password</mat-label>
+                                <input type="password" #password="ngModel" matInput required ngModel name="password"
+                                    minlength="6" placeholder="password">
+                                <mat-icon matSuffix>lock</mat-icon>
+                                <mat-error *ngIf="password.errors && password.errors.required">
+                                    Password is required
+                                </mat-error>
+                                <mat-error *ngIf="password.errors && password.errors.minlength">
+                                    Password must be of length 6
+                                </mat-error>
+                            </mat-form-field>
+                            <button [disabled]="signup.form.invalid" class="btn btn-lg btn-block signup-btn"
+                                type="submit">SIGN UP</button>
                         </div>
-
-                        <div class="form-group">
-                            <input type="password" name="password" id="inputPassword" class="form-control"
-                                placeholder="Password" formControlName="password" required>
-                            <div class="text-danger ml-2"
-                                *ngIf="submitted && signupFormControl.password.errors?.required">
-                                <small>
-                                    Password is required.
-                                </small>
-                            </div>
-                            <div class="text-danger ml-2"
-                                *ngIf="submitted && signupFormControl.password.errors?.minlength">
-                                <small>
-                                    Password must be at least 15 characters.
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-                                placeholder="Confirm Password" formControlName="confirmPassword" required>
-                            <div class="text-danger ml-2"
-                                *ngIf="submitted && signupFormControl.password.errors?.required">
-                                <small>
-                                    Confirm password is required.
-                                </small>
-                            </div>
-                            <div class="text-danger ml-2"
-                                *ngIf="submitted && signupFormControl.confirmPassword.errors?.passwordMismatch">
-                                <small>
-                                    Password mismatch.
-                                </small>
-                            </div>
-                        </div>
-
-                        <footer class="form-group">
-                            <button class="btn btn-lg btn-primary text-uppercase signup-btn btn-block"
-                                type="submit">Sign Up</button>
-                        </footer>
                     </form>
                 </div>
             </div>

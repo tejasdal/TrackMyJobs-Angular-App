@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ForgetPasswordDialogComponent } from '../forget-password-dialog/forget-password-dialog.component';
+import { AuthService, AuthReturnData } from '../auth/auth.service';
+import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,14 +16,38 @@ import { ForgetPasswordDialogComponent } from '../forget-password-dialog/forget-
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private snackbar: MatSnackBar, private router: Router, public dialog: MatDialog) { }
+  @ViewChild('signin') form: NgForm;
+  error: string = "";
+
+  constructor(private snackbar: MatSnackBar, private router: Router, public dialog: MatDialog,
+    private authService: AuthService) { }
+
   ngOnInit(): void {
   }
 
-  signinconfirmation() {
-    var msg = "Login Successful";
-    this.snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] })
-    this.router.navigate(['/home'])
+  signinconfirmation(form: NgForm) {
+
+    if(!form.valid){
+      return;
+    }
+    const email = form.value.email;
+    const password = form.value.password;
+    let authObs = new Observable<AuthReturnData>();
+
+    authObs = this.authService.Login(email,password);
+    
+    authObs.subscribe(
+      (response) => {
+        console.log(response);
+        var msg = "SignIn Successful";
+        this.snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+        this.router.navigate(['/home']);
+      }
+    ,errorMessage => {
+      this.error = errorMessage;
+    });
+
+    form.reset();
   }
 
   openForgetPasswordDialog() {

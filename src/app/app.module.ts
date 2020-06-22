@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,7 +70,7 @@ import { CreateActivityDialogComponent } from './create-activity-dialog/create-a
     JobBoardComponent,
     JobActivityComponent,
     CreateJobDialogComponent,
-    CreateActivityDialogComponent,
+    CreateActivityDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +91,7 @@ import { CreateActivityDialogComponent } from './create-activity-dialog/create-a
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

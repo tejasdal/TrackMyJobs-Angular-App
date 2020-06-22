@@ -6,8 +6,8 @@ import { MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import {MatDialog,MatDialogRef} from '@angular/material/dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import  AOS from 'aos';
-
-
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +16,17 @@ import  AOS from 'aos';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private snackbar: MatSnackBar,public dialog: MatDialog,private _router:Router) { }
+  isAuthenticated:boolean = false;
+  userSub:Subscription;
+
+  constructor(private snackbar: MatSnackBar,public dialog: MatDialog,private _router:Router,private authService: AuthService) { }
   name:String;
   id:number;
   ngOnInit(): void {
-    AOS.init()
+    AOS.init();
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = user ? true : false;
+    })
   }
 
   sendmail() {
