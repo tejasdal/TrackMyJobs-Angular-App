@@ -15,26 +15,27 @@ import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
 import { JobSearchComponent } from './job-search/job-search.component';
 import { JobBoardComponent } from './job-board/job-board.component';
 import { JobActivityComponent } from './job-activity/job-activity.component';
-
-
+import { AuthGuard } from "./auth/auth-guard.service";
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'blogs', component: BlogsComponent },
-  { path: 'blogs/:id', component: BlogsPostDetailComponent },
-  { path: 'jobs', component: JobsComponent },
-  { path: 'jobs-detail', component: JobsDetailComponent },
-  { path: 'job-search', component: JobSearchComponent},
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'writeBlog', component: WriteBlogsComponent },
-  { path: 'analysis', component: JobBoardAnalysisComponent },
-  { path: "job-board", component: JobBoardComponent},
-  { path: "job-activity", component: JobActivityComponent},
-  { path: '**', component: NotfoundComponent }
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'blogs', component: BlogsComponent, canActivate:[AuthGuard]},
+  { path: 'blogs/:id', component: BlogsPostDetailComponent, canActivate:[AuthGuard]},
+  { path: 'jobs', component: JobsComponent, canActivate:[AuthGuard]},
+  { path: 'jobs-detail', component: JobsDetailComponent, canActivate:[AuthGuard]},
+  { path: 'job-search', component: JobSearchComponent, canActivate:[AuthGuard]},
+  { path: 'contact', component: ContactComponent, canActivate:[AuthGuard]},
+  { path: 'about', component: AboutComponent, canActivate:[AuthGuard]},
+  { path: 'writeBlog', component: WriteBlogsComponent, canActivate:[AuthGuard]},
+  { path: 'analysis', component: JobBoardAnalysisComponent, canActivate:[AuthGuard]},
+  { path: "job-board", component: JobBoardComponent, canActivate:[AuthGuard]},
+  { path: "job-activity", component: JobActivityComponent, canActivate:[AuthGuard]},
+  { path: "profile", component: ProfileComponent, canActivate:[AuthGuard]},
+  { path: 'sign-in', component: SignInComponent},
+  { path: 'sign-up', component: SignUpComponent},
+  { path: '**', component: NotfoundComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

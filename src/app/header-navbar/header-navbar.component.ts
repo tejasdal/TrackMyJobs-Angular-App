@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header-navbar',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderNavbarComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated:boolean = false;
+  userSub:Subscription;
+
   home = 'Home';
   blog = 'Blogs';
   jobs = 'Jobs';
@@ -20,9 +24,20 @@ export class HeaderNavbarComponent implements OnInit {
   job_board = "Job Board";
   job_activity = "Job Activity";
 
-
+  constructor(private authService: AuthService){}
 
   ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = user ? true : false;
+    })
+  }
+
+  onLogout(){
+    this.authService.logOut();
+  }
+
+  ngOnDestroy(){
+    this.userSub.unsubscribe();
   }
 
 }

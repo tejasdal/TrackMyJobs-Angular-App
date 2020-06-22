@@ -13,7 +13,10 @@
                 style="border: 0;border-radius: 16px;box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);">
                 <div class="card-body">
                     <p style="text-align: center;font-size: 24px;font-weight: 600;">Sign In</p>
-                    <form #signin="ngForm" style="width: 100%;">
+                    <div class="alert alert-danger" *ngIf="error">
+                        <p> {{ error }}</p>
+                    </div>
+                    <form #signin="ngForm" (ngSubmit)="signinconfirmation(signin)" style="width: 100%;">
                         <div class="form-group">
                             <mat-form-field appearance="outline" style="width: 100%; border-radius:25px !important;">
                                 <mat-label>Email</mat-label>
@@ -31,17 +34,17 @@
                             <mat-form-field appearance="outline" style="width: 100%; border-radius: 25px">
                                 <mat-label>Password</mat-label>
                                 <input type="password" #password="ngModel" matInput required ngModel name="password"
-                                    minlength="8" placeholder="password">
+                                    minlength="6" placeholder="password">
                                 <mat-icon matSuffix>lock</mat-icon>
                                 <mat-error *ngIf="password.errors && password.errors.required">
                                     Password is required
                                 </mat-error>
                                 <mat-error *ngIf="password.errors && password.errors.minlength">
-                                    Password must be of length 8
+                                    Password must be of length 6
                                 </mat-error>
                             </mat-form-field>
                             <button [disabled]="signin.form.invalid" class="btn btn-lg btn-block signin-btn"
-                                type="submit" (click)="signinconfirmation()">SIGN IN</button>
+                                type="submit">SIGN IN</button>
                         </div>
                         <p style="margin-top:10px;text-align: center;font-size: 16px ;">Don't have an account? Please <a
                                 routerLink="/sign-up">Sign up</a></p>

@@ -34,7 +34,8 @@
       <div class="masthead-heading text-uppercase">Welcome to Track my job</div>
       <div>
       </div>
-      <button id="customeButton" (click)="registerNavigate()" style="width: 250px;" class="btn btn-primary ">Register
+      <button id="customeButton" (click)="registerNavigate()" style="width: 250px;" class="btn btn-primary" 
+      *ngIf="!isAuthenticated">Register
         yourself</button>
     </div>
   </header>
@@ -143,7 +144,7 @@
   </div>
 
   <!-- Get started component-->
-  <div class="container" style="margin-top: 100px;">
+  <div class="container" style="margin-top: 100px;" *ngIf="!isAuthenticated">
     <div>
       <h2 class=" h2" style="margin-top: 50px;">Get started</h2>
       <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, ipsam blanditiis soluta saepe libero, optio
