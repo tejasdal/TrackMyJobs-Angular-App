@@ -5,9 +5,10 @@
     border-radius: 25px;
 }
 .create-blog-btn{
-    background-color: gray;
-    color: white;
     border-radius: 25px;
+    color: black;
+    border:  #fdbd56;
+    background-color: #fdbd56;
     margin-left: 10px;
 }
 
