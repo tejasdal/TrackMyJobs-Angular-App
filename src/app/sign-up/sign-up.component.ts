@@ -42,7 +42,6 @@ export class SignUpComponent implements OnInit {
     ,errorMessage => {
       this.error = errorMessage;
     });
-
     form.reset();
   }
 }

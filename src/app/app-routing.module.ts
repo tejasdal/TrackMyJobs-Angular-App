@@ -20,7 +20,6 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'blogs', component: BlogsComponent, canActivate:[AuthGuard]},
   { path: 'blogs/:id', component: BlogsPostDetailComponent, canActivate:[AuthGuard]},
   { path: 'jobs', component: JobsComponent, canActivate:[AuthGuard]},
@@ -33,6 +32,7 @@ const routes: Routes = [
   { path: "job-board", component: JobBoardComponent, canActivate:[AuthGuard]},
   { path: "job-activity", component: JobActivityComponent, canActivate:[AuthGuard]},
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard]},
+  { path: 'home', component: HomeComponent},
   { path: 'sign-in', component: SignInComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: '**', component: NotfoundComponent, canActivate:[AuthGuard]},
