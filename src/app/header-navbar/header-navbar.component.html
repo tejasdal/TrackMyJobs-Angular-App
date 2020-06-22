@@ -40,6 +40,10 @@
                             routerLinkActive="nav-active" *ngIf="isAuthenticated">{{job_activity}}</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-link-menu" routerLink="/profile"
+                            routerLinkActive="nav-active" *ngIf="isAuthenticated">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-link-menu" routerLink="/contact"
                             routerLinkActive="nav-active" *ngIf="isAuthenticated">{{contact}}</a>
                     </li>

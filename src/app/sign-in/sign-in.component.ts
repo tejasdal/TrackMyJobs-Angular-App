@@ -38,7 +38,6 @@ export class SignInComponent implements OnInit {
     
     authObs.subscribe(
       (response) => {
-        console.log(response);
         var msg = "SignIn Successful";
         this.snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
         this.router.navigate(['/home']);

@@ -30,19 +30,26 @@
     background-color: rgb(254, 227, 184);
 }
 .signin{
-    border-radius: 25px;;
+    border-radius: 25px;
+    margin-left: 5px;
+    color: black;
+    border:  #fdbd56;
+    background-color: #fdbd56;
 }
 .signin:hover{
     color: white;
-    background-color: blue;
+    background-color: black;
 }
 
 .signup{
     border-radius: 25px;
     margin-left: 5px;
+    color: black;
+    border:  #fdbd56;
+    background-color: #fdbd56;
 }
 
 .signup:hover{
     color: white;
-    background-color: blue;
+    background-color: black;
 }

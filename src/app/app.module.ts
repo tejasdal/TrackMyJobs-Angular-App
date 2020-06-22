@@ -42,6 +42,7 @@ import { JobBoardComponent } from './job-board/job-board.component';
 import { JobActivityComponent } from './job-activity/job-activity.component';
 import { CreateJobDialogComponent } from './create-job-dialog/create-job-dialog.component';
 import { CreateActivityDialogComponent } from './create-activity-dialog/create-activity-dialog.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { CreateActivityDialogComponent } from './create-activity-dialog/create-a
     JobBoardComponent,
     JobActivityComponent,
     CreateJobDialogComponent,
-    CreateActivityDialogComponent
+    CreateActivityDialogComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
