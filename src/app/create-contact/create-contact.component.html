@@ -1,0 +1,42 @@
+<h3 mat-dialog-title class="text-center">Add new Contact</h3>
+<div class="d-flext text-center justify-content-center mb-3">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Name of Contact</mat-label>
+            <input #Name="ngModel" matInput required ngModel name="Name" [(ngModel)]="data.Name">
+            <mat-error *ngIf="Name.touched && !Name.valid">
+                <div *ngIf="Name.errors.required">Contact Name is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email ID of Contact</mat-label>
+            <input #Email="ngModel" matInput required ngModel name="Email" [(ngModel)]="data.Email">
+            <mat-error *ngIf="Email.touched && !Email.valid">
+                <div *ngIf="Email.errors.required">Email ID is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Company Name</mat-label>
+            <input #Company="ngModel" matInput required ngModel name="Company" [(ngModel)]="data.Company">
+            <mat-error *ngIf="Company.touched && !Company.valid">
+                <div *ngIf="Company.errors.required">Company Name is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Position</mat-label>
+            <input #Position="ngModel" matInput required ngModel name="Position" [(ngModel)]="data.Position">
+            <mat-error *ngIf="Position.touched && !Position.valid">
+                <div *ngIf="Position.errors.required">Position is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button class="btn btn-outline-dark" mat-button (click)="onNoClick()">Cancel</button>
+        <button class="btn btn-dark" mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!Name.valid || !Email.valid || !Company.valid || !Position.valid"> Add</button>
+    </div>
+</div>
