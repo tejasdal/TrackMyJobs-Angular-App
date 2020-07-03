@@ -9,8 +9,9 @@
 <h3><b>Notes</b></h3>
 <h4><b></b></h4>
 <div class="row m-1 align-items-center border border-light px-4 py-2" id="exampleCheck1" *ngFor="let Notes of noteList">   
-    <div class="col-8" style="width: auto; height: auto;">
-        <p class="form-check-label " for="exampleCheck1">{{Notes.note}}</p>
+    <div class="col-8">
+        <p class="form-check-label " for="exampleCheck1"><i class="fa fa-sticky-note"></i>
+        {{Notes.note}} </p>
     </div>
    
 </div>

@@ -46,6 +46,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobNotesComponent } from './job-notes/job-notes.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
+import { ContactfilterPipe } from './contact/contactfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dial
     ProfileComponent,
     JobNotesComponent,
     CreateContactComponent,
-    CreateNoteDialogComponent
+    CreateNoteDialogComponent,
+    ContactfilterPipe
   ],
   imports: [
     BrowserModule,
