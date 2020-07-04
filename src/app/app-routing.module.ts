@@ -17,6 +17,7 @@ import { JobBoardComponent } from './job-board/job-board.component';
 import { JobActivityComponent } from './job-activity/job-activity.component';
 import { AuthGuard } from "./auth/auth-guard.service";
 import { ProfileComponent } from './profile/profile.component';
+import { JobNotesComponent } from './job-notes/job-notes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "job-board", component: JobBoardComponent, canActivate:[AuthGuard]},
   { path: "job-activity", component: JobActivityComponent, canActivate:[AuthGuard]},
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard]},
+  { path: "notes", component: JobNotesComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent},
   { path: 'sign-in', component: SignInComponent},
   { path: 'sign-up', component: SignUpComponent},
