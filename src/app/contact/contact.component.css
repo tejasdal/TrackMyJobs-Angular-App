@@ -1,30 +1,43 @@
+.container{
+  min-height:100%;
+}
 .cardStyle
 {
-  box-shadow: 0 2px 4px 0 rgba(131, 131, 131, 0.61),0 3px 10px 0 rgba(112, 112, 112, 0.192);
+box-shadow: 0 2px 4px 0 rgba(131, 131, 131, 0.61),0 3px 10px 0 rgba(112, 112, 112, 0.192);
 }
 .create-contact-btn{
-    border-radius: 25px;
-    color: black;
-    border:  #fdbd56;
-    background-color: #fdbd56;
-    margin-left: 10px;
+  border-radius: 25px;
+  color: black;
+  border:  #fdbd56;
+  background-color: #fdbd56;
+  margin-left: 10px;
 }
 
+.font-style-700{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
 .search-div{
-    text-align: right;
+  text-align: right;
 }
 
+.font-style{
+  font-family: 'Lato', sans-serif;
+}
 .contact-card{
-    margin:10px;
-    box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
+  margin:10px;
+  box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 .contact-search-input{
-    border-radius: 25px;
+  border-radius: 25px;
 }
 
-.cardStyle:hover {
-  box-shadow: 0 4px 8px 0 rgba(96, 100, 136, 0.61),0 6px 20px 0 rgba(156, 62, 62, 0.192);
-  cursor: pointer;
-  transform: scale(1.08);
-  color: #fdbd56;
+.link-home{
+  font-family: 'Roboto', sans-serif;
 }
+.cardStyle:hover {
+box-shadow: 0 4px 8px 0 rgba(96, 100, 136, 0.61),0 6px 20px 0 rgba(156, 62, 62, 0.192);
+cursor: pointer;
+transform: scale(1.08);
+color: #fdbd56;
+} 
