@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Job } from '../job-board/job';
+import { JobApplication } from '../job-board/jobApplication';
 
 @Component({
   selector: 'app-create-job-dialog',
@@ -11,7 +12,7 @@ export class CreateJobDialogComponent implements OnInit{
 
   constructor(
     public dialogRef: MatDialogRef<CreateJobDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Job) {}
+    @Inject(MAT_DIALOG_DATA) public data: JobApplication) {}
     
   ngOnInit(): void {
     

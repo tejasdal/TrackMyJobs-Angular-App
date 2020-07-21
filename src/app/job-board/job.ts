@@ -4,7 +4,8 @@ export class Job {
   private _jobTitle: string;
   private _color: string;
   private _status: number;
-
+  private _jobBoardId: number;
+  
   constructor(){}
 
   public get id(): number {
@@ -40,5 +41,11 @@ export class Job {
   }
   public set status(value: number) {
     this._status = value;
+  }
+  public get jobBoardId(): number {
+    return this._jobBoardId;
+  }
+  public set jobBoardId(value: number) {
+    this._jobBoardId = value;
   }
 }

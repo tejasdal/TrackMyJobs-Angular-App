@@ -47,6 +47,8 @@ import { JobNotesComponent } from './job-notes/job-notes.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
 import { ContactfilterPipe } from './contact/contactfilter.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
   declarations: [
@@ -100,7 +102,13 @@ import { ContactfilterPipe } from './contact/contactfilter.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    NotifierModule.withConfig({
+      behaviour:{
+        autoHide: 2000
+      }
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]
