@@ -27,8 +27,8 @@ The difference and limitation of Adzuna API affect the change of job search resu
 The project is deployed on Heroku which connected to GitHub repository.
 
 The link for remote access:
-* [Job Search Page](XXX): Search for job by keyword and location. If no keyword or location, it will search for all jobs availanilities in Canada.
-* [Job Search Result Page](XXX): Show the result from keyword and location. The difference between large screen (e.g. laptop) and small screen (e.g. mobile phone) is the small screen don't have job filter.
+* [Job Search Page](https://track-my-jobs.herokuapp.com/job-search): Search for job by keyword and location. If no keyword or location, it will search for all jobs availanilities in Canada.
+* [Job Search Result Page](https://track-my-jobs.herokuapp.com/job-search/jobs;keyword=;location=?page=1): Show the result from keyword and location. The difference between large screen (e.g. laptop) and small screen (e.g. mobile phone) is the small screen don't have job filter.
 
 ## Project Structure
 
