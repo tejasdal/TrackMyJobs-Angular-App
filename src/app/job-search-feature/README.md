@@ -36,7 +36,7 @@ The link for remote access:
 Angular separate folder as component. Each component has HTML, CSS, and TS file.
 
 Job search feature is organized as below:
-- [job-search-feature folder]
+- job-search-feature folder
 	- job-filter component
 	- job-search component
 	- jobs component
@@ -49,8 +49,8 @@ Job search feature is organized as below:
 		- nav-search service
 		- pagination service
 
-Data that stored in files are organized as below:
-- [data folder](../assets/data)
+Data that stored in files are organized as below (src/assets/data):
+- data folder
 	- adzuna folder
 		- adzuna_api.json --> include app id and app key for Adzuna API
 		- job-filter folder --> the job filter comes from parameters in [Adzuna API documentation](https://developer.adzuna.com/activedocs#!/adzuna/search)
