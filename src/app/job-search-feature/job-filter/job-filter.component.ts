@@ -159,6 +159,7 @@ export class JobFilterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this._jobService.resetAdzunaUrl();
+    this.clearAllFilters();
     this.subscription.unsubscribe();
   }
 }
