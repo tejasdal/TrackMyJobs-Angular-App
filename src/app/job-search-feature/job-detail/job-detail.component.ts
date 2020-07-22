@@ -1,3 +1,5 @@
+// author: Jan Chayopathum
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras, ParamMap, Params, Data } from '@angular/router'
 import { JobService } from '../services/job.service';
@@ -19,13 +21,13 @@ export class JobsDetailComponent implements OnInit, OnDestroy {
   constructor(private _jobService: JobService, private _location: Location, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.jobkey = +this._activatedRoute.snapshot.paramMap.get('jobkey');
-    console.log(this.jobkey);
+    // this.jobkey = +this._activatedRoute.snapshot.paramMap.get('jobkey');
+    // console.log(this.jobkey);
 
-    this.subscription = this._jobService.getJobByJobKey(this.jobkey).subscribe(job => {
-      this.selectedJob$ = job;
-    });
-    console.log(this.selectedJob$);
+    // this.subscription = this._jobService.getJobByJobKey(this.jobkey).subscribe(job => {
+    //   this.selectedJob$ = job;
+    // });
+    // console.log(this.selectedJob$);
   }
 
   saveToWishList(){

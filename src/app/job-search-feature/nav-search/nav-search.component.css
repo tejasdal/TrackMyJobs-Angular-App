@@ -1,3 +1,9 @@
+/* author: Jan Chayopathum */
+
+.button{
+    text-transform: uppercase;
+}
+
 .pointer{
     cursor: pointer;
 }

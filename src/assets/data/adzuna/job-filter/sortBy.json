@@ -1,0 +1,19 @@
+{
+    "results": [
+        {
+            "__CLASS__": "Adzuna::API::Response::SortBy",
+            "label": "Relevance",
+            "tag": "relevance"
+        },
+        {
+            "__CLASS__": "Adzuna::API::Response::SortBy",
+            "label": "Date",
+            "tag": "date"
+        },
+        {
+            "__CLASS__": "Adzuna::API::Response::SortBy",
+            "label": "Salary",
+            "tag": "salary"
+        }
+    ]
+}

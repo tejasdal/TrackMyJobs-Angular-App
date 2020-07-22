@@ -1,0 +1,27 @@
+<!-- author: Jan Chayopathum -->
+<div class="container">
+    <nav class="navbar navbar-light navbar-expand-lg">
+      <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="form-group m-1">
+          <input class="form-control mr-2 search-width" type="search" #keyword name="keyword" placeholder="Job Title, Keywords, or Company" aria-label="Search"
+            [formControl]="searchForm.get('keyword')">
+  
+        </div>
+        <div class="form-group m-1">
+          <input class="form-control mr-2 search-width" type="search" name="location" placeholder="City or Province in Canada" aria-label="Search"
+          [formControl]="searchForm.get('location')" [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+  
+        </div>
+  
+        <div class="form-group m-1">
+          <button class="button btn bg-yellow font-weight-bold pointer my-2 my-2" type="submit">Search</button>
+        </div>
+  
+      </form>
+    </nav>
+  </div>

@@ -1,0 +1,11 @@
+/* author: Jan Chayopathum */
+
+.container{
+    min-height:100%;
+}
+
+.job-page-title{
+    text-align:center; 
+    font-size:24px; 
+    font-weight: 700;
+}

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JobsDetailComponent } from './jobs-detail.component';
+import { PaginationComponent } from './pagination.component';
 
-describe('JobsDetailComponent', () => {
-  let component: JobsDetailComponent;
-  let fixture: ComponentFixture<JobsDetailComponent>;
+describe('PaginationComponent', () => {
+  let component: PaginationComponent;
+  let fixture: ComponentFixture<PaginationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JobsDetailComponent ]
+      declarations: [ PaginationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JobsDetailComponent);
+    fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
