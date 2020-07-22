@@ -10,7 +10,6 @@
 
 h1 {
     font-weight: bold;
-    max-width: 30rem;
 }
 
 mat-card-title h2 {
@@ -61,13 +60,17 @@ mat-card-title h2 {
 @media screen and (max-width: 950px) {
     .mat-drawer-content {
         width: 100%;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0;
     }
 
     .mat-drawer {
         display: none;   
-    }
-
-    h1 {
-        max-width: 15rem;
     }
 }

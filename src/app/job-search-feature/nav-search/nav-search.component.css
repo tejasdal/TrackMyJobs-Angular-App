@@ -15,3 +15,10 @@
 .search-width{
     width: 20rem;
 }
+
+/* small-medium screen */
+@media screen and (max-width: 950px) {
+    .search-width{
+        width: 15rem;
+    }
+}
