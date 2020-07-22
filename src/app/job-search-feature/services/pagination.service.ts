@@ -9,7 +9,7 @@ import { JobService } from '../services/job.service';
 })
 
 export class PaginationService {
-    MAX_PAGES = 5;
+    MAX_PAGES = 3;
     ITEMS_PER_PAGE: number;
 
     constructor(private _jobService: JobService) {
@@ -22,19 +22,19 @@ export class PaginationService {
         let totalPages = Math.ceil(totalItems / pageSize);
         let startPage: number, endPage: number;
 
-        if (totalPages <= 5) {
+        if (totalPages <= this.MAX_PAGES) {
             startPage = 1;
             endPage = totalPages;
         } else {
-            if (currentPage <= 3) {
+            if (currentPage <= Math.ceil(this.MAX_PAGES/2)) {
                 startPage = 1;
-                endPage = 5;
+                endPage = this.MAX_PAGES;
             } else if (currentPage + 1 >= totalPages) {
-                startPage = totalPages - 4;
+                startPage = totalPages - (this.MAX_PAGES - 1);
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 2;
-                endPage = currentPage + 2;
+                startPage = currentPage - 1;
+                endPage = currentPage + 1;
             }
         }
 
