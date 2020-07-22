@@ -28,21 +28,6 @@
           <section>
             <div *ngFor="let job of searchJobs$; let i = index">
               <mat-card>
-                <header class="row">
-                  <mat-card-actions class="right-corner">
-                    <button class="btn bg-yellow txt-white pointer float-right m-2">
-                      <mat-icon [ngStyle]="{'color':'white'}" aria-hidden="false" aria-label="save to wish list"
-                        (click)="saveToWishList()">
-                        favorite
-                      </mat-icon>
-                    </button>
-                    <br>
-                    <button class="font-weight-bold btn bg-yellow txt-white pointer float-right m-2"
-                      (click)="apply(job.redirect_url)">
-                      Apply via Adzuna
-                    </button>
-                  </mat-card-actions>
-                </header>
                 <div class="m-4">
                   <mat-card-title>
                     <h1 class="pointer"><a href={{job.redirect_url}}>{{cleanString(job.title)}}</a></h1>
@@ -50,14 +35,25 @@
                     <h3>
                       <mat-icon>location_on</mat-icon>
                       {{job.location.display_name}}
-                      <span class="mx-4">
-                        <mat-icon>query_builder</mat-icon>{{getTimeFromNow(job.created)}}
-                      </span>
+                      <br>
+                      <mat-icon>query_builder</mat-icon>{{getTimeFromNow(job.created)}}
                     </h3>
                   </mat-card-title>
                   <mat-card-content>
                     <p>{{cleanString(job.description)}}</p>
                   </mat-card-content>
+                  <mat-card-actions>
+                    <button class="btn bg-yellow txt-white pointer mx-2">
+                      <mat-icon [ngStyle]="{'color':'white'}" aria-hidden="false" aria-label="save to wish list"
+                        (click)="saveToWishList()">
+                        favorite
+                      </mat-icon>
+                    </button>
+                    <button class="font-weight-bold btn bg-yellow txt-white pointer mx-2"
+                      (click)="apply(job.redirect_url)">
+                      Apply via Adzuna
+                    </button>
+                  </mat-card-actions>
                 </div>
               </mat-card>
             </div>
