@@ -23,12 +23,13 @@ The difference and limitation of Adzuna API affect the change of job search resu
 ## Deployment
 
 * *GitHub Repository Link*: https://github.com/Zankrut97/grp21-trackmyjobs
+* *My Branch GitHub Repository Link*: https://github.com/Zankrut97/grp21-trackmyjobs/tree/Jan_branch
 
 The project is deployed on Heroku which connected to GitHub repository.
 
 The link for remote access:
-* [Job Search Page](XXX): Search for job by keyword and location. If no keyword or location, it will search for all jobs availanilities in Canada.
-* [Job Search Result Page](XXX): Show the result from keyword and location. The difference between large screen (e.g. laptop) and small screen (e.g. mobile phone) is the small screen don't have job filter.
+* [Job Search Page](https://track-my-jobs.herokuapp.com/job-search): Search for job by keyword and location. If no keyword or location, it will search for all jobs availanilities in Canada.
+* [Job Search Result Page](https://track-my-jobs.herokuapp.com/job-search/jobs;keyword=;location=?page=1): Show the result from keyword and location. The difference between large screen (e.g. laptop) and small screen (e.g. mobile phone) is the small screen don't have job filter.
 
 ## Project Structure
 
@@ -36,30 +37,34 @@ The link for remote access:
 Angular separate folder as component. Each component has HTML, CSS, and TS file.
 
 Job search feature is organized as below:
-- [job-search-feature folder](src/app/job-search-feature)
+- job-search-feature folder (src/app/job-search-feature)
 	- job-filter component
 	- job-search component
 	- jobs component
 	- jobs-detail component (not used in this version because the limitation of Adzuna API resulting link the job detail to Adzuna API link - to get tracffic to their website. This component can still be used for future.)
 	- nav-search component
 	- pagination component
-	- [services folder](src/app/job-search-feature/services)
+	- services folder
 		- job-filter service
 		- job service
 		- nav-search service
 		- pagination service
 
 Data that stored in files are organized as below:
-- [data folder](src/assets/data)
-	- [adzuna folder](src/assets/data/adzuna)
-		- [adzuna_api.json](src/assets/data/adzuna/adzuna_api.json) --> include app id and app key for Adzuna API
-		- [job-filter folder](src/assets/data/job-filter) --> the job filter comes from parameters in [Adzuna API documentation](https://developer.adzuna.com/activedocs#!/adzuna/search)
-			- [jobTypes.json](src/assets/data/job-filter/jobTypes.json)
-			- [sortBy.json](src/assets/data/job-filter/sortBy.json)
-	- [location folder](src/assets/data/location)
-		- [ca.json](src/assets/data/location/ca.json) --> comes from [simplemaps](https://simplemaps.com/data/ca-cities)
+- data folder (src/assets/data)
+	- adzuna folder
+		- adzuna_api.json --> include app id and app key for Adzuna API
+		- job-filter folder --> the job filter comes from parameters in [Adzuna API documentation](https://developer.adzuna.com/activedocs#!/adzuna/search). Each type of filter can appear once. For example, only 1 type of job category is allowed to add when searching in Adzuna API.
+			- jobTypes.json
+			- sortBy.json
+	- location folder
+		- ca.jsonsrc/assets/data/location/ca.json --> comes from [simplemaps](https://simplemaps.com/data/ca-cities)
 
 The data such as canada location are stored in client side because it is faster and contain no confidentiality.
+The reason to choose file over database for job-search-feature is because the data is unstructured.
+When handling unstructured small dataset, file is more efficient than database.
+For simple operations, read operations are faster and simple. The client app don't need to communicate with server, and can get the data faster on its own.
+However, there are disadvantage to run on client side as stated in "Limitation and deficiencies" section.
 
 ### Components & Services
 There is two main pages in job search feature:
@@ -73,7 +78,7 @@ There is two main pages in job search feature:
 		- job-filter component (interact with job-filter service)
 		- pagination component (interact with pagination service)
 
-![Components](src/app/job-search-feature/UI diagram.png)
+The image for UI component is "UI diagram.png"
 
 ## Limitation and deficiencies
 
@@ -229,19 +234,19 @@ The code above was created by adapting the code in [Plnkr](https://embed.plnkr.c
         let totalPages = Math.ceil(totalItems / pageSize);
         let startPage: number, endPage: number;
 
-        if (totalPages <= 5) {
+        if (totalPages <= this.MAX_PAGES) {
             startPage = 1;
             endPage = totalPages;
         } else {
-            if (currentPage <= 3) {
+            if (currentPage <= Math.ceil(this.MAX_PAGES/2)) {
                 startPage = 1;
-                endPage = 5;
+                endPage = this.MAX_PAGES;
             } else if (currentPage + 1 >= totalPages) {
-                startPage = totalPages - 4;
+                startPage = totalPages - (this.MAX_PAGES - 1);
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 2;
-                endPage = currentPage + 2;
+                startPage = currentPage - 1;
+                endPage = currentPage + 1;
             }
         }
 
