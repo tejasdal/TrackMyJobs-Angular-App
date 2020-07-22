@@ -1,9 +1,9 @@
 <!-- author: Jan Chayopathum -->
 <nav class="container p-3" (firstPage)="setPage($event)">
     <ul class="pagination justify-content-center" *ngIf="pageObject$.pages && pageObject$.pages.length">
-        <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === 1}">
+        <!-- <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === 1}">
             <a class="page-link" (click)="setPage(1)">First</a>
-        </li>
+        </li> -->
         <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === 1}">
             <a class="page-link" (click)="setPage(pageObject$.currentPage - 1)">Previous</a>
         </li>
@@ -13,8 +13,8 @@
         <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === pageObject$.totalPages}">
             <a class="page-link" (click)="setPage(pageObject$.currentPage + 1)">Next</a>
         </li>
-        <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === pageObject$.totalPages}">
+        <!-- <li class="page-item" [ngClass]="{disabled:pageObject$.currentPage === pageObject$.totalPages}">
             <a class="page-link" (click)="setPage(pageObject$.totalPages)">Last</a>
-        </li>
+        </li> -->
     </ul>
 </nav>
