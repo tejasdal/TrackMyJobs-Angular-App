@@ -73,7 +73,7 @@ There is two main pages in job search feature:
 		- job-filter component (interact with job-filter service)
 		- pagination component (interact with pagination service)
 
-![Components](UI diagram.png)
+![Components](src/app/job-search-feature/UI diagram.png)
 
 ## Limitation and deficiencies
 
