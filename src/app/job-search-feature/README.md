@@ -36,28 +36,28 @@ The link for remote access:
 Angular separate folder as component. Each component has HTML, CSS, and TS file.
 
 Job search feature is organized as below:
-- [job-search-feature folder](src/app/job-search-feature)
+- [job-search-feature folder](job-search-feature)
 	- job-filter component
 	- job-search component
 	- jobs component
 	- jobs-detail component (not used in this version because the limitation of Adzuna API resulting link the job detail to Adzuna API link - to get tracffic to their website. This component can still be used for future.)
 	- nav-search component
 	- pagination component
-	- [services folder](src/app/job-search-feature/services)
+	- [services folder](job-search-feature/services)
 		- job-filter service
 		- job service
 		- nav-search service
 		- pagination service
 
 Data that stored in files are organized as below:
-- [data folder](src/assets/data)
-	- [adzuna folder](src/assets/data/adzuna)
-		- [adzuna_api.json](src/assets/data/adzuna/adzuna_api.json) --> include app id and app key for Adzuna API
-		- [job-filter folder](src/assets/data/job-filter) --> the job filter comes from parameters in [Adzuna API documentation](https://developer.adzuna.com/activedocs#!/adzuna/search)
-			- [jobTypes.json](src/assets/data/job-filter/jobTypes.json)
-			- [sortBy.json](src/assets/data/job-filter/sortBy.json)
-	- [location folder](src/assets/data/location)
-		- [ca.json](src/assets/data/location/ca.json) --> comes from [simplemaps](https://simplemaps.com/data/ca-cities)
+- [data folder](../assets/data)
+	- [adzuna folder]
+		- [adzuna_api.json] --> include app id and app key for Adzuna API
+		- [job-filter folder] --> the job filter comes from parameters in [Adzuna API documentation](https://developer.adzuna.com/activedocs#!/adzuna/search)
+			- [jobTypes.json]
+			- [sortBy.json]
+	- [location folder]
+		- [ca.json] --> comes from [simplemaps](https://simplemaps.com/data/ca-cities)
 
 The data such as canada location are stored in client side because it is faster and contain no confidentiality.
 
