@@ -1,3 +1,4 @@
+<!-- author: Jan Chayopathum -->
 <main class="container">
     <div style="margin-top:25px">
         <div class="card" style="border: 0;border-radius: 16px;box-shadow: 0.5rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.1);">
@@ -21,8 +22,11 @@
                                 favorite
                             </mat-icon>
                         </button>
+                        <button class="button font-weight-bold btn bg-yellow txt-white pointer m-3">
+                            Apply
+                        </button>
                         <p class="m-3">{{selectedJob$.formattedRelativeTime}}</p>
-                     </header>
+                    </header>
                     <section>
                         <mat-tab-group>
                             <mat-tab label="Role Description">
@@ -39,7 +43,6 @@
                                     </p>
                                 </article>
                             </mat-tab>
-                            
                         </mat-tab-group>
                     </section>
                 </section>

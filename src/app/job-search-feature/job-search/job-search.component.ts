@@ -1,3 +1,6 @@
+// author: Jan Chayopathum
+// job search page when the user click on "Jobs" on navigation bar
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

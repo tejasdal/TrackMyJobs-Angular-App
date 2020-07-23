@@ -1,11 +1,13 @@
+/* author: Jan Chayopathum */
+
+.button{
+    text-transform: uppercase;
+}
+
 .pointer{
     cursor: pointer;
 }
 
 .bg-yellow{
     background-color: #fdbd56;
-}
-
-.search-width{
-    width: 20rem;
 }
