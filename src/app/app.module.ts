@@ -1,3 +1,5 @@
+import { NotificationServiceService } from './job-board/notification-service.service';
+import { JobAnalysisService } from './job-board-analysis/job-analysis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -43,6 +45,27 @@ import { JobActivityComponent } from './job-activity/job-activity.component';
 import { CreateJobDialogComponent } from './create-job-dialog/create-job-dialog.component';
 import { CreateActivityDialogComponent } from './create-activity-dialog/create-activity-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NotifierModule, NotifierOptions } from "angular-notifier";
+import { NgProgressModule } from "ngx-progressbar";
+import { NgProgressHttpModule } from "ngx-progressbar/http";
+const customNotifierOptions: NotifierOptions = {
+
+  position: {
+ 
+    horizontal: {
+   
+      position: 'right'
+    }
+  },
+  behaviour: {
+
+    onMouseover: 'pauseAutoHide',
+    autoHide: 7000,
+    showDismissButton: false,
+
+  
+  }
+}
 
 
 @NgModule({
@@ -72,7 +95,7 @@ import { ProfileComponent } from './profile/profile.component';
     JobActivityComponent,
     CreateJobDialogComponent,
     CreateActivityDialogComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,9 +116,14 @@ import { ProfileComponent } from './profile/profile.component';
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,NotifierModule.withConfig(customNotifierOptions),    NgProgressModule.withConfig({
+      spinnerPosition: "left",
+      color: "#f71cff"
+    }),
+    NgProgressHttpModule, NgProgressModule
+
   ],
-  providers: [],
+  providers: [JobAnalysisService,NotificationServiceService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

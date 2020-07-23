@@ -1,3 +1,4 @@
+
     <div cdkDropListGroup class="jobboard-block my-3">
         <div class="job-status" *ngFor="let listItem of jobBoardDetails">
             <h2>{{listItem.listName}}</h2>
@@ -17,3 +18,21 @@
             </div>
         </div>
     </div>
+
+    <ng-template #customNotification let-notificationData="notification">
+      <div style="width: 20rem;">   
+        <i class="fa fa-bell" aria-hidden="true" style="margin-right: 10px;"> </i>
+        Pending ativity to complete
+        <div>
+            {{ notificationData.message }}
+            </div>
+            </div>
+            <div style="margin-top: 10px;">
+               Follw the link to see <a style="color: #fdbd56;" href="/job-activity">more details.</a>
+            </div>
+    </ng-template>
+    
+    <notifier-container></notifier-container>
+
+
+   

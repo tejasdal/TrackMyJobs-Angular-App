@@ -1,3 +1,4 @@
+import { NotificationServiceService } from './../job-board/notification-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -11,6 +12,9 @@ export class HeaderNavbarComponent implements OnInit {
 
   isAuthenticated:boolean = false;
   userSub:Subscription;
+  notificationCount=0;
+  listOfNotification:any
+
 
   home = 'Home';
   blog = 'Blogs';
@@ -24,11 +28,16 @@ export class HeaderNavbarComponent implements OnInit {
   job_board = "Job Board";
   job_activity = "Job Activity";
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService,private notificationService:NotificationServiceService){}
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = user ? true : false;
+
+     if(this.isAuthenticated)
+     {
+      this. showNotificationCount();
+     }
     })
   }
 
@@ -40,4 +49,12 @@ export class HeaderNavbarComponent implements OnInit {
     this.userSub.unsubscribe();
   }
 
+  showNotificationCount(){
+    this.notificationService.get_deadline_notificatione(101).subscribe(res=>{
+ 
+      this.listOfNotification =res;
+      this.notificationCount=this.listOfNotification.length;
+    });
+   
+  }
 }

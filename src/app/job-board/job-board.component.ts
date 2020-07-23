@@ -1,9 +1,14 @@
+import { NotificationServiceService } from './notification-service.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Job } from "./job";
 import { CreateJobDialogComponent } from '../create-job-dialog/create-job-dialog.component';
 import { JobStatus } from './jobStatus';
+import { NotifierService } from "angular-notifier";
+import { ViewChild } from "@angular/core";
+import { combineAll } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-job-board',
@@ -12,10 +17,34 @@ import { JobStatus } from './jobStatus';
 })
 export class JobBoardComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+
+  listOfNotification:any
+  @ViewChild("customNotification", { static: true }) customNotificationTmpl;
+  private readonly notifier: NotifierService;
+
+  constructor(public dialog: MatDialog,notifierService: NotifierService,private notificationService:NotificationServiceService) {
+    this.notifier = notifierService;
+   }
 
   ngOnInit(): void {
+   
+    this.notificationService.get_deadline_notificatione(101).subscribe(res=>{
+ 
+     this.listOfNotification =res;
+  
+     var notify_user = localStorage.getItem('NotifyTheUser');
+     console.log("length is"+this.listOfNotification.length);
+    // if(notify_user != 'true')
+  //  {
+      for(var notify of this.listOfNotification)
+      {
+   
+       this.showNotification(notify);
+      }
 
+    //}
+    });
+    
   }
 
   colors = ["#654062", "#726a95", "#ff9234", "#cf7500", "#0e9aa7", "#1b6ca8", "#45046a", "#5c2a9d", "#562349", "#26191b", "#6a097d", "#007892", "#6f0000", "#bb3b0e"];
@@ -129,6 +158,26 @@ export class JobBoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+    }
+  }
+
+  showNotification(msg:any)
+  {
+  
+    this.notifier.show({
+      message:'"'+ msg['data']+'".'+ 'Dealine for this activity is '+msg['deadline'],
+      type: "error",
+      template: this.customNotificationTmpl
+  });
+  }
+
+  setSession()
+  {
+    const session = localStorage.getItem('NotifyTheUser');
+    if(session =='false')
+    {
+      localStorage.setItem('NotifyTheUser', 'true');
+      console.log('session is set to true');
     }
   }
 

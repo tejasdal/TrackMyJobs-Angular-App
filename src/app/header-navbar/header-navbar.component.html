@@ -37,7 +37,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-menu" routerLink="/job-activity"
-                            routerLinkActive="nav-active" *ngIf="isAuthenticated">{{job_activity}}</a>
+                            routerLinkActive="nav-active" *ngIf="isAuthenticated">{{job_activity}}
+                            <span class="badge badge-danger">{{notificationCount}}</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-menu" routerLink="/profile"
