@@ -25,10 +25,13 @@ export class JobBoardComponent implements OnInit {
   public jobBoardData: JobBoardData;
   public showSpinner: boolean;
   private readonly notifier: NotifierService;
+  private userId: string;
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute,
     private jobBoardService: JobBoardService, private router: Router, notifierService: NotifierService) {
       this.notifier = notifierService;
+      let user = JSON.parse(localStorage.getItem("userData"));
+      this.userId = user.email;
      }
 
   ngOnInit(): void {
@@ -109,6 +112,7 @@ export class JobBoardComponent implements OnInit {
       if (jobStatus.listName === result.status) {
         //Add new job in job list of the matched JobStatus.
         result.jobBoardId = this.jobBoardId;
+        result.userId = this.userId;
         this.jobBoardService.createJobAppForJobBoard(result).subscribe(jobApp => {
             let colorId: number = Math.floor((Math.random() * 13) + 1);
             jobApp.color = this.colors[colorId];

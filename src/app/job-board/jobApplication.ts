@@ -7,6 +7,7 @@ export class JobApplication {
     createdAt: Date;
     updatedAt: Date;
     color: string;
+    userId: string;
 
     constructor(){}
 }
