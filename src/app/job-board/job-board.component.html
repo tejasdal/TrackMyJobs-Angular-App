@@ -1,18 +1,27 @@
+<<<<<<< HEAD
 
     <div cdkDropListGroup class="jobboard-block my-3">
+=======
+<div class="spinner-mat" style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
+
+    <mat-spinner
+    *ngIf="showSpinner"></mat-spinner>
+</div>
+    <div cdkDropListGroup class="jobboard-block my-2">
+>>>>>>> 4bd4dcac302c94d9a5342781f97d36ed0be381c8
         <div class="job-status" *ngFor="let listItem of jobBoardDetails">
             <h2>{{listItem.listName}}</h2>
             <h5>{{listItem.jobs.length}} Jobs</h5>
-            <button class="btn btn-outline-dark" (click)="addNewJobApp(listItem.id)"><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Add Job</button>
+            <button class="btn btn-outline-dark" (click)="addNewJobApp(listItem.listName)"><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Add Job</button>
     
-            <div cdkDropList [cdkDropListData]="listItem.jobs" class="job-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDropList [cdkDropListData]="listItem.jobs" class="job-list" (cdkDropListDropped)="drop($event, listItem.listName)">
                 <div class="job-box" *ngFor="let job of listItem.jobs" cdkDrag [ngStyle]="{'background': job.color}">
                     <div style="display: inline-block; float: right;">
                         <i class="fa fa-trash-o fa-1x" style="color: white; margin-right: 20px; cursor: pointer;" (click)="delete(listItem.id, job.id)"></i>
                     </div>
                     <!-- </span> -->
                     <h5 class="display-6 font-weight-light">{{job.company}}</h5>
-                    <p>{{job.jobTitle}}</p>
+                    <p>{{job.jobRole}}</p>
                     <!-- <p>{{job.color}}</p> -->
                 </div>
             </div>

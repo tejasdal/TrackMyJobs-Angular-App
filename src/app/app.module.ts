@@ -50,6 +50,8 @@ import { JobNotesComponent } from './job-notes/job-notes.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
 import { ContactfilterPipe } from './contact/contactfilter.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { JobFilterComponent } from './job-search-feature/job-filter/job-filter.component';
 import { PaginationComponent } from './job-search-feature/pagination/pagination.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -134,7 +136,14 @@ const customNotifierOptions: NotifierOptions = {
     }),
     NgProgressHttpModule, NgProgressModule,
     HttpClientModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    MatAutocompleteModule,
+    NotifierModule.withConfig({
+      behaviour:{
+        autoHide: 4500
+      }
+  })
 
   ],
   providers: [JobAnalysisService,NotificationServiceService,],

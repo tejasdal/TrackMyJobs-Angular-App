@@ -3,7 +3,7 @@
     overflow-x: auto; 
     display: inline-flex; 
     white-space: nowrap;
-    margin-left: 100px;
+    margin-left: 10px;
     height: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -13,7 +13,7 @@
 .job-status {
     /* // Stretch the element to the height of the board and make it scrollable. */
     height: 100%;
-    width: 320px;
+    width: 290px;
     overflow: auto;
     box-sizing: border-box;
     margin-right: 8px;
@@ -84,4 +84,8 @@
     border-color: #fdbd56;
     background-color: #fdbd56;
     box-shadow: none;
+}
+
+.spinner-mat ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #fdbd56;
 }
