@@ -62,15 +62,15 @@ export class JobBoardComponent implements OnInit {
      var notify_user = localStorage.getItem('NotifyTheUser');
      console.log("length is"+this.listOfNotification.length);
      //DO NOT DELETE
-    // if(notify_user != 'true')
-    //  {
+     if(notify_user != 'true')
+      {
       for(var notify of this.listOfNotification)
       {
    
        this.showNotification(notify);
       }
 
-    //}
+    }
     });
     
 

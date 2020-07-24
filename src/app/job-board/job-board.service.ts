@@ -9,7 +9,7 @@ import { JobApplication } from './jobApplication';
 })
 export class JobBoardService {
 
-  private URL:string = "http://localhost:8080";
+  private URL:string = "https://app-jobtracker.herokuapp.com";
   private JOB_APP_URL: string = "/job-application/";
 
   constructor(private http: HttpClient) {
