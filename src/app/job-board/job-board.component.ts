@@ -38,6 +38,7 @@ export class JobBoardComponent implements OnInit {
   public jobBoardData: JobBoardData;
   public showSpinner: boolean;
   private readonly notifier: NotifierService;
+  private user: string;
 
   constructor(public dialog: MatDialog,
     notifierService: NotifierService,
@@ -51,10 +52,8 @@ export class JobBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    
     this.getJobBoardId();
-    this.showSpinner = true;
-    this.getJobAppByStatus();
     this.notificationServiceDeadline.get_deadline_notificatione(this.user_id).subscribe(res => {
 
       this.listOfNotification = res;
@@ -78,7 +77,7 @@ export class JobBoardComponent implements OnInit {
     this.showSpinner = true;
     this.jobBoardService.getJobBoardForUser(this.user_id).subscribe((dbJobBoard) => {
       this.jobBoardId = dbJobBoard.id;
-      this.showSpinner = false;
+      this.getJobAppByStatus();
     },
       error => {
         this.showSpinner = false;
@@ -156,6 +155,7 @@ export class JobBoardComponent implements OnInit {
       if (jobStatus.listName === result.status) {
         //Add new job in job list of the matched JobStatus.
         result.jobBoardId = this.jobBoardId;
+        result.userId = this.user_id;
         this.jobBoardService.createJobAppForJobBoard(result).subscribe(jobApp => {
           let colorId: number = Math.floor((Math.random() * 13) + 1);
           jobApp.color = this.colors[colorId];
@@ -173,7 +173,6 @@ export class JobBoardComponent implements OnInit {
 
   // Function to load all job application status-wise for a job board from DB.
   getJobAppByStatus() {
-
     this.jobBoardService.getAllJobAppForJobBoard(this.jobBoardId).subscribe((jobBoardData) => {
       this.jobBoardData = jobBoardData;
       this.getJobBoardDetails();
