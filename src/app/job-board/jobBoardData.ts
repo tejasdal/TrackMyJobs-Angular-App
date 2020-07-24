@@ -1,3 +1,4 @@
+// @author: Tejas Patel
 import { JobApplication } from './jobApplication';
 
 export interface JobBoardData {

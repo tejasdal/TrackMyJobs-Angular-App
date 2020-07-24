@@ -18,7 +18,7 @@ import { JobApplication } from './jobApplication';
 
 import { catchError } from 'rxjs/operators';
 
-
+// @author: Tejas Patel
 @Component({
   selector: 'app-job-board',
   templateUrl: './job-board.component.html',
@@ -27,10 +27,10 @@ import { catchError } from 'rxjs/operators';
 export class JobBoardComponent implements OnInit {
 
 
-  user_id=JSON.parse(localStorage.getItem('userData'))['email'];
+  user_id = JSON.parse(localStorage.getItem('userData'))['email'];
 
 
-  listOfNotification:any
+  listOfNotification: any
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
   private readonly notifierDeadline: NotifierService;
   public jobBoardId: number;
@@ -39,47 +39,54 @@ export class JobBoardComponent implements OnInit {
   public showSpinner: boolean;
   private readonly notifier: NotifierService;
 
-  constructor(public dialog: MatDialog
-    ,notifierService: NotifierService
-    ,private notificationServiceDeadline:NotificationServiceService
-    , private route: ActivatedRoute
-    ,private jobBoardService: JobBoardService,
-    private router: Router,
-    ) {
-      this.notifier = notifierService;
+  constructor(public dialog: MatDialog,
+    notifierService: NotifierService,
+    private notificationServiceDeadline: NotificationServiceService,
+    private route: ActivatedRoute,
+    private jobBoardService: JobBoardService,
+    private router: Router) {
+
+    this.notifier = notifierService;
     this.notifierDeadline = notifierService;
-   }
+  }
 
   ngOnInit(): void {
-   
-    this.jobBoardId = 1;
+
+    this.getJobBoardId();
     this.showSpinner = true;
     this.getJobAppByStatus();
-    this.notificationServiceDeadline.get_deadline_notificatione(this.user_id).subscribe(res=>{
- 
-     this.listOfNotification =res;
-  
-     var notify_user = localStorage.getItem('NotifyTheUser');
-     console.log("length is"+this.listOfNotification.length);
-     //DO NOT DELETE
-     if(notify_user != 'true')
-      {
-      for(var notify of this.listOfNotification)
-      {
-   
-       this.showNotification(notify);
-      }
+    this.notificationServiceDeadline.get_deadline_notificatione(this.user_id).subscribe(res => {
 
-    }
+      this.listOfNotification = res;
+
+      var notify_user = localStorage.getItem('NotifyTheUser');
+      //DO NOT DELETE
+      if (notify_user != 'true') {
+        for (var notify of this.listOfNotification) {
+
+          this.showNotification(notify);
+        }
+
+      }
     });
-    
+
 
   }
 
+  // Function to fetch job board from DB for current logged in user.
+  getJobBoardId() {
+    this.showSpinner = true;
+    this.jobBoardService.getJobBoardForUser(this.user_id).subscribe((dbJobBoard) => {
+      this.jobBoardId = dbJobBoard.id;
+      this.showSpinner = false;
+    },
+      error => {
+        this.showSpinner = false;
+        this.showErrorNotification(this.JOB_BOARD_ID_ERROR_MSG);
+      });
+  }
 
-  maxJobStatusId: number = 1;
-  maxJobId: number = 1;
-
+  // Method to delete a job application from a job board.
   public delete(listNumber: number, jobId: number) {
     this.showSpinner = true;
     // delete job details from the arrr
@@ -87,15 +94,16 @@ export class JobBoardComponent implements OnInit {
       if (listNumber === list.id) {
         list.jobs.forEach((job, currentIndex) => {
           if (job.id === jobId) {
-            this.jobBoardService.deleteJobAppForJobBoard(jobId).subscribe( res => {
-                list.jobs.splice(currentIndex, 1);
-                this.showSpinner = false;
-                this.showSuccessNotification(this.DELETE_SUCCESS_MSG);
-              },
+            // API call to delete from DB.
+            this.jobBoardService.deleteJobAppForJobBoard(jobId).subscribe(res => {
+              list.jobs.splice(currentIndex, 1);
+              this.showSpinner = false;
+              this.showSuccessNotification(this.DELETE_SUCCESS_MSG);
+            },
               error => {
                 this.showSpinner = false;
                 this.showErrorNotification(this.DELETE_ERROR_MSG);
-            });
+              });
           }
         });
       }
@@ -109,19 +117,20 @@ export class JobBoardComponent implements OnInit {
   private ADD_JOB_SUCCESS_MSG = "Successfully added the job application!";
   private ADD_JOB_ERROR_MSG = "Failed to added the job application!";
   private FETCH_JOB_ERROR_MSG = "Failed to fetch job applications from the server!";
+  private JOB_BOARD_ID_ERROR_MSG = "Failed to load a job board from the server!";
 
-  public showSuccessNotification(message:string){
+  public showSuccessNotification(message: string) {
     this.notifier.show({
       type: "success",
       message: message
-  });
+    });
   }
 
-  public showErrorNotification(message:string){
+  public showErrorNotification(message: string) {
     this.notifier.show({
       type: "error",
       message: message
-  });
+    });
   }
 
   // Function to open a dialog to create a new job.
@@ -135,7 +144,6 @@ export class JobBoardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.add(result);
     });
   }
@@ -149,14 +157,13 @@ export class JobBoardComponent implements OnInit {
         //Add new job in job list of the matched JobStatus.
         result.jobBoardId = this.jobBoardId;
         this.jobBoardService.createJobAppForJobBoard(result).subscribe(jobApp => {
-            let colorId: number = Math.floor((Math.random() * 13) + 1);
-            jobApp.color = this.colors[colorId];
-            jobStatus.jobs.push(jobApp);
-            console.log("Added a new job!");
-            this.showSpinner = false;
-            this.showSuccessNotification(this.ADD_JOB_SUCCESS_MSG);
-          },
-          error =>{
+          let colorId: number = Math.floor((Math.random() * 13) + 1);
+          jobApp.color = this.colors[colorId];
+          jobStatus.jobs.push(jobApp);
+          this.showSpinner = false;
+          this.showSuccessNotification(this.ADD_JOB_SUCCESS_MSG);
+        },
+          error => {
             this.showSpinner = false;
             this.showErrorNotification(this.ADD_JOB_ERROR_MSG);
           });
@@ -164,6 +171,7 @@ export class JobBoardComponent implements OnInit {
     });
   }
 
+  // Function to load all job application status-wise for a job board from DB.
   getJobAppByStatus() {
 
     this.jobBoardService.getAllJobAppForJobBoard(this.jobBoardId).subscribe((jobBoardData) => {
@@ -178,6 +186,7 @@ export class JobBoardComponent implements OnInit {
 
   private colors = ["#654062", "#726a95", "#ff9234", "#cf7500", "#0e9aa7", "#1b6ca8", "#45046a", "#5c2a9d", "#562349", "#26191b", "#6a097d", "#007892", "#6f0000", "#bb3b0e"];
 
+  // Set a random colour to a job application card.
   setColorToJob(jobs: Array<JobApplication>) {
     for (let index = 0; index < jobs.length; index++) {
       const element = jobs[index];
@@ -186,6 +195,7 @@ export class JobBoardComponent implements OnInit {
     }
   }
 
+  //Prepare array of status wise job application to be displayed in HTML.
   getJobBoardDetails() {
 
     this.setColorToJob(this.jobBoardData.WHISHLIST);
@@ -219,6 +229,7 @@ export class JobBoardComponent implements OnInit {
     return jobStatus;
   }
 
+  // Function to change status of a job application.
   drop(event: CdkDragDrop<JobApplication[]>, listName: string) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -231,41 +242,36 @@ export class JobBoardComponent implements OnInit {
 
       for (let index = 0; index < event.container.data.length; index++) {
         let job = event.container.data[index];
-        if(job.status != listName){
+        if (job.status != listName) {
           job.status = listName;
+          // API call to change status of job application in database.
           this.jobBoardService.updateJobAppForJobBoard(job).subscribe(newJob => {
-                console.log("Job app updated!");
-                console.log(newJob);
-                job = newJob;
-                this.showSpinner = false;
-                this.showSuccessNotification(this.STATUS_CHANGE_SUCCESS_MSG);
-            },
+            job = newJob;
+            this.showSpinner = false;
+            this.showSuccessNotification(this.STATUS_CHANGE_SUCCESS_MSG);
+          },
             err => {
               this.showSpinner = false;
               this.showErrorNotification(this.STATUS_CHANGE_ERROR_MSG);
-          });
+            });
         }
       }
     }
   }
 
-  showNotification(msg:any)
-  {
-  
+  showNotification(msg: any) {
+    localStorage.setItem('NotifyTheUser','true');
     this.notifierDeadline.show({
-      message:'"'+ msg['data']+'".'+ 'Dealine for this activity is '+msg['deadline'],
+      message: '"' + msg['data'] + '".' + 'Dealine for this activity is ' + msg['deadline'],
       type: "error",
       template: this.customNotificationTmpl
-  });
+    });
   }
 
-  setSession()
-  {
+  setSession() {
     const session = localStorage.getItem('NotifyTheUser');
-    if(session =='false')
-    {
+    if (session == 'false') {
       localStorage.setItem('NotifyTheUser', 'true');
-      console.log('session is set to true');
     }
   }
 

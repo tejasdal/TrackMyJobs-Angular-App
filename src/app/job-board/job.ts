@@ -1,3 +1,4 @@
+// @author: Tejas Patel
 export class Job {
   private _id: number;
   private _company: string;
