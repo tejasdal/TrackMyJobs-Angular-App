@@ -1,0 +1,76 @@
+/* author: Jan Chayopathum */
+
+.container{
+    min-height:100%;
+}
+
+.mat-card:hover{
+    background-color: #f0f0f0;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+mat-card-title h2 {
+    max-width: 25rem;
+}
+
+.job-page-title{
+    text-align:center; 
+    font-size:24px; 
+    font-weight: 700;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-dark-blue{
+    background-color: #084970;
+}
+
+.bg-light-grey{
+    background-color: #ebebeb;
+}
+
+.bg-yellow{
+    background-color: #fdbd56;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.drawer-container{
+    min-height: 1350px;
+}
+
+.right-corner {
+    position:absolute; 
+    top:0; 
+    right:1rem;
+}
+
+.material-icons.color_yellow { 
+    color: #ffc000; 
+}
+
+/* small-medium screen */
+@media screen and (max-width: 950px) {
+    .mat-drawer-content {
+        width: 100%;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .mat-drawer {
+        display: none;   
+    }
+}

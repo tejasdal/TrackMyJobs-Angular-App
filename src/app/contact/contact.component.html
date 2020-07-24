@@ -1,17 +1,43 @@
-<!--Contact Page-->
-<div class="container">
-    <!--Two div aligned side by side in row-->
-    <div class="row align-items-center d-flex">
-        <!--Text displayed on the left side-->
-        <div class="col-12 col-lg-4">
-            <h2 class="font-style-700">Have Patience!!</h2>
-            <p class="font-style">Our Team is working hard to provide you this feature. Till then wait and enjoy
-                other features.</p>
-            <a class="link-home" routerLink="/home">Go back to home</a>
+<div class="container-fluid" style="min-height: 100%; margin-top: 50px;">
+    <!--Container for Contact card-->
+    <div>
+           <!--Search Bar -->
+
+           <div class="form-group search-div">
+            <input class="form-control contact-search-input" type="text" [(ngModel)]="contactSearch" style="height: auto;" placeholder="Search the contact">
         </div>
-        <!--Image displayed on the Right side-->
-        <div class="col-12 col-lg-8">
-            <img src="/assets/team.svg" alt="Team-hero-Image">
+      <div class="form-group">
+        <button class="form-control create-contact-btn" style="width: fit-content; height: auto; float: right;" (click)="onCreateContact()"> Create Contact </button>
+      </div>
+      <br/>
+        <!--Card for Contact in row-->
+        <div class="row" style="margin-top:25px;">
+            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let contact of contactlist | contactfilter:contactSearch">
+                <div class="card cardStyle contact-card">
+                    <div class="card-body">
+                        <h3 class="card-title font-style"><b>Name:&nbsp;&nbsp;<em>{{contact.Name}}</em></b></h3>
+                        <h3 class="card-text font-style">Email ID:&nbsp;&nbsp;{{contact.Email}}</h3>
+                        <h4 class="card-text font-style">Company Name: &nbsp;&nbsp;{{contact.Company}}</h4>
+                        <h4 class="card-text font-style">Position: &nbsp;&nbsp;{{contact.Position}}</h4>
+                     </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+console.log("document is ready");
+  $( ".card" ).hover(
+  function() {
+    $(this).addClass('shadow-lg').css('cursor', 'pointer'); 
+  }, function() {
+    $(this).removeClass('shadow-lg');
+  }
+);
+  
+// document ready  
+});
+</script>

@@ -15,7 +15,7 @@ export class NotificationServiceService {
 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:8080/"
+  url="https://app-jobtracker.herokuapp.com/"
 
   public get_deadline_notificatione(user_id:any)
   {

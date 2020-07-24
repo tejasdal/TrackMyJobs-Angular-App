@@ -17,6 +17,8 @@ import { combineAll } from 'rxjs/operators';
 })
 export class JobBoardComponent implements OnInit {
 
+  user_id=JSON.parse(localStorage.getItem('userData'))['email'];
+
 
   listOfNotification:any
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
@@ -28,14 +30,15 @@ export class JobBoardComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.notificationService.get_deadline_notificatione(101).subscribe(res=>{
+    this.notificationService.get_deadline_notificatione(this.user_id).subscribe(res=>{
  
      this.listOfNotification =res;
   
      var notify_user = localStorage.getItem('NotifyTheUser');
      console.log("length is"+this.listOfNotification.length);
+     //DO NOT DELETE
     // if(notify_user != 'true')
-  //  {
+    //  {
       for(var notify of this.listOfNotification)
       {
    

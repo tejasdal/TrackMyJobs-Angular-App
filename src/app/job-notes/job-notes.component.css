@@ -1,0 +1,34 @@
+.btn-outline-dark{
+    border-color: #fdbd56;
+    border: 1px solid #fdbd56;
+}
+.btn-outline-dark:hover, .btn-outline-dark:focus, .btn-outline-dark:active:focus, .open>.dropdown-toggle.btn-outline-dark {
+  border-color: #fdbd56;
+  background-color: #fdbd56;
+  box-shadow: none;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active:focus, .btn-primary:focus{
+  border-color: #fdbd56;
+  background-color: #fdbd56;
+  box-shadow: none;
+}
+
+.custom-checkbox .custom-control-input:checked::after{
+    background-color:black;
+  }
+
+.nav-link-menu{
+    border-radius: 25px;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 15px;
+    white-space: nowrap;
+}
+
+.nav-link-menu:hover{
+    background-color: rgb(254, 227, 184);
+}
+
+.nav-active{
+    background-color: rgb(254, 227, 184);
+}

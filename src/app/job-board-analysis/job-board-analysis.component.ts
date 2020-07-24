@@ -22,7 +22,7 @@ export class JobBoardAnalysisComponent implements OnInit,AfterViewInit {
   pending_activity_count:any;
   completed_activity_count:any;
   errormessage:any
-  
+  user_id=JSON.parse(localStorage.getItem('userData'))['email'];
 
 
 
@@ -31,10 +31,9 @@ ngAfterViewInit():void
  // this.applyDateFilter(1);
 }
   ngOnInit(): void {
-
+//console.log("user isd is "+this.user_id)
     
-
-    this.service.get_writtenblogs_data(101).subscribe(res=>{
+    this.service.get_writtenblogs_data(this.user_id).subscribe(res=>{
       this.written_blog_counts=res;
      
           //Starting of line grah about blog writting analysis
@@ -108,7 +107,7 @@ ngAfterViewInit():void
     })
 
 //Initlially fetching the data of the first month in the ngOnInit
-   this.service.get_jobapplication_data(1,101).subscribe(res=>{
+   this.service.get_jobapplication_data(1,this.user_id).subscribe(res=>{
 
      this.Job_data_01=res;
      //Starting of horizontal bar about job stage analysis
@@ -169,7 +168,7 @@ ngAfterViewInit():void
    );
 
 
-     this.service.get_activity_list(7,101).subscribe(res=>{
+     this.service.get_activity_list(7,this.user_id).subscribe(res=>{
        this.pending_activity_count=res[0];
        this.completed_activity_count=res[1];
 
@@ -254,16 +253,16 @@ ngAfterViewInit():void
 
 
 
-     this.service.get_jobapplication_data(1,101).subscribe(res=>{
+     this.service.get_jobapplication_data(1,this.user_id).subscribe(res=>{
      this.Job_data_01=res;
       });
-      this.service.get_jobapplication_data(2,101).subscribe(res=>{
+      this.service.get_jobapplication_data(2,this.user_id).subscribe(res=>{
         this.job_data_02=res;
         });
-        this.service.get_jobapplication_data(3,101).subscribe(res=>{
+        this.service.get_jobapplication_data(3,this.user_id).subscribe(res=>{
           this.job_data_03=res;
           });
-        this.service.get_jobapplication_data(6,101).subscribe(res=>{
+        this.service.get_jobapplication_data(6,this.user_id).subscribe(res=>{
           this.job_data_04=res;
           });
   }
@@ -275,23 +274,23 @@ ngAfterViewInit():void
    applyDateFilter(value) {
 
 if (value == 1) {
-  console.log(this.Job_data_01);
+ // console.log(this.Job_data_01);
   this.horizontalBar.data.datasets[0].data =this.Job_data_01;
   this.horizontalBar.options.title.text = "Last month";
 }
 
     if (value == 2) {
-      console.log(this.job_data_02);
+   //   console.log(this.job_data_02);
       this.horizontalBar.data.datasets[0].data =this.job_data_02;
       this.horizontalBar.options.title.text = "Last month";
     }
     if (value == 3) {
-      console.log(this.job_data_03);
+   //   console.log(this.job_data_03);
       this.horizontalBar.data.datasets[0].data = this.job_data_03;
       this.horizontalBar.options.title.text = "Past three months";
     }
     if (value == 6) {
-      console.log(this.job_data_04);
+   //   console.log(this.job_data_04);
       this.horizontalBar.data.datasets[0].data = this.job_data_04;
       this.horizontalBar.options.title.text = "Half year(6 month)";
     }

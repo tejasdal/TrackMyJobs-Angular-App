@@ -15,6 +15,7 @@ export class WriteBlogsComponent implements OnInit {
   subHeadingCounter:number;
   bodyCounter:number;
   tagCOunt=0;
+  temp="<h1>heeelo user</h1>";
 
 //Variables to store each string input
   heading:String;
@@ -39,7 +40,7 @@ export class WriteBlogsComponent implements OnInit {
    {
      this.tagCOunt=0;
    }
-    this.tagCOunt=value.trim().split(',').length
+      this.tagCOunt=value.trim().split(',').length
   }
 
   onBlogHeadingChange(value)
@@ -76,6 +77,9 @@ export class WriteBlogsComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogsComponent,{
       width:'400px',
       data:{id:this.id}});
+      console.log(this.bodyContentWithHtml);
+      console.log(this.heading);
+      console.log(this.tagsList);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

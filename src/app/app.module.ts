@@ -14,7 +14,7 @@ import { HeaderNavbarComponent } from './header-navbar/header-navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BlogsComponent } from './blogs/blogs.component';
-import { JobsComponent } from './jobs/jobs.component';
+import { JobsComponent } from './job-search-feature/jobs/jobs.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactComponent } from './contact/contact.component';
@@ -29,14 +29,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BlogsfilterPipe } from './blogs/blogsfilter.pipe';
 import { BlogsPostDetailComponent } from './blogs-post-detail/blogs-post-detail.component';
-import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
-import { JobsfilterPipe } from './jobs/jobsfilter.pipe';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ForgetPasswordDialogComponent } from './forget-password-dialog/forget-password-dialog.component';
-import { NavSearchComponent } from './nav-search/nav-search.component';
+import { NavSearchComponent } from './job-search-feature/nav-search/nav-search.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
-import { JobSearchComponent } from './job-search/job-search.component';
+import { JobSearchComponent } from './job-search-feature/job-search/job-search.component';
 import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
 import { JobBoardAnalysisComponent } from './job-board-analysis/job-board-analysis.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
@@ -48,6 +46,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 import { NgProgressModule } from "ngx-progressbar";
 import { NgProgressHttpModule } from "ngx-progressbar/http";
+import { JobNotesComponent } from './job-notes/job-notes.component';
+import { CreateContactComponent } from './create-contact/create-contact.component';
+import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
+import { ContactfilterPipe } from './contact/contactfilter.pipe';
+import { JobFilterComponent } from './job-search-feature/job-filter/job-filter.component';
+import { PaginationComponent } from './job-search-feature/pagination/pagination.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 const customNotifierOptions: NotifierOptions = {
 
   position: {
@@ -68,6 +74,7 @@ const customNotifierOptions: NotifierOptions = {
 }
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,8 +90,6 @@ const customNotifierOptions: NotifierOptions = {
     NotfoundComponent,
     BlogsfilterPipe,
     BlogsPostDetailComponent,
-    JobsDetailComponent,
-    JobsfilterPipe,
     ForgetPasswordDialogComponent,
     NavSearchComponent,
     JobSearchComponent,
@@ -96,6 +101,13 @@ const customNotifierOptions: NotifierOptions = {
     CreateJobDialogComponent,
     CreateActivityDialogComponent,
     ProfileComponent,
+    JobNotesComponent,
+    CreateContactComponent,
+    CreateNoteDialogComponent,
+    ContactfilterPipe,
+    JobFilterComponent,
+    PaginationComponent
+
   ],
   imports: [
     BrowserModule,
@@ -120,7 +132,9 @@ const customNotifierOptions: NotifierOptions = {
       spinnerPosition: "left",
       color: "#f71cff"
     }),
-    NgProgressHttpModule, NgProgressModule
+    NgProgressHttpModule, NgProgressModule,
+    HttpClientModule,
+    MatAutocompleteModule
 
   ],
   providers: [JobAnalysisService,NotificationServiceService,],

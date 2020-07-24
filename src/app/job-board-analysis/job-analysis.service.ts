@@ -14,7 +14,7 @@ export class JobAnalysisService {
 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:8080/jobAnalysis/"
+  url="https://app-jobtracker.herokuapp.com/jobAnalysis/"
 
     public get_jobapplication_data(month:any,user_id:any)
     {
