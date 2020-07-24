@@ -22,15 +22,17 @@ export class JobBoardComponent implements OnInit {
 
   listOfNotification:any
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
-  private readonly notifier: NotifierService;
+  private readonly notifierDeadline: NotifierService;
 
-  constructor(public dialog: MatDialog,notifierService: NotifierService,private notificationService:NotificationServiceService) {
-    this.notifier = notifierService;
+  constructor(public dialog: MatDialog
+    ,notifierService: NotifierService
+    ,private notificationServiceDeadline:NotificationServiceService) {
+    this.notifierDeadline = notifierService;
    }
 
   ngOnInit(): void {
    
-    this.notificationService.get_deadline_notificatione(this.user_id).subscribe(res=>{
+    this.notificationServiceDeadline.get_deadline_notificatione(this.user_id).subscribe(res=>{
  
      this.listOfNotification =res;
   
@@ -167,7 +169,7 @@ export class JobBoardComponent implements OnInit {
   showNotification(msg:any)
   {
   
-    this.notifier.show({
+    this.notifierDeadline.show({
       message:'"'+ msg['data']+'".'+ 'Dealine for this activity is '+msg['deadline'],
       type: "error",
       template: this.customNotificationTmpl
