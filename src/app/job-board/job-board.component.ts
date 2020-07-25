@@ -59,14 +59,14 @@ export class JobBoardComponent implements OnInit {
  
      this.listOfNotification =res;
   
+    
      var notify_user = localStorage.getItem('NotifyTheUser');
-     console.log("length is"+this.listOfNotification.length);
      //DO NOT DELETE
-     if(notify_user != 'true')
+     if(notify_user != 'true' )
       {
+      
       for(var notify of this.listOfNotification)
       {
-   
        this.showNotification(notify);
       }
 
@@ -251,7 +251,7 @@ export class JobBoardComponent implements OnInit {
 
   showNotification(msg:any)
   {
-  
+    localStorage.setItem('NotifyTheUser','true');
     this.notifierDeadline.show({
       message:'"'+ msg['data']+'".'+ 'Dealine for this activity is '+msg['deadline'],
       type: "error",

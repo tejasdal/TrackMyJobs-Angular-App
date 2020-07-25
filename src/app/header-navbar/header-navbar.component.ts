@@ -36,7 +36,7 @@ export class HeaderNavbarComponent implements OnInit {
 
      if(this.isAuthenticated)
      {
-       console.log('notification count is')
+      
       this. showNotificationCount();
      }
     })
@@ -52,10 +52,10 @@ export class HeaderNavbarComponent implements OnInit {
 
   showNotificationCount(){
     
-   var user_id=JSON.parse(localStorage.getItem('userData'))['email'];
+    var user_id=JSON.parse(localStorage.getItem('userData'))['email'];
+
 
     this.notificationService.get_deadline_notificatione(user_id).subscribe(res=>{
-      console.log(this.listOfNotification)
       this.listOfNotification =res;
       this.notificationCount=this.listOfNotification.length;
     });

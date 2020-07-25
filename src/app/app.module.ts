@@ -139,11 +139,6 @@ const customNotifierOptions: NotifierOptions = {
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
-    NotifierModule.withConfig({
-      behaviour:{
-        autoHide: 4500
-      }
-  })
 
   ],
   providers: [JobAnalysisService,NotificationServiceService,],
