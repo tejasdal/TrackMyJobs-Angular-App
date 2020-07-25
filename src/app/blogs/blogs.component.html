@@ -8,7 +8,7 @@
             <!--Search Bar and Create Blog button-->
             <div class="search-div">
                 <input class="blog-search-input" type="text" [(ngModel)]="blogSearch" placeholder="Search">
-               <button class="create-blog-btn" (click)="onWriteBlog()"> Create Blog </button>
+                <button class="create-blog-btn" (click)="onWriteBlog()"> Create Blog </button>
             </div>
         </div>
     </div>
@@ -16,14 +16,14 @@
     <div>
         <!--Card for Blog Post in row-->
         <div class="row" style="margin-top:25px;">
-            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let blog of blogs | blogsfilter:blogSearch"
+            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let blog of blogposts | blogsfilter:blogSearch"
                 (click)="onBlogCard(blog)">
                 <div class="card" class="blog-card">
-                    <img style="margin:5px;" class=" card-img-top" width="150" height="150" src={{blog.img}}
-                        alt="Blog-image">
+                    <img style="margin:5px;" class=" card-img-top" width="150" height="150"
+                        src="/assets/undraw_accept_tasks_po1c.svg" alt="Blog-image">
                     <div class="card-body">
                         <h4 class="card-title font-style">{{blog.title}}</h4>
-                        <p class="card-text">{{blog.description}}
+                        <p class="card-text">{{blog.subTitle}}
                         </p>
                         <button (click)="onBlogCard(blog)" class="btn create-blog-btn">View More</button>
                     </div>
