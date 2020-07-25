@@ -2,18 +2,7 @@
     <div class="col-md-12">
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10 text-center"><h1> <b>User name </b></h1></div>
-    </div>
-    <div class="row">
-  		<div class="col-sm-3">
-      <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail img-responsive" alt="avatar">
-        <p>Upload a different photo</p>
-        <input type="file" class="form-control">
-      </div>
-    <hr>
-        </div>
-    	<div class="col-sm-9">
+    	<div class="col-sm-12">
                 <hr>
                   <form class="was-validated" #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
                       <div class="form-group">
@@ -27,6 +16,7 @@
                               placeholder="first name" 
                               title="enter your first name if any."
                               required
+                              ngModel
                               >
                           </div>
                       </div>
@@ -41,6 +31,7 @@
                               placeholder="last name" 
                               title="enter your last name if any."
                               required
+                              ngModel
                               >
                           </div>
                       </div>
@@ -55,7 +46,8 @@
                               placeholder="enter phone" 
                               title="enter your phone number if any."
                               pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
-                              required>
+                              required
+                              ngModel>
                           </div>
                           <small class="text-muted">
                             Must be minimum 10 digits long.
@@ -71,6 +63,7 @@
                               id="email" 
                               placeholder="you@email.com" 
                               title="enter your email."
+                              ngModel
                               required
                               pattern="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"
                               >
@@ -81,14 +74,16 @@
                       </div>
                       <div class="form-group">                         
                           <div class="col-xs-6">
-                              <label for="email"><h4>LinkedIn URL</h4></label>
+                              <label for="link"><h4>LinkedIn URL</h4></label>
                               <input 
                               type="text" 
                               class="form-control" 
                               id="link" 
-                              placeholder="somewhere" 
-                              title="enter a location"
+                              name="link"
+                              placeholder="linkedIn url" 
+                              title="enter a linkedIn url"
                               required
+                              ngModel
                               >
                           </div>
                       </div>
@@ -103,6 +98,7 @@
                               placeholder="password" 
                               title="enter your password."
                               required
+                              ngModel
                               minlength="6">
                           </div>
                           <small class="text-muted">

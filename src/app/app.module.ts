@@ -2,7 +2,7 @@ import { NotificationServiceService } from './job-board/notification-service.ser
 import { JobAnalysisService } from './job-board-analysis/job-analysis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -50,7 +50,7 @@ import { JobNotesComponent } from './job-notes/job-notes.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
 import { ContactfilterPipe } from './contact/contactfilter.pipe';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { JobFilterComponent } from './job-search-feature/job-filter/job-filter.component';
 import { PaginationComponent } from './job-search-feature/pagination/pagination.component';
@@ -59,9 +59,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 const customNotifierOptions: NotifierOptions = {
 
   position: {
- 
+
     horizontal: {
-   
+
       position: 'right'
     }
   },
@@ -69,9 +69,9 @@ const customNotifierOptions: NotifierOptions = {
 
     onMouseover: 'pauseAutoHide',
     autoHide: 7000,
-    showDismissButton: false,
-
   
+
+
   }
 }
 
@@ -130,7 +130,7 @@ const customNotifierOptions: NotifierOptions = {
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
-    HttpClientModule,NotifierModule.withConfig(customNotifierOptions),    NgProgressModule.withConfig({
+    HttpClientModule, NotifierModule.withConfig(customNotifierOptions), NgProgressModule.withConfig({
       spinnerPosition: "left",
       color: "#f71cff"
     }),
@@ -139,9 +139,10 @@ const customNotifierOptions: NotifierOptions = {
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
+    NotifierModule
 
   ],
-  providers: [JobAnalysisService,NotificationServiceService,],
+  providers: [JobAnalysisService, NotificationServiceService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

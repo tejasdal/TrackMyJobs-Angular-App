@@ -1,3 +1,4 @@
+// @author: Roshan kirtikumar Patel (B00853917)
 import { JobAnalysisService } from './job-analysis.service';
 import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
 import { Chart } from 'chart.js';

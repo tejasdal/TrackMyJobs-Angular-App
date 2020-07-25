@@ -35,6 +35,8 @@ export class SignUpComponent implements OnInit {
     
     authObs.subscribe(
       (response) => {
+        this.authService.addUserToDB(email,password).subscribe(res => {
+        });
         var msg = "SignUp Successful";
         this.snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
         this.router.navigate(['/home']);

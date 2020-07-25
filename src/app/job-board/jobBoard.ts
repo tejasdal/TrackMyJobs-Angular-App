@@ -1,11 +1,8 @@
 // @author: Tejas Patel
-export class JobApplication {
+export class JobBoard {
     id: number;
+    name: number;
     userId: string;
-    jobBoardId: number;
-    jobRole: string;
-    company: string;
-    status: string;
     createdAt: Date;
     updatedAt: Date;
     color: string;

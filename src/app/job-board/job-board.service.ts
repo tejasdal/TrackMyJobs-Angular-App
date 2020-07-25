@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JobBoardData } from './jobBoardData';
 import { JobApplication } from './jobApplication';
+import { JobBoard } from './jobBoard';
 
+// @author: Tejas Patel
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +17,8 @@ export class JobBoardService {
   constructor(private http: HttpClient) {
   }
 
+  // API call to fetch job applications for a job board.
   getAllJobAppForJobBoard(id: number){
-    console.log("Fetching all job applications for a job board with ID: "+ id + " from server.");
 
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type','application/json');
     let params: HttpParams = new HttpParams().set('id', ''+id);
@@ -25,27 +27,37 @@ export class JobBoardService {
     return boardsData;
   }
 
+  // API call to create a new job application on a job board.
   createJobAppForJobBoard(newJob: JobApplication){
-    console.log("Creating a new job applications with job role: "+ newJob.jobRole + " for a job board with ID: "+ newJob.jobBoardId + " to server.");
 
     let job: Observable<JobApplication>;
     job = this.http.post<JobApplication>(this.URL+this.JOB_APP_URL, newJob);
     return job;
   }
 
+  // API call to delete a job application from a job board.
   deleteJobAppForJobBoard(id: number){
-    console.log("Deleting a new job applications with job id: "+ id + " for a job board to server.");
 
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type','application/json');
     let params: HttpParams = new HttpParams().set('id', ''+id);
     return this.http.delete(this.URL+this.JOB_APP_URL, {headers, params});
   }
 
+  // API call to update a job application data.
   updateJobAppForJobBoard(updatedJob: JobApplication){
-    console.log("Updating a  job applications with job role: "+ updatedJob.jobRole + " for a job board with ID: "+ updatedJob.jobBoardId + " to server.");
 
     let job: Observable<JobApplication>;
     job = this.http.put<JobApplication>(this.URL+this.JOB_APP_URL, updatedJob);
     return job;
+  }
+
+  // API call to fetch job board for a user.
+  getJobBoardForUser(userId: string){
+
+    let headers: HttpHeaders = new HttpHeaders().set('Content-Type','application/json');
+    let params: HttpParams = new HttpParams().set('userId', ''+userId);
+    let board: Observable<JobBoard>;
+    board = this.http.get<JobBoard>(this.URL+ '/job-board/user',{ headers, params});
+    return board;
   }
 }
