@@ -1,3 +1,4 @@
+//@author Zankrut Thakkar B00856858
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
@@ -40,5 +41,14 @@ export class BlogsService {
       .pipe(
         tap(data => console.log(data)), catchError(this.handleError)
       );
+  }
+
+  deleteblog(id: number) {
+    let headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    let API_URL = `https://app-jobtracker.herokuapp.com/blogs/blogid?id=${id}`;
+    return this.http.delete(API_URL, { headers }).pipe(
+      tap(data => console.log(data)), catchError(this.handleError)
+    );
+
   }
 }

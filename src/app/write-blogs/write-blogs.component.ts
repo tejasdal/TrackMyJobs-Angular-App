@@ -1,3 +1,4 @@
+//@author Zankrut Thakkar B00856858
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogsComponent } from './../dialogs/dialogs.component';

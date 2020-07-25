@@ -1,6 +1,9 @@
+//@author Zankrut Thakkar B00856858
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogsService } from '../blogs/blogs.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { NotifierService } from "angular-notifier";
 
 @Component({
   selector: 'app-blogs-post-detail',
@@ -10,10 +13,12 @@ import { BlogsService } from '../blogs/blogs.service';
 export class BlogsPostDetailComponent implements OnInit {
 
 
-  constructor(private route: ActivatedRoute, private blogService: BlogsService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private blogService: BlogsService, private router: Router, private _snackBar: MatSnackBar) { }
   public blog_id;
   public blogPost: any[];
   public user: Boolean;
+  private DELETE_SUCCESS_MSG = "Successfully deleted the Blog Post!";
+
 
   ngOnInit() {
     let blog_id = this.route.snapshot.params['id'];
@@ -27,6 +32,16 @@ export class BlogsPostDetailComponent implements OnInit {
       return true;
     }
     else { return false; }
+  }
+
+  delete() {
+    this.blogService.deleteblog(this.blog_id).subscribe(blog => {
+      console.log("Deleted blog!");
+      this.router.navigate(['/blogs']);
+      this._snackBar.open(this.DELETE_SUCCESS_MSG, '', {
+        duration: 2000,
+      });
+    });
   }
 
   getBlogbyId() {

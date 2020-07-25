@@ -1,3 +1,4 @@
+/* @author Zankrut Thakkar B00856858 */
 .container{
     min-height: 100%;
 }
@@ -13,4 +14,12 @@
     margin-top: 15px;
     font-size: 18px;
     font-family: 'Roboto',sans-serif;
+}
+
+.bg-yellow{
+    background-color: #fdbd56;
+}
+
+.button{
+    text-transform: uppercase;
 }
