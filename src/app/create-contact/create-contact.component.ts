@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Contact} from '../contact/contact';
 import { ValidationService } from '../services/validation.service';
+import { JobContacts } from '../contact/jobcontacts';
 
 @Component({
   selector: 'app-create-contact',
@@ -17,12 +18,12 @@ export class CreateContactComponent implements OnInit {
     private router:Router,
     public dialogRef: MatDialogRef<CreateContactComponent>,
     private customValidator: ValidationService,
-    @Inject(MAT_DIALOG_DATA) public data: Contact) { }
+    @Inject(MAT_DIALOG_DATA) public data: JobContacts) { }
 
   ngOnInit(): void {
     this.contactForm = this.formBuilder.group({
       Name:['', [Validators.required,Validators.nullValidator]],
-      Company:['',[Validators.required, Validators.nullValidator]],
+      CompanyName:['',[Validators.required, Validators.nullValidator]],
       Position:['',[Validators.required, Validators.nullValidator]],     
       Email: ['',[Validators.required, this.customValidator.emailValidator()]
        ]
@@ -36,7 +37,6 @@ export class CreateContactComponent implements OnInit {
   onAddingContact(){
     this.submitted = true;
     if (this.contactForm.valid) {
-      alert('This contact will be added to teh Contact List ');
       this.dialogRef.close(this.contactForm.value);
     }
 

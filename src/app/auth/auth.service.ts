@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError, tap } from "rxjs/operators";
+import { catchError, tap, map } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
 import { User } from "./user.module";
 import { Router } from "@angular/router";
@@ -36,6 +36,16 @@ export class AuthService{
             this.handleUserAuth(resData.email,resData.localId,resData.idToken,+resData.expiresIn)
         }));
     }
+    
+    addUserToDB(email:string, password:string){
+        return this.http
+            .post(
+            "https://app-jobtracker.herokuapp.com/user/newUser",
+            {
+                email: email,
+                password: password
+            });
+        }
 
     Login(email:string, password:string){
         return this.http
@@ -70,6 +80,7 @@ export class AuthService{
             new Date(userData._tokenExpirationDate)
         )
         if(loadedUser.token){
+            localStorage.setItem('NotifyTheUser','true');
             const expiration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
             this.autoLogout(expiration);
             this.user.next(loadedUser);

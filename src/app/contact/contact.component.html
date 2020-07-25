@@ -4,7 +4,7 @@
            <!--Search Bar -->
 
            <div class="form-group search-div">
-            <input class="form-control contact-search-input" type="text" [(ngModel)]="contactSearch" style="height: auto;" placeholder="Search the contact">
+            <input class="form-control contact-search-input" type="text" [(ngModel)]="contactSearch" style="height: auto;" placeholder="Search the Contact Name">
         </div>
       <div class="form-group">
         <button class="form-control create-contact-btn" style="width: fit-content; height: auto; float: right;" (click)="onCreateContact()"> Create Contact </button>
@@ -13,13 +13,27 @@
         <!--Card for Contact in row-->
         <div class="row" style="margin-top:25px;">
             <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let contact of contactlist | contactfilter:contactSearch">
-                <div class="card cardStyle contact-card">
+              <div class="card cardStyle contact-card">
                     <div class="card-body">
-                        <h3 class="card-title font-style"><b>Name:&nbsp;&nbsp;<em>{{contact.Name}}</em></b></h3>
-                        <h3 class="card-text font-style">Email ID:&nbsp;&nbsp;{{contact.Email}}</h3>
-                        <h4 class="card-text font-style">Company Name: &nbsp;&nbsp;{{contact.Company}}</h4>
-                        <h4 class="card-text font-style">Position: &nbsp;&nbsp;{{contact.Position}}</h4>
-                     </div>
+                      <div class="row" style="margin-top: 4px;">
+                        <div class="col-lg-8"></div>
+                        <mat-icon (click)="onUpdateContact(contact)">edit</mat-icon>
+                        &nbsp;&nbsp;
+                        <mat-icon (click)="onDeleteContact(contact)">delete</mat-icon>
+                      </div>
+                      <div class="row">
+                        <h3 class="card-title font-style"><b>Name:&nbsp;{{contact.contactName}}</b></h3>
+                      </div> 
+                      <div class="row">
+                      <h3 class="card-text font-style">Email:&nbsp;{{contact.contactEmail}}</h3>
+                    </div>
+                    <div class="row">
+                      <h4 class="card-text font-style">Company:&nbsp;{{contact.company}}</h4>
+                    </div> 
+                    <div class="row">
+                      <h4 class="card-text font-style">Position:&nbsp;{{contact.jobPosition}}</h4>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

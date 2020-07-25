@@ -8,7 +8,7 @@ export class ContactfilterPipe implements PipeTransform {
     if (keyword === undefined) return contact;
 
     return contact.filter(function (contact) {
-      return contact.Name.toLowerCase().includes(keyword.toLowerCase())
+      return contact.contactName.toLowerCase().includes(keyword.toLowerCase())
     })
   }
 }
