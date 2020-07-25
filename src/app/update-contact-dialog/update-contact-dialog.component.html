@@ -1,0 +1,42 @@
+<h3 mat-dialog-title class="text-center">Update Contact</h3>
+<div class="d-flext text-center justify-content-center mb-3">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Name of Contact</mat-label>
+            <input #contactName="ngModel" matInput required ngModel name="contactName" [(ngModel)]="data.contactName">
+            <mat-error *ngIf="contactName.touched && !contactName.valid">
+                <div *ngIf="contactName.errors.required">Contact Name is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email ID of Contact</mat-label>
+            <input #contactEmail="ngModel" matInput required ngModel name="contactEmail" [(ngModel)]="data.contactEmail">
+            <mat-error *ngIf="contactEmail.touched && !contactEmail.valid">
+                <div *ngIf="contactEmail.errors.required">Email ID is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Company Name</mat-label>
+            <input #company="ngModel" matInput required ngModel name="company" [(ngModel)]="data.company">
+            <mat-error *ngIf="company.touched && !company.valid">
+                <div *ngIf="company.errors.required">Company Name is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Position</mat-label>
+            <input #jobPosition="ngModel" matInput required ngModel name="jobPosition" [(ngModel)]="data.jobPosition">
+            <mat-error *ngIf="jobPosition.touched && !jobPosition.valid">
+                <div *ngIf="jobPosition.errors.required">Position is required
+                </div>
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button class="btn btn-outline-dark" mat-button (click)="onNoClick()">Cancel</button>
+        <button class="btn btn-dark" mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!contactName.valid || !contactEmail.valid || !company.valid || !jobPosition.valid" (click)="onUpdatingContact()"> Update </button>
+    </div>
+</div>

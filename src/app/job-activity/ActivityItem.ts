@@ -1,41 +1,67 @@
 export class ActivityItem {
 
-    private _id: number;
-    private _activity: string;
-    private _deadline: Date;
-    private _completedOn: Date;
-    private _isCompleted: boolean;
-
+    id: number;
+    user_id: string;
+    date_created: Date;
+    date_completed: Date;
+    activity_status: number;
+    activity_deadline: Date;
+    activity_detail: string;
+  
     constructor() { }
 
-    public get id(): number {
-        return this._id;
+    public get ID(): number {
+        return this.id;
     }
-    public set id(value: number) {
-        this._id = value;
+    public set ID(value: number) {
+        this.id = value;
     }
-    public get activity(): string {
-        return this._activity;
+
+    public get userID(): string{
+        return this.user_id;
     }
-    public set activity(value: string) {
-        this._activity = value;
+
+    public set userID(value : string){
+        this.user_id = value;
     }
-    public get deadline(): Date {
-        return this._deadline;
+
+    public get dateCreated(): Date{
+        return this.date_created;
     }
-    public set deadline(value: Date) {
-        this._deadline = value;
+
+    public set dateCreated(value:Date){
+        this.date_created = value;
     }
-    public get completedOn(): Date {
-        return this._completedOn;
+
+    public get dateCompleted(): Date{
+        return this.date_completed;
     }
-    public set completedOn(value: Date) {
-        this._completedOn = value;
+
+    public set dateCompleted(value:Date){
+        this.date_completed = value;
     }
-    public get isCompleted(): boolean {
-        return this._isCompleted;
+
+    public get activityStatus(): number {
+        return this.activity_status;
     }
-    public set isCompleted(value: boolean) {
-        this._isCompleted = value;
+    public set activityStatus(value: number) {
+        this.activity_status = value;
     }
+
+    public get activityDeadline(): Date{
+        return this.activity_deadline;
+    }
+
+    public set activityDeadline(value:Date){
+        this.activity_deadline = value;
+    }
+
+    public get activityDetail(): string{
+        return this.activity_detail;
+    }
+
+    public set activityDetail(value : string){
+        this.activity_detail = value;
+    }
+
 }

@@ -1,20 +1,27 @@
 export class Notes {
 
-    private _id: number;
-    private _note: string;
-    
+    noteID: number;
+    noteDetails: string;
+    userID: string;
+
     constructor() { }
 
     public get id(): number {
-        return this._id;
+        return this.noteID;
     }
     public set id(value: number) {
-        this._id = value;
+        this.noteID = value;
     }
     public get note(): string {
-        return this._note;
+        return this.noteDetails;
     }
     public set note(value: string) {
-        this._note = value;
+        this.noteDetails = value;
+    }
+    public get userId(): string {
+        return this.userID;
+    }
+    public set userId(value: string) {
+        this.userID = value;
     }
 }

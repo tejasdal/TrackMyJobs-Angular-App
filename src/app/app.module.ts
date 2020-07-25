@@ -51,6 +51,10 @@ import { CreateContactComponent } from './create-contact/create-contact.componen
 import { CreateNoteDialogComponent } from './create-note-dialog/create-note-dialog.component';
 import { ContactfilterPipe } from './contact/contactfilter.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DeleteContactDialogComponent } from './delete-contact-dialog/delete-contact-dialog.component';
+import { UpdateContactDialogComponent } from './update-contact-dialog/update-contact-dialog.component';
+import { UpdateJobNotesComponent } from './update-job-notes/update-job-notes.component';
+import { DeleteJobNotesComponent } from './delete-job-notes/delete-job-notes.component';
 
 import { JobFilterComponent } from './job-search-feature/job-filter/job-filter.component';
 import { PaginationComponent } from './job-search-feature/pagination/pagination.component';
@@ -107,6 +111,10 @@ const customNotifierOptions: NotifierOptions = {
     CreateContactComponent,
     CreateNoteDialogComponent,
     ContactfilterPipe,
+    DeleteContactDialogComponent,
+    UpdateContactDialogComponent,
+    UpdateJobNotesComponent,
+    DeleteJobNotesComponent,
     JobFilterComponent,
     PaginationComponent
 

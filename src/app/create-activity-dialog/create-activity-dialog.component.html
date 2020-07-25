@@ -2,19 +2,19 @@
 <div class="d-flext text-center justify-content-center mb-3">
     <div mat-dialog-content>
         <mat-form-field class="w-100 pl-2 pr-3">
-            <mat-label>Activity</mat-label>
-            <input #activity="ngModel" required ngModel name="activity" matInput [(ngModel)]="data.activity">
-            <mat-error *ngIf="activity.touched && !activity.valid">
-                <div *ngIf="activity.errors.required">Activity is required</div>
+            <mat-label>Activity Detail</mat-label>
+            <input #activityDetail="ngModel" required ngModel name="activityDetail" matInput [(ngModel)]="data.activityDetail">
+            <mat-error *ngIf="activityDetail.touched && !activityDetail.valid">
+                <div *ngIf="activityDetail.errors.required">Activity Detail is required</div>
             </mat-error>
         </mat-form-field>
         <mat-form-field class="w-75">
             <!-- Date Picker to enter a deadline for the activity -->
             <mat-label>Deadline</mat-label>
-            <input #deadline="ngModel" matInput required ngModel name="deadline" [matDatepicker]="myDatepicker"
-                [(ngModel)]="data.deadline">
-            <mat-error *ngIf="deadline.touched && !deadline.valid">
-                <div *ngIf="deadline.errors.required">Deadline date is required</div>
+            <input #activityDeadline="ngModel" matInput required ngModel name="activityDeadline" [matDatepicker]="myDatepicker"
+                [(ngModel)]="data.activityDeadline">
+            <mat-error *ngIf="activityDeadline.touched && !activityDeadline.valid">
+                <div *ngIf="activityDeadline.errors.required">Deadline date is required</div>
             </mat-error>
         </mat-form-field>
         <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
@@ -23,6 +23,6 @@
     <div mat-dialog-actions  class="justify-content-center">
         <button class="btn btn-outline-dark" mat-button (click)="onNoClick()">Cancel</button>
         <button class="btn btn-dark" mat-button [mat-dialog-close]="data" cdkFocusInitial
-            [disabled]="!deadline.valid || !activity.valid">Add</button>
+            [disabled]="!activityDeadline.valid || !activityDetail.valid">Add</button>
     </div>
 </div>
