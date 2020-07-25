@@ -4,15 +4,14 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BlogsComponent } from './blogs/blogs.component';
-import { JobsComponent } from './jobs/jobs.component';
+import { JobsComponent } from './job-search-feature/jobs/jobs.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BlogsPostDetailComponent } from './blogs-post-detail/blogs-post-detail.component';
-import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
-import { JobSearchComponent } from './job-search/job-search.component';
+import { JobSearchComponent } from './job-search-feature/job-search/job-search.component';
 import { JobBoardComponent } from './job-board/job-board.component';
 import { JobActivityComponent } from './job-activity/job-activity.component';
 import { AuthGuard } from "./auth/auth-guard.service";
@@ -23,8 +22,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'blogs', component: BlogsComponent, canActivate:[AuthGuard]},
   { path: 'blogs/:id', component: BlogsPostDetailComponent, canActivate:[AuthGuard]},
-  { path: 'jobs', component: JobsComponent, canActivate:[AuthGuard]},
-  { path: 'jobs-detail', component: JobsDetailComponent, canActivate:[AuthGuard]},
+  { path: 'job-search/jobs', component: JobsComponent, canActivate:[AuthGuard], runGuardsAndResolvers: 'always'},
   { path: 'job-search', component: JobSearchComponent, canActivate:[AuthGuard]},
   { path: 'contact', component: ContactComponent, canActivate:[AuthGuard]},
   { path: 'about', component: AboutComponent, canActivate:[AuthGuard]},

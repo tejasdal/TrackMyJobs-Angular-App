@@ -1,0 +1,44 @@
+<!-- author: Jan Chayopathum -->
+<mat-card>
+    <mat-card-title>
+      <h1 class="m-2">Filter by:<button type="button" class="btn btn-secondary float-right"
+          (click)="clearAllFilters()">Clear</button></h1>
+  
+    </mat-card-title>
+    <hr>
+    <mat-card-content>
+
+      <h2>Job Categories</h2>
+      <section class="form-check" *ngFor="let category of jobCategories$">
+        <input class="form-check-input" type="checkbox" value={{category.tag}} id={{category.tag}}
+          [(ngModel)]="category.checked" [disabled]="!category.checked && checkedCategoryCount === limitNumber"
+          (change)="checked(category, CATEGORY)">
+        <label class="form-check-label m-1" for={{category.tag}}>
+          {{category.label}}
+        </label>
+      </section>
+      <hr>
+
+      <h2>Job Type</h2>
+      <section class="form-check" *ngFor="let jobtype of jobTypes$">
+        <input class="form-check-input" type="checkbox" value={{jobtype.tag}} id={{jobtype.tag}}
+          [(ngModel)]="jobtype.checked" [disabled]="!jobtype.checked && checkedJobTypeCount === limitNumber"
+          (change)="checked(jobtype, JOB_TYPE)">
+        <label class="form-check-label m-1" for={{jobtype.tag}}>
+          {{jobtype.label}}
+        </label>
+        <br>
+      </section>
+      <hr>
+
+      <h2>Sort by</h2>
+      <section class="form-check" *ngFor="let sortBy of sortBy$">
+        <input class="form-check-input" type="checkbox" value={{sortBy.tag}} id={{sortBy.tag}}
+          [(ngModel)]="sortBy.checked" [disabled]="!sortBy.checked && checkedSortByCount === limitNumber"
+          (change)="checked(sortBy, SORT_BY)">
+        <label class="form-check-label m-1" for={{sortBy.tag}}>
+          {{sortBy.label}}
+        </label>
+      </section>
+    </mat-card-content>
+  </mat-card>

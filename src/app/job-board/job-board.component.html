@@ -1,19 +1,46 @@
-    <div cdkDropListGroup class="jobboard-block my-3">
-        <div class="job-status" *ngFor="let listItem of jobBoardDetails">
-            <h2>{{listItem.listName}}</h2>
-            <h5>{{listItem.jobs.length}} Jobs</h5>
-            <button class="btn btn-outline-dark" (click)="addNewJobApp(listItem.id)"><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Add Job</button>
-    
-            <div cdkDropList [cdkDropListData]="listItem.jobs" class="job-list" (cdkDropListDropped)="drop($event)">
-                <div class="job-box" *ngFor="let job of listItem.jobs" cdkDrag [ngStyle]="{'background': job.color}">
-                    <div style="display: inline-block; float: right;">
-                        <i class="fa fa-trash-o fa-1x" style="color: white; margin-right: 20px; cursor: pointer;" (click)="delete(listItem.id, job.id)"></i>
-                    </div>
-                    <!-- </span> -->
-                    <h5 class="display-6 font-weight-light">{{job.company}}</h5>
-                    <p>{{job.jobTitle}}</p>
-                    <!-- <p>{{job.color}}</p> -->
+<!-- @author: Tejas Patel -->
+<!-- Spinner Component -->
+<div class="spinner-mat"
+    style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
+
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
+<!-- Job Board Component -->
+<div cdkDropListGroup class="jobboard-block my-2">
+    <!-- One status componet, (vertical box) -->
+    <div class="job-status" *ngFor="let listItem of jobBoardDetails">
+        <h2>{{listItem.listName}}</h2>
+        <h5>{{listItem.jobs.length}} Jobs</h5>
+        <!-- Add job button -->
+        <button class="btn btn-outline-dark" (click)="addNewJobApp(listItem.listName)"><i class="fa fa-plus fa-1x"
+                aria-hidden="true"></i> Add Job</button>
+
+        <!-- Job Application Component -->
+        <div cdkDropList [cdkDropListData]="listItem.jobs" class="job-list"
+            (cdkDropListDropped)="drop($event, listItem.listName)">
+            <div class="job-box" *ngFor="let job of listItem.jobs" cdkDrag [ngStyle]="{'background': job.color}">
+                <div style="display: inline-block; float: right;">
+                    <i class="fa fa-trash-o fa-1x" style="color: white; margin-right: 20px; cursor: pointer;"
+                        (click)="delete(listItem.id, job.id)"></i>
                 </div>
+                <h5 class="display-6 font-weight-light">{{job.company}}</h5>
+                <p>{{job.jobRole}}</p>
             </div>
         </div>
     </div>
+</div>
+<!-- Notification component -->
+<ng-template #customNotification let-notificationData="notification">
+    <div style="width: 20rem;">
+        <i class="fa fa-bell" aria-hidden="true" style="margin-right: 10px;"> </i>
+        Pending ativity to complete
+        <div>
+            {{ notificationData.message }}
+        </div>
+    </div>
+    <div style="margin-top: 10px;">
+        Follw the link to see <a style="color: #fdbd56;" href="/job-activity">more details.</a>
+    </div>
+</ng-template>
+
+<notifier-container></notifier-container>

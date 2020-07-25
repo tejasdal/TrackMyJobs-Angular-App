@@ -1,0 +1,24 @@
+{
+    "results": [
+        {
+            "__CLASS__": "Adzuna::API::Response::JobType",
+            "label": "Full-time",
+            "tag": "full_time"
+        },
+        {
+            "__CLASS__": "Adzuna::API::Response::JobType",
+            "label": "Part-time",
+            "tag": "part_time"
+        },
+        {
+            "__CLASS__": "Adzuna::API::Response::JobType",
+            "label": "Permanent",
+            "tag": "permanent"
+        },
+        {
+            "__CLASS__": "Adzuna::API::Response::JobType",
+            "label": "Contract",
+            "tag": "contract"
+        }
+    ]
+}

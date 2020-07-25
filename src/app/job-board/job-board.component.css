@@ -1,9 +1,12 @@
+/* @author: Tejas Patel
+  CSS for Job Board page.
+*/
 .jobboard-block {
     flex-direction: row;
     overflow-x: auto; 
     display: inline-flex; 
     white-space: nowrap;
-    margin-left: 100px;
+    margin-left: 10px;
     height: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -13,7 +16,7 @@
 .job-status {
     /* // Stretch the element to the height of the board and make it scrollable. */
     height: 100%;
-    width: 320px;
+    width: 290px;
     overflow: auto;
     box-sizing: border-box;
     margin-right: 8px;
@@ -75,13 +78,13 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
-  
-  /* .btn-outline-dark{
-      border-color: #fdbd56;
-
-  } */
+  /* Customize button CSS */
   .btn-outline-dark:hover, .btn-outline-dark:focus, .btn-outline-dark:active:focus, .open>.dropdown-toggle.btn-outline-dark {
     border-color: #fdbd56;
     background-color: #fdbd56;
     box-shadow: none;
+}
+/* Spinner CSS */
+.spinner-mat ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #fdbd56;
 }

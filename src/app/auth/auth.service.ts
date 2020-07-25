@@ -52,6 +52,7 @@ export class AuthService{
     }
 
     autoLogin(){
+        
         const userData: {
             email:string;
             id:string;
@@ -97,6 +98,7 @@ export class AuthService{
         this.user.next(user);
         this.autoLogout(expirationNumber * 1000);
         localStorage.setItem('userData',JSON.stringify(user));
+        localStorage.setItem('NotifyTheUser','false');
     }
 
     private handleError(errorRes:HttpErrorResponse){

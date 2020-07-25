@@ -1,0 +1,18 @@
+/* author: Jan Chayopathum */
+
+.container{
+    min-height:100%;
+}
+
+.job-page-title{
+    text-align:center; 
+    font-size:24px; 
+    font-weight: 700;
+}
+
+/* small-medium screen */
+@media screen and (max-width: 950px) {
+    p{
+        padding: 1rem;
+    }
+}
