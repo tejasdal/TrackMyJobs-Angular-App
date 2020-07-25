@@ -9,7 +9,8 @@ import { Blog } from './Blog';
   providedIn: 'root'
 })
 export class BlogsService {
-  apiUrl: string = 'http://localhost:8080/blogs/';
+  apiUrl: string = 'https://app-jobtracker.herokuapp.com/blogs/';
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -29,11 +30,11 @@ export class BlogsService {
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     var blog_id = encodeURIComponent(id.toString());
     console.log(blog_id);
-    return this.http.get<BlogResponse>(`http://localhost:8080/blogs/blogid?id=${blog_id}`, { headers })
+    return this.http.get<BlogResponse>(`https://app-jobtracker.herokuapp.com/blogs/blogid?id=${blog_id}`, { headers })
   }
 
   insertBlog(body: Blog) {
-    let API_URL = `http://localhost:8080/blogs/`;
+    let API_URL = `https://app-jobtracker.herokuapp.com/blogs/`;
     console.log(body);
     return this.http.post<BlogResponse>(API_URL, body)
       .pipe(
