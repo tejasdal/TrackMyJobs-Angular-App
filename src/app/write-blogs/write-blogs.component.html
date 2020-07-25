@@ -1,80 +1,99 @@
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="../../assets/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
-     
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../assets/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
 
-      
-      <div class="container-fluid text-center">
-         <div>
-            <div class="panel panel-default">
-               <form>
-                  <div >  
-                     <h2 style="display: inline-block;
-                     vertical-align:top;"class="h2">Write your blog</h2>
-                   <i  class="fa fa-question-circle fa-2x" style="float: right;color:#fdbd56 !important" (click)="openDialog(10)" aria-hidden="true"></i>                  
-                  </div>
-                  <div style="text-align: left; margin-top: 50px;" class="form-group">
-                     <label class="label"><b>Blog's Title</b></label>
-                     <input maxlength=60 type="text" (input)="onBlogHeadingChange($event.target.value)" style="font-size: large;" class=" form-control" placeholder="Enter your blog heading" id="Bheading">
-                    <div  *ngIf="headingCounter>0  && headingCounter<60  "> <small >{{headingCounter}}/60</small></div>
-                     <div *ngIf="headingCounter>59 "><h5  style="color: red;" ><b>Max limit reached</b></h5></div>
-                  </div>
-                  <div style="text-align: left;" class="form-group">
-                     <label class="label"><b>Blog's sub title</b></label>
-                     <textarea maxlength=150 (input)="onSubHeadingChange($event.target.value)"  class="form-control" aria-label="With textarea" placeholder="Enter your Blog's sub title"></textarea>
-                     <div *ngIf="subHeadingCounter>0  && subHeadingCounter<150  " ><small>{{subHeadingCounter}}/150</small></div>
-                      <div  *ngIf="subHeadingCounter>149 "> <h5  style="color: red;"><b>Max limit reached</b></h5></div>
-                  </div>
-                  <div style="text-align: left;" class="form-group">
-                     <label class="label"><b>Blog's main body</b></label>
-                     <div id="MainBodyedit" 
-                        contenteditable="true"  
-                        (blur)="onBodyTextChnage($event.target.innerHTML,$event.target.textContent)"
-                        style=" padding: 5px; min-height: 200px; height: auto; text-align: left;border: 1px solid black;" 
-                        data-text=" you can write your main content here" >
-                     </div>
-                  </div>
-                  <div class="container-small" style="background-color:rgb(254, 227, 184);">
-                     <label class="label"><b>Editing Tools</b></label>
-                     <fieldset>
-                        <button class="fa fa-italic btn  btn-outline-secondary" onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text">
-                        </button>
-                        <button class=" fa fa-bold btn  btn-outline-secondary" onclick="document.execCommand( 'bold',false,null);" title="Bold  Text">
-                        </button>
-                        <button class="btn fa fa-underline  btn-outline-secondary" onclick="document.execCommand( 'underline',false,null);" title="Underline Highlighted Text">
-                        </button>
-                        <button class="btn fa fa-list-ol  btn-outline-secondary" onclick="document.execCommand( 'insertorderedlist',false,null);" title="Create a list">
-                        </button>
-                        <button class="btn fa fa-font  btn-outline-secondary" onclick="document.execCommand( 'fontSize',false,4);" title="Change the font size">
-                        </button>
-                        <button class="btn fa fa-underline  btn-outline-secondary" onclick="document.execCommand( 'insertHorizontalRule',false,null);" title="Add horizontal Line">
-                        </button>
-                        <!-- <button class="btn btn-outline-primary  btn-outline-secondary" onclick="document.execCommand( 'backColor',false, '#6ff542');" title="Heighlight Highlighted Text">Highlight
-                           </button> -->
-                     </fieldset>
-                  </div>
-                  <div style="text-align: left; margin-top: 20px;" class="form-group">
-                     <label class="label"><b>Blog's keyword/tags</b></label><br>
-                   <small>Tag should be comma separated  [Maximum 5, Minimum 1]</small>
-                     <div  id="edit" contenteditable="true"  
-                        (input)="onTagChange($event.target.innerHTML)" 
-                        style=" padding: 5px; text-align: left;border: 1px solid black;" data-text="Tags Should be comma separated">
-                     </div>
-                     <div *ngIf="tagCOunt==0 "><h5  style="color: rgb(0, 0, 0);"  >You must include atleast one tag.</h5></div>
-                     <div   *ngIf="tagCOunt>0 && tagCOunt<6 "><h5  style="color: green;"><b>Your tag Count is {{tagCOunt}}.</b></h5></div>
-                        <div  *ngIf="tagCOunt>5 "><h5  style="color: red;"><b>Maximum five tags are allowed</b>  </h5></div>
-                  </div>
-                  <div style="text-align: left; margin-top: 30px;" class="form-group">
-                     <div class="form-group form-check">
-                        <label class="form-check-label">
-                        <input class=" form-check-input" type="checkbox"> Allow Comments(By checking this you will allow other user to comment on your blog)
-                        </label>
-                     </div>
-                  </div>  
-                  <button [disabled]="!checkValue()" (click)="openDialog(6)"  type="submit" class=" submitBtn btn btn-primary">Submit your blog</button><br>
-                  <div *ngIf="!checkValue()"><small> You must fill all the field</small></div> 
-               </form>
+
+
+<div class="container-fluid text-center">
+   <div>
+      <div class="panel panel-default">
+         <form>
+            <div>
+               <h2 style="display: inline-block;
+                     vertical-align:top;" class="h2">Write your blog</h2>
+               <i class="fa fa-question-circle fa-2x" style="float: right;color:#fdbd56 !important"
+                  (click)="openDialog(10)" aria-hidden="true"></i>
             </div>
-         </div>
+            <div style="text-align: left; margin-top: 50px;" class="form-group">
+               <label class="label"><b>Blog's Title</b></label>
+               <input maxlength=60 type="text" (input)="onBlogHeadingChange($event.target.value)"
+                  style="font-size: large;" class=" form-control" placeholder="Enter your blog heading" id="Bheading">
+               <div *ngIf="headingCounter>0  && headingCounter<60  "> <small>{{headingCounter}}/60</small></div>
+               <div *ngIf="headingCounter>59 ">
+                  <h5 style="color: red;"><b>Max limit reached</b></h5>
+               </div>
+            </div>
+            <div style="text-align: left;" class="form-group">
+               <label class="label"><b>Blog's sub title</b></label>
+               <textarea maxlength=150 (input)="onSubHeadingChange($event.target.value)" class="form-control"
+                  aria-label="With textarea" placeholder="Enter your Blog's sub title"></textarea>
+               <div *ngIf="subHeadingCounter>0  && subHeadingCounter<150  "><small>{{subHeadingCounter}}/150</small>
+               </div>
+               <div *ngIf="subHeadingCounter>149 ">
+                  <h5 style="color: red;"><b>Max limit reached</b></h5>
+               </div>
+            </div>
+            <div style="text-align: left;" class="form-group">
+               <label class="label"><b>Blog's main body</b></label>
+               <div id="MainBodyedit" contenteditable="true"
+                  (blur)="onBodyTextChnage($event.target.innerHTML,$event.target.textContent)"
+                  style=" padding: 5px; min-height: 200px; height: auto; text-align: left;border: 1px solid black;"
+                  data-text=" you can write your main content here">
+               </div>
+            </div>
+            <div class="container-small" style="background-color:rgb(254, 227, 184);">
+               <label class="label"><b>Editing Tools</b></label>
+               <fieldset>
+                  <button class="fa fa-italic btn  btn-outline-secondary"
+                     onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text">
+                  </button>
+                  <button class=" fa fa-bold btn  btn-outline-secondary"
+                     onclick="document.execCommand( 'bold',false,null);" title="Bold  Text">
+                  </button>
+                  <button class="btn fa fa-underline  btn-outline-secondary"
+                     onclick="document.execCommand( 'underline',false,null);" title="Underline Highlighted Text">
+                  </button>
+                  <button class="btn fa fa-list-ol  btn-outline-secondary"
+                     onclick="document.execCommand( 'insertorderedlist',false,null);" title="Create a list">
+                  </button>
+                  <button class="btn fa fa-font  btn-outline-secondary"
+                     onclick="document.execCommand( 'fontSize',false,4);" title="Change the font size">
+                  </button>
+                  <button class="btn fa fa-underline  btn-outline-secondary"
+                     onclick="document.execCommand( 'insertHorizontalRule',false,null);" title="Add horizontal Line">
+                  </button>
+                  <!-- <button class="btn btn-outline-primary  btn-outline-secondary" onclick="document.execCommand( 'backColor',false, '#6ff542');" title="Heighlight Highlighted Text">Highlight
+                           </button> -->
+               </fieldset>
+            </div>
+            <div style="text-align: left; margin-top: 20px;" class="form-group">
+               <label class="label"><b>Blog's keyword/tags</b></label><br>
+               <small>Tag should be comma separated [Maximum 5, Minimum 1]</small>
+               <div id="edit" contenteditable="true" (input)="onTagChange($event.target.innerHTML)"
+                  style=" padding: 5px; text-align: left;border: 1px solid black;"
+                  data-text="Tags Should be comma separated">
+               </div>
+               <div *ngIf="tagCOunt==0 ">
+                  <h5 style="color: rgb(0, 0, 0);">You must include atleast one tag.</h5>
+               </div>
+               <div *ngIf="tagCOunt>0 && tagCOunt<6 ">
+                  <h5 style="color: green;"><b>Your tag Count is {{tagCOunt}}.</b></h5>
+               </div>
+               <div *ngIf="tagCOunt>5 ">
+                  <h5 style="color: red;"><b>Maximum five tags are allowed</b> </h5>
+               </div>
+            </div>
+            <!-- <div style="text-align: left; margin-top: 30px;" class="form-group">
+               <div class="form-group form-check">
+                  <label class="form-check-label">
+                     <input class=" form-check-input" type="checkbox"> Allow Comments(By checking this you will allow
+                     other user to comment on your blog)
+                  </label>
+               </div>
+            </div> -->
+            <button [disabled]="!checkValue()" (click)="openDialog(6)" type="submit"
+               class=" submitBtn btn btn-primary">Submit your blog</button><br>
+            <div *ngIf="!checkValue()"><small> You must fill all the field</small></div>
+         </form>
       </div>
-
-
+   </div>
+</div>
