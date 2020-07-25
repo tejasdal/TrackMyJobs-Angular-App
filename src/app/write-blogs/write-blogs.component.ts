@@ -110,4 +110,16 @@ export class WriteBlogsComponent implements OnInit {
     });
   }
 
+
+  openDialoghelp(id: number) {
+
+    this.id = id
+    const dialogRef = this.dialog.open(DialogsComponent, {
+      width: '400px',
+      data: { id: this.id }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
 }

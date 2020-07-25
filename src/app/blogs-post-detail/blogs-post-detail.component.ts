@@ -13,12 +13,20 @@ export class BlogsPostDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private blogService: BlogsService, private router: Router) { }
   public blog_id;
   public blogPost: any[];
+  public user: Boolean;
 
   ngOnInit() {
     let blog_id = this.route.snapshot.params['id'];
     this.blog_id = decodeURIComponent(blog_id);
     this.blogPost = this.getBlogbyId();
     console.log("blogpost");
+  }
+
+  onload() {
+    if (this.blogPost[1] === JSON.parse(localStorage.getItem("userData"))["email"]) {
+      return true;
+    }
+    else { return false; }
   }
 
   getBlogbyId() {
