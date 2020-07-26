@@ -14,7 +14,6 @@ export class JobActivityService {
 
   constructor(private http: HttpClient) { }
   private handleError(error: any) {
-    console.log(error);
     return throwError(error);
   }
 
@@ -29,7 +28,7 @@ export class JobActivityService {
     let API_URL = this.apiUrl;
     return this.http.put<Activity>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
 
@@ -37,7 +36,7 @@ export class JobActivityService {
     let API_URL = this.apiUrl;
     return this.http.post<Activity>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
  

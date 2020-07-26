@@ -13,7 +13,6 @@ export class ContactsService {
  
   constructor(private http: HttpClient) { }
   private handleError(error: any) {
-    console.log(error);
     return throwError(error);
   }
   getAllContacts(userID:string){
@@ -21,7 +20,7 @@ export class ContactsService {
     let params: HttpParams = new HttpParams().set('userID',userID);
     let API_URL = this.apiUrl;
     return this.http.get<ContactResponse>(API_URL,{headers,params}).pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
   }
 
@@ -29,7 +28,7 @@ export class ContactsService {
     let API_URL = this.apiUrl;
     return this.http.put<Contact>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
 
@@ -37,7 +36,7 @@ export class ContactsService {
     let API_URL = this.apiUrl;
     return this.http.post<Contact>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
 
@@ -47,7 +46,7 @@ export class ContactsService {
     let params: HttpParams = new HttpParams().set('contactID',contactID);
     let API_URL = this.apiUrl;
     return this.http.delete(API_URL,{headers,params}).pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
   }
 }

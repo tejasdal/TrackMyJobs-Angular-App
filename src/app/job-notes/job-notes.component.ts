@@ -48,7 +48,6 @@ export class JobNotesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result){
         this.add(result);
     }
@@ -75,12 +74,9 @@ export class JobNotesComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result){
-        console.log(result);
         this.delete(deleteData);
-  
-      }
+    }
     });
   
   }
@@ -88,7 +84,6 @@ export class JobNotesComponent implements OnInit {
   // Delete Note
   delete(result:jobnotes){
     this.noteService.deleteNote(result.noteID).subscribe(jobNote => {
-          console.log("Deleted contact!");
           this.getNotes();
           this._snackBar.open(this.DELETE_SUCCESS_MSG,'',{
             duration:2000,
@@ -106,7 +101,6 @@ export class JobNotesComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result){
         this.update(result);
       }
@@ -119,7 +113,6 @@ export class JobNotesComponent implements OnInit {
   // Update Notes
   update(result:jobnotes){
     this.noteService.updateNotes(result).subscribe(jobNotes => {
-          console.log("Updated contact!");
           this.getNotes();
           this._snackBar.open(this.CHANGE_SUCCESS_MSG,'',{
             duration:2000,

@@ -38,7 +38,7 @@ export class WriteBlogsComponent implements OnInit {
   id: number;
   blog: Blog = new Blog();
   submitted = false;
-  private ADD_BlOG_SUCCESS_MSG = "Successfully added the contact!";
+  private ADD_BlOG_SUCCESS_MSG = "Successfully added the Blog!";
 
 
   constructor(public dialog: MatDialog, private _router: Router, private blogsService: BlogsService, notifierService: NotifierService, private _snackBar: MatSnackBar) { }
@@ -48,7 +48,6 @@ export class WriteBlogsComponent implements OnInit {
 
   add() {
     this.blogsService.insertBlog(this.blog).subscribe(blog => {
-      console.log("Added a new contact!");
       this.navigatetoblog();
       this._snackBar.open(this.ADD_BlOG_SUCCESS_MSG, '', {
         duration: 2000,
@@ -101,12 +100,10 @@ export class WriteBlogsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.blog.userId = JSON.parse(localStorage.getItem("userData"))["email"];
-      console.log(JSON.parse(localStorage.getItem("userData"))["email"]);
       this.blog.title = this.heading;
       this.blog.subTitle = this.subHeading;
       this.blog.content = this.bodyContentWithHtml;
       this.blog.keyword = this.tagsList;
-      console.log(this.blog);
       this.add();
     });
   }

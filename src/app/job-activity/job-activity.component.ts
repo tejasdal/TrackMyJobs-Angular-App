@@ -48,7 +48,6 @@ export class JobActivityComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result){
         this.add(result);
       }
@@ -91,6 +90,8 @@ export class JobActivityComponent implements OnInit {
           unCheckedActivity.date_completed = null;
           unCheckedActivity.activity_status = 0;
           this.update(unCheckedActivity);
+          this.toDoItems.push(unCheckedActivity);
+          this.completedItems.splice(index,1);
           }
       });
     }
@@ -106,6 +107,8 @@ export class JobActivityComponent implements OnInit {
           checkedActivity.date_completed = new Date();
           checkedActivity.activity_status = 1;
           this.update(checkedActivity);
+          this.completedItems.push(checkedActivity);
+          this.toDoItems.splice(index,1);
           }
       });
     }
@@ -114,7 +117,6 @@ export class JobActivityComponent implements OnInit {
   update(body:Activity){
     body.user_id = this.user_id;
     this.activityService.updateActivity(body).subscribe(jobActivity =>{
-          console.log("Updated Activities");
           this.populateItems();
           this._snackBar.open(this.CHANGE_SUCCESS_MSG,'',{
             duration:2000,

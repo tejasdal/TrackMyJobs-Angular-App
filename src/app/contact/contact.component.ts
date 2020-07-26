@@ -49,7 +49,6 @@ export class ContactComponent implements OnInit {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result){
      this.add(result);
     }
@@ -61,7 +60,6 @@ export class ContactComponent implements OnInit {
 add(result:Contact){
   result.userID = this.userID;
   this.contactService.addContact(result).subscribe(jobContact => {
-        console.log("Added a new contact!");
         this.popualateContactDetails();
         this._snackBar.open(this.ADD_CONTACT_SUCCESS_MSG,'',{
           duration:2000,
@@ -78,9 +76,7 @@ onDeleteContact(deleteData:Contact){
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result){
-      console.log(result);
       this.delete(deleteData);
 
     }
@@ -91,7 +87,6 @@ onDeleteContact(deleteData:Contact){
 // Delete Contact
 delete(result:Contact){
   this.contactService.deleteContact(result.contactID).subscribe(jobContact => {
-        console.log("Deleted contact!");
         this.popualateContactDetails();
         this._snackBar.open(this.DELETE_SUCCESS_MSG,'',{
           duration:2000,
@@ -109,7 +104,6 @@ onUpdateContact(updateData:Contact){
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result){
      this.update(result);
     }
@@ -122,7 +116,6 @@ onUpdateContact(updateData:Contact){
 // Update Contact
 update(result:Contact){
   this.contactService.updateContact(result).subscribe(jobContact => {
-        console.log("Updated contact!");
         this.popualateContactDetails();
         this._snackBar.open(this.CHANGE_SUCCESS_MSG,'',{
           duration:2000,

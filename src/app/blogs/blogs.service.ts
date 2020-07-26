@@ -17,7 +17,6 @@ export class BlogsService {
   constructor(private http: HttpClient) { }
 
   private handleError(error: any) {
-    console.log(error);
     return throwError(error);
   };
 
@@ -30,16 +29,14 @@ export class BlogsService {
   getSpecificBlog(id: String) {
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     var blog_id = encodeURIComponent(id.toString());
-    console.log(blog_id);
     return this.http.get<BlogResponse>(`https://app-jobtracker.herokuapp.com/blogs/blogid?id=${blog_id}`, { headers })
   }
 
   insertBlog(body: Blog) {
     let API_URL = `https://app-jobtracker.herokuapp.com/blogs/`;
-    console.log(body);
     return this.http.post<BlogResponse>(API_URL, body)
       .pipe(
-        tap(data => console.log(data)), catchError(this.handleError)
+        tap(data => data), catchError(this.handleError)
       );
   }
 
@@ -47,7 +44,7 @@ export class BlogsService {
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     let API_URL = `https://app-jobtracker.herokuapp.com/blogs/blogid?id=${id}`;
     return this.http.delete(API_URL, { headers }).pipe(
-      tap(data => console.log(data)), catchError(this.handleError)
+      tap(data => data), catchError(this.handleError)
     );
 
   }

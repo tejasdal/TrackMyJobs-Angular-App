@@ -8,7 +8,6 @@ export class BlogsfilterPipe implements PipeTransform {
 
   transform(blog: any, keyword: any): any {
     if (keyword === undefined) return blog;
-    console.log(blog);
 
     return blog.filter(function (blog) {
       if (blog.title === null) { return }

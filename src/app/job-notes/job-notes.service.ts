@@ -12,7 +12,6 @@ export class JobNotesService {
   
   constructor(private http: HttpClient) { }
   private handleError(error: any) {
-    console.log(error);
     return throwError(error);
   }
  
@@ -21,7 +20,7 @@ export class JobNotesService {
     let params: HttpParams = new HttpParams().set('userID',userID);
     let API_URL = this.apiUrl;
     return this.http.get<NoteResponse>(API_URL,{headers,params}).pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );    
   }
 
@@ -29,7 +28,7 @@ export class JobNotesService {
     let API_URL = this.apiUrl;
     return this.http.put<jobnotes>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
 
@@ -37,7 +36,7 @@ export class JobNotesService {
     let API_URL = this.apiUrl;
     return this.http.post<jobnotes>(API_URL, body)
     .pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );
 }
 
@@ -46,7 +45,7 @@ export class JobNotesService {
     let params: HttpParams = new HttpParams().set('noteID',noteID);
     let API_URL = this.apiUrl;
     return this.http.delete(API_URL,{headers,params}).pipe(
-      tap(data => console.log(data)),catchError(this.handleError)
+      tap(data => data),catchError(this.handleError)
     );    
   }
 }

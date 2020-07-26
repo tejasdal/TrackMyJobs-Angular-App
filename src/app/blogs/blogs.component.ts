@@ -32,7 +32,6 @@ export class BlogsComponent implements OnInit {
   getAllBlogPost() {
     this.blogService.fetchAllBlog().subscribe((data: BlogResponse) => {
       this.blogposts = data as Blog[];
-      console.log(this.blogposts);
       this.showSpinner = false;
     }, error => {
       this.showSpinner = false;
@@ -50,7 +49,6 @@ export class BlogsComponent implements OnInit {
 
   onBlogCard(blog) {
     let encodedName = encodeURIComponent(blog.id);
-    console.log("encode name" + encodedName)
     this.router.navigate(['/blogs', encodedName])
 
   }
