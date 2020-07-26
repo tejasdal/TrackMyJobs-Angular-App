@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ValidationService } from '../services/validation.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import {ProfileService} from '../profile/profile.service';
 
 @Component({
   selector: 'app-forget-password-dialog',
@@ -11,11 +13,12 @@ import { Router } from '@angular/router';
 })
 export class ForgetPasswordDialogComponent implements OnInit {
 
+    
     form: FormGroup;
     submitted = false;
 
   constructor(
-
+    private service:ProfileService,
     private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ForgetPasswordDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data, 
@@ -37,15 +40,16 @@ export class ForgetPasswordDialogComponent implements OnInit {
     return this.form.controls;
   }
 
-  sendEmail() {
+  sendEmail(form: NgForm) {
 
     this.submitted = true;
 
-    if (this.form.valid) {
-      alert('Send Password Reset Link to ' + this.form.value.email);
-      this.dialogRef.close(this.form.value);
+    if (form.valid) {
+      this.service.resetPassword(form.value.email).subscribe(res=>{
+      });
+      alert('Send Password Reset Link to ' + form.value.email);
+      this.dialogRef.close(form.value);
     }
-
   }
 
   goBack(){

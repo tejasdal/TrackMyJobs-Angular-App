@@ -37,4 +37,8 @@ export class ProfileService{
         })
         .pipe(map(res => res));
     }
+
+    resetPassword(email:string){
+        return this.http.get("https://app-jobtracker.herokuapp.com/user/forgotPassword/"+email).pipe(map(data =>data));
+    }
 }
