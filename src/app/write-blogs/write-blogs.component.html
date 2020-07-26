@@ -1,3 +1,4 @@
+<!-- @author Zankrut Thakkar B00856858 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="../../assets/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
 
@@ -11,7 +12,7 @@
                <h2 style="display: inline-block;
                      vertical-align:top;" class="h2">Write your blog</h2>
                <i class="fa fa-question-circle fa-2x" style="float: right;color:#fdbd56 !important"
-                  (click)="openDialog(10)" aria-hidden="true"></i>
+                  (click)="openDialoghelp(10)" aria-hidden="true"></i>
             </div>
             <div style="text-align: left; margin-top: 50px;" class="form-group">
                <label class="label"><b>Blog's Title</b></label>
@@ -91,7 +92,7 @@
                </div>
             </div> -->
             <button [disabled]="!checkValue()" (click)="openDialog(6)" type="submit"
-               class=" submitBtn btn btn-primary">Submit your blog</button><br>
+               class=" submitBtn btn btn-primary">Submit my blog</button><br>
             <div *ngIf="!checkValue()"><small> You must fill all the field</small></div>
          </form>
       </div>

@@ -80,6 +80,7 @@ export class AuthService{
             new Date(userData._tokenExpirationDate)
         )
         if(loadedUser.token){
+            localStorage.setItem('NotifyTheUser','true');
             const expiration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
             this.autoLogout(expiration);
             this.user.next(loadedUser);

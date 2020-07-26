@@ -23,24 +23,24 @@
                 </div>
                 <br>
                 <h3><b>ToDo Items</b></h3>
-                <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activityItem of toDoItems">   
+                <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activity of toDoItems">   
                     <div class="col-8">
-                        <input type="checkbox" class="form-check-input " id="exampleCheck1" (change)="moveToCompleted($event, activityItem.id)">
-                        <label class="form-check-label " for="exampleCheck1">{{activityItem.activity}}</label>
+                        <input type="checkbox" class="form-check-input " id="exampleCheck1" (change)="moveToCompleted($event, activity.id)">
+                        <label class="form-check-label " for="exampleCheck1">{{activity.activity_detail}}</label>
                     </div>
                     <div class="col-6 col-sm-4">
-                        <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'due on '+ activityItem.deadline | date:'MMM dd, yyyy'}}</p>
+                        <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'due on '+ activity.activity_deadline | date:'yyyy-MM-dd'}}</p>
                     </div>
                 </div>
                 <br><br>
                 <h3><b>Completed Items</b></h3>
-                <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activityItem of completedItems">   
+                <div class="row m-1 align-items-center border border-light px-4 py-2" *ngFor="let activity of completedItems">   
                     <div class="col-8">
-                        <input type="checkbox"  class="form-check-input" id="exampleCheck1" (change)="moveToToDo($event, activityItem.id)" checked>
-                        <label class="form-check-label " for="exampleCheck1"> <del>{{activityItem.activity}}</del></label>
+                        <input type="checkbox"  class="form-check-input" id="exampleCheck1" (change)="moveToToDo($event, activity.id)" checked>
+                        <label class="form-check-label " for="exampleCheck1"> <del>{{activity.activity_detail}}</del></label>
                     </div>
                     <div class="col-6 col-sm-4">
-                        <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'on ' + activityItem.completedOn | date:'MMM dd, yyyy'}}</p>
+                        <p class="text-secondary text-sm-right font-weight-light" for="exampleCheck1">{{'on ' + activity.date_completed | date:'yyyy-MM-dd'}}</p>
                     </div>
                 </div>
             </div>

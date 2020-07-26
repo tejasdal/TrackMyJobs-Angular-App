@@ -1,3 +1,4 @@
+// @author: Roshan kirtikumar Patel (B00853917)
 import { JobAnalysisService } from './job-analysis.service';
 import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
 import { Chart } from 'chart.js';
@@ -168,7 +169,7 @@ ngAfterViewInit():void
    );
 
 
-     this.service.get_activity_list(7,this.user_id).subscribe(res=>{
+     this.service.get_activity_list(8,this.user_id).subscribe(res=>{
        this.pending_activity_count=res[0];
        this.completed_activity_count=res[1];
 
@@ -182,7 +183,7 @@ ngAfterViewInit():void
           'March',
           'April',
           'May',
-          'June', 'july'
+          'June', 'july','Aug'
         ],
         datasets: [
           {

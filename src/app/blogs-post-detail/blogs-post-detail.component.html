@@ -1,3 +1,4 @@
+<!-- @author Zankrut Thakkar B00856858 -->
 <!--To show Blog Post Data-->
 <div class="container">
     <!--Blog's Title-->
@@ -8,10 +9,14 @@
     </div>
     <!--Blog's Content-->
     <div class="page-content">
-
-        <p>{{blogPost[4]}}</p>
+        <p [innerHTML]="blogPost[4]"></p>
     </div>
     <!--Blog's Author-->
     <p style="text-align: right;font-style:italic;">-Created by {{blogPost[1]}}</p>
+
+    <div *ngIf="onload()">
+        <button class="button btn bg-yellow font-weight-bold pointer my-2 my-2" (click)="delete()">Delete
+            your post</button>
+    </div>
 </div>
 <br>

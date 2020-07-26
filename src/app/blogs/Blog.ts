@@ -1,3 +1,4 @@
+//@author Zankrut Thakkar B00856858 
 export class Blog {
     id: string;
     userId: number;
