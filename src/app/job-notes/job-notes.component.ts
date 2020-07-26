@@ -58,7 +58,6 @@ export class JobNotesComponent implements OnInit {
   add(result: jobnotes){
     result.userID = this.user_id;
     this.noteService.addNote(result).subscribe(jobNotes=>{
-      debugger;
       this.getNotes();
       this._snackBar.open(this.ADD_NOTE_SUCCESS_MSG,'',{
         duration:2000,

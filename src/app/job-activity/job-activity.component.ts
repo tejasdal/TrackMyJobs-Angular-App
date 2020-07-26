@@ -74,7 +74,6 @@ export class JobActivityComponent implements OnInit {
     newActivity = this.getActivityDetails(result.activityDetail,result.activityDeadline,0,null);
     this.activityService.addActivity(newActivity).subscribe(jobActivity => {
       this.populateItems();
-      debugger;
       this._snackBar.open(this.ADD_ACTIVITY_SUCCESS_MSG,'',{
         duration:2000,
       });
