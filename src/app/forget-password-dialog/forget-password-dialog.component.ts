@@ -13,31 +13,16 @@ import {ProfileService} from '../profile/profile.service';
 })
 export class ForgetPasswordDialogComponent implements OnInit {
 
-    
-    form: FormGroup;
     submitted = false;
 
   constructor(
     private service:ProfileService,
-    private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ForgetPasswordDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data, 
-    private customValidator: ValidationService,
-    private _router: Router) {
+    @Inject(MAT_DIALOG_DATA) data) {
 
   }
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      email: ['',
-      [Validators.required,
-        this.customValidator.emailValidator()]
-      ]
-    });
-  }
-
-  get formControl() {
-    return this.form.controls;
   }
 
   sendEmail(form: NgForm) {

@@ -44,6 +44,7 @@ export class HeaderNavbarComponent implements OnInit {
 
   onLogout(){
     this.authService.logOut();
+    this.isAuthenticated=false;
   }
 
   ngOnDestroy(){

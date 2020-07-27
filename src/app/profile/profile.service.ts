@@ -39,6 +39,9 @@ export class ProfileService{
     }
 
     resetPassword(email:string){
-        return this.http.get("https://app-jobtracker.herokuapp.com/user/forgotPassword/"+email).pipe(map(data =>data));
+        return this.http.post("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBlmqO3Ee6UTRXGKJkigz4-jtE2QWbI52o",{
+            requestType :"PASSWORD_RESET",
+            email: email
+        }).pipe(map(data =>data));
     }
 }
