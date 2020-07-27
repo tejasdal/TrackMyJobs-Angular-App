@@ -1,11 +1,13 @@
 // author: Jan Chayopathum
 // job search result page with search and filter
 
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras, ParamMap, Params, Data } from '@angular/router'
 import { JobService } from '../services/job.service';
+import { JobBoardService } from '../../job-board/job-board.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-jobs',
@@ -20,36 +22,51 @@ export class JobsComponent implements OnInit, OnDestroy {
   searchJobs$: any;
 
   ITEMS_PER_PAGE: number;
-
+  pageNumber: number;
   @Output() firstPage = new EventEmitter<number>();
+  @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
-  constructor(private _snackbar: MatSnackBar, private _jobService: JobService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
+  WISHLIST: string = "WHISHLIST";
+  APPLIED: string = "APPLIED";
+  jobBoardId: number;
+  userId = JSON.parse(localStorage.getItem('userData'))['email'];
+
+  private colors = ["#654062", "#726a95", "#ff9234", "#cf7500", "#0e9aa7", "#1b6ca8", "#45046a", "#5c2a9d", "#562349", "#26191b", "#6a097d", "#007892", "#6f0000", "#bb3b0e"];
+
+  constructor(private _snackbar: MatSnackBar, private _jobService: JobService, private jobBoardService: JobBoardService, private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.ITEMS_PER_PAGE = this._jobService.getItemPerPage();
     this.search();
+
+    this.getJobBoardId();
+
   }
 
   // show search result
   search(page: number = 1) {
+    this._activatedRoute.queryParams.subscribe(params => {
+      this.pageNumber = params['page'];
+    });
+
     this.subscription = this._activatedRoute.params.subscribe(params => {
       const keyword = params['keyword'];
       const location = params['location'];
-      // const page = (this.isFirstPage) ? 1 : num;
-      // console.log("param page: " + params['page']);
-      // const pageNum = (queryParam == undefined) ? page : queryParam;
+
       this._jobService.getJobs(keyword, location, page).subscribe(jobs => {
         this.jobCount$ = jobs.count;
         this.searchJobs$ = jobs.results;
-        // this.loading = false;
       }, error => {
         this.errorMessage();
       })
     });
 
-    if (page == 1) {
-      this.firstPage.emit(page);
-    }
+    // if (this.pageNumber == 1) {
+    //   console.log("page been 1")
+      // this.firstPage.emit(this.pageNumber);
+      // this.pagination.setFirstPage();
+    // }
   }
 
   // error message if can't fetch data from Adzuna API
@@ -117,22 +134,68 @@ export class JobsComponent implements OnInit, OnDestroy {
     }
   }
 
+  // add to job application with status "wish list" in database
+  saveToWishList(job) {
+    let result = this.getJobApp(job, this.WISHLIST);
+
+    //Add new job to database
+    this.jobBoardService.createJobAppForJobBoard(result).subscribe(jobApp => {
+      var msg = "Save to Wish List";
+      this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+    },
+      error => {
+        var msg = "Can't save to Wish List, please try again.";
+        this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+      });
+  }
+
+  // add to job application with status "applied" in database
+  apply(job) {
+    let result = this.getJobApp(job, this.APPLIED);
+
+    //Add new job to database
+    this.jobBoardService.createJobAppForJobBoard(result).subscribe(jobApp => {
+      var msg = "Save to applied";
+      this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+    },
+      error => {
+        var msg = "Can't save to applied, please try again.";
+        this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+      });
+
+    this.showDetail(job.redirect_url);
+  }
+
   // show job detail via linking to Adzuna API
   showDetail(jobUrl) {
-    window.location.href = jobUrl;
+    window.open(jobUrl, "_blank");
   }
 
-  // add to job application with status "wish list" in database (if it not exists yet)
-  saveToWishList() {
-    var msg = "Save to Wish List";
-    this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+  getJobApp(job, jobStatus) {
+    let colorId: number = Math.floor((Math.random() * 13) + 1);
+
+    return {
+      id: +job.id,
+      userId: this.userId,
+      jobBoardId: this.jobBoardId,
+      jobRole: this.cleanString(job.title),
+      company: job.company.display_name,
+      status: jobStatus,
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+      color: this.colors[colorId]
+    }
   }
 
-  // add to job application with status "applied" in database (if it not exists yet)
-  apply(jobUrl) {
-    var msg = "Save to applied";
-    this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
-    this.showDetail(jobUrl);
+  // Function to fetch job board from DB for current logged in user. Adapted from Tejas Patel
+  getJobBoardId() {
+    this.subscription = this.jobBoardService.getJobBoardForUser(this.userId).subscribe((dbJobBoard) => {
+      this.jobBoardId = dbJobBoard.id;
+    },
+      error => {
+        var msg = "Failed to load a job board from the server!";
+        this._snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+      });
   }
 
   ngOnDestroy() {
