@@ -74,7 +74,12 @@ export class NavSearchComponent implements OnInit  {
     this.submitted = true;
 
     if (this.searchForm.valid) {
-      this._router.navigate(['job-search/jobs', this.searchForm.value]);
+      this._router.navigate(['job-search/jobs', this.searchForm.value], {
+        queryParams: {
+          page: 1
+        },
+        queryParamsHandling: 'merge'
+      });
     }
   }
 }

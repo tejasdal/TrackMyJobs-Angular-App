@@ -47,6 +47,12 @@ export class PaginationComponent implements OnInit {
     this.pageObject$ = this._pageService.getPages(this.allItems, page);
 
     this.setRouter(page);
+    // console.log("some other page: " + page);
     this.pageNumber.emit(page);
+  }
+
+  setFirstPage(){
+    // get page object from service
+    this.pageObject$ = this._pageService.getPages(this.allItems, 1);
   }
 }

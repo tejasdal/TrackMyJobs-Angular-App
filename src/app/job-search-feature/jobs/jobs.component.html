@@ -1,67 +1,67 @@
 <!-- author: Jan Chayopathum -->
 <div class="container">
-    <header>
-      <h2 class="job-page-title">Search Your Dream Job in Canada</h2>
-      <p class="text-center">Click "Search" without keyword or location to find all job availabilities in Canada.</p>
-      <!-- Search Bar -->
-      <app-nav-search></app-nav-search>
-    </header>
-  
-    <!-- Content -->
-    <main class="container">
-      <mat-drawer-container class="drawer-container">
-        <!-- job filter -->
-        <mat-drawer mode="side" opened class="col-lg-4">
-          <app-job-filter (filter)="search()"></app-job-filter>
-        </mat-drawer>
-  
-        <!-- content -->
-        <mat-drawer-content class="col-12 col-lg-8">
-          <!-- <mat-progress-spinner mode="indeterminate" *ng-If="loading"></mat-progress-spinner> -->
-          <section *ngIf="jobCount$ === 0">
-            <h2 class="text-center m-3">No job found</h2>
-          </section>
-  
-          <header class="text-center m-2">
-            <h3>{{getSearchJobsLength()}}</h3>
-          </header>
-          <section>
-            <div *ngFor="let job of searchJobs$; let i = index">
-              <mat-card>
-                <div class="m-4">
-                  <mat-card-title>
-                    <h1 class="pointer"><a href={{job.redirect_url}}>{{cleanString(job.title)}}</a></h1>
-                    <h2>{{job.company.display_name}}</h2>
-                    <h3>
-                      <mat-icon>location_on</mat-icon>
-                      {{job.location.display_name}}
-                      <br>
-                      <mat-icon>query_builder</mat-icon>{{getTimeFromNow(job.created)}}
-                    </h3>
-                  </mat-card-title>
-                  <mat-card-content>
-                    <p>{{cleanString(job.description)}}</p>
-                  </mat-card-content>
-                  <mat-card-actions>
-                    <button class="btn bg-yellow txt-white pointer mx-2">
-                      <mat-icon [ngStyle]="{'color':'white'}" aria-hidden="false" aria-label="save to wish list"
-                        (click)="saveToWishList()">
-                        favorite
-                      </mat-icon>
-                    </button>
-                    <button class="font-weight-bold btn bg-yellow txt-white pointer mx-2"
-                      (click)="apply(job.redirect_url)">
-                      Apply via Adzuna
-                    </button>
-                  </mat-card-actions>
-                </div>
-              </mat-card>
-            </div>
-          </section>
-          <footer>
-            <app-pagination *ngIf="jobCount$ > ITEMS_PER_PAGE" [allItems]="jobCount$" [ITEMS_PER_PAGE]="ITEMS_PER_PAGE" (pageNumber)="search($event)"></app-pagination>
-          </footer>
-        </mat-drawer-content>
-      </mat-drawer-container>
-    </main>
-  </div>
+  <header>
+    <h2 class="job-page-title">Search Your Dream Job in Canada</h2>
+    <p class="text-center">Click "Search" without keyword or location to find all job availabilities in Canada.</p>
+    <!-- Search Bar -->
+    <app-nav-search></app-nav-search>
+  </header>
+
+  <!-- Content -->
+  <main class="container">
+    <mat-drawer-container class="drawer-container">
+      <!-- job filter -->
+      <mat-drawer mode="side" opened class="col-lg-4">
+        <app-job-filter (filter)="search()"></app-job-filter>
+      </mat-drawer>
+
+      <!-- content -->
+      <mat-drawer-content class="col-12 col-lg-8">
+        <!-- <mat-progress-spinner mode="indeterminate" *ng-If="loading"></mat-progress-spinner> -->
+        <section *ngIf="jobCount$ === 0">
+          <h2 class="text-center m-3">No job found</h2>
+        </section>
+
+        <header class="text-center m-2">
+          <h3>{{getSearchJobsLength()}}</h3>
+        </header>
+        <section>
+          <div *ngFor="let job of searchJobs$; let i = index">
+            <mat-card>
+              <div class="m-4">
+                <mat-card-title>
+                  <h1 class="pointer"><a href={{job.redirect_url}}>{{cleanString(job.title)}}</a></h1>
+                  <h2>{{job.company.display_name}}</h2>
+                  <h3>
+                    <mat-icon>location_on</mat-icon>
+                    {{job.location.display_name}}
+                    <br>
+                    <mat-icon>query_builder</mat-icon>{{getTimeFromNow(job.created)}}
+                  </h3>
+                </mat-card-title>
+                <mat-card-content>
+                  <p>{{cleanString(job.description)}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button class="btn bg-yellow txt-white pointer mx-2">
+                    <mat-icon [ngStyle]="{'color':'white'}" aria-hidden="false" aria-label="save to wish list"
+                      (click)="saveToWishList(job)">
+                      favorite
+                    </mat-icon>
+                  </button>
+                  <button class="font-weight-bold btn bg-yellow txt-white pointer mx-2" (click)="apply(job)">
+                    Apply via Adzuna
+                  </button>
+                </mat-card-actions>
+              </div>
+            </mat-card>
+          </div>
+        </section>
+        <footer>
+          <app-pagination #pagination *ngIf="jobCount$ > ITEMS_PER_PAGE" [allItems]="jobCount$" [ITEMS_PER_PAGE]="ITEMS_PER_PAGE"
+            (pageNumber)="search($event)"></app-pagination>
+        </footer>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </main>
+</div>
