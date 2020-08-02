@@ -114,9 +114,7 @@ export class JobActivityComponent implements OnInit {
     body.user_id = this.user_id;
     this.activityService.updateActivity(body).subscribe(jobActivity => {
       this.populateItems();
-      this._snackBar.open(this.CHANGE_SUCCESS_MSG, '', {
-        duration: 2000,
-      });
+      this._snackBar.open(this.CHANGE_SUCCESS_MSG, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] });
     });
   }
 
