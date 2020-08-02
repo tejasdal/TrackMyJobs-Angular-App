@@ -10,56 +10,57 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderNavbarComponent implements OnInit {
 
-  isAuthenticated:boolean = false;
-  userSub:Subscription;
-  notificationCount=0;
-  listOfNotification:any
+  isAuthenticated: boolean = false;
+  userSub: Subscription;
+  notificationCount = 0;
+  listOfNotification: any
 
 
   home = 'Home';
   blog = 'Blogs';
+  readblog = 'Read Blogs';
+  writeBlog = "Write Blogs";
   jobs = 'Jobs';
-  contact = 'Contact';
+  job_discover = 'Discover Jobs';
+  job_board = "Job Board";
+  job_activity = "Job Activity";
+  contact = 'Job Contacts';
   about = 'About';
   sign_in_btn = "Sign in";
   sign_up_btn = "Sign up";
-  writeBlog="Write blogs";
   analysis = "Analysis";
-  job_board = "Job Board";
-  job_activity = "Job Activity";
 
-  constructor(private authService: AuthService,private notificationService:NotificationServiceService){}
+  constructor(private authService: AuthService, private notificationService: NotificationServiceService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = user ? true : false;
 
-     if(this.isAuthenticated)
-     {
-      
-      this. showNotificationCount();
-     }
+      if (this.isAuthenticated) {
+
+        this.showNotificationCount();
+      }
     })
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logOut();
-    this.isAuthenticated=false;
+    this.isAuthenticated = false;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.userSub.unsubscribe();
   }
 
-  showNotificationCount(){
-    
-    var user_id=JSON.parse(localStorage.getItem('userData'))['email'];
+  showNotificationCount() {
+
+    var user_id = JSON.parse(localStorage.getItem('userData'))['email'];
 
 
-    this.notificationService.get_deadline_notificatione(user_id).subscribe(res=>{
-      this.listOfNotification =res;
-      this.notificationCount=this.listOfNotification.length;
+    this.notificationService.get_deadline_notificatione(user_id).subscribe(res => {
+      this.listOfNotification = res;
+      this.notificationCount = this.listOfNotification.length;
     });
-   
+
   }
 }

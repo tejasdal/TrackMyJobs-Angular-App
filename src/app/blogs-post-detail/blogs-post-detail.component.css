@@ -23,3 +23,6 @@
 .button{
     text-transform: uppercase;
 }
+.spinner-mat ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #fdbd56;
+}

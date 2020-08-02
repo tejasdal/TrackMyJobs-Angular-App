@@ -1,18 +1,29 @@
 <!-- @author Zankrut Thakkar B00856858 -->
 <!--To show Blog Post Data-->
+<div class="spinner-mat"
+    style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
+
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
+<div class="spinner-mat"
+    style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
+
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
+
 <div class="container">
     <!--Blog's Title-->
-    <h1 class="page-title">{{blogPost[2]}}</h1>
+    <h1 class="page-title">{{blogPost[0]?.title}}</h1>
     <!--Blog's Image-->
     <div class="text-center">
-        <img class="rounded img-fluid" src="/assets/undraw_accept_tasks_po1c.svg" alt="Blog Image">
+        <img class="rounded img-fluid" [src]="blogPost[0]?.image" alt="Blog Image">
     </div>
     <!--Blog's Content-->
     <div class="page-content">
-        <p [innerHTML]="blogPost[4]"></p>
+        <p [innerHTML]="blogPost[0]?.content"></p>
     </div>
     <!--Blog's Author-->
-    <p style="text-align: right;font-style:italic;">-Created by {{blogPost[1]}}</p>
+    <p style="text-align: right;font-style:italic;">-Created by {{blogPost[0]?.userId}}</p>
 
     <div *ngIf="onload()">
         <button class="button btn bg-yellow font-weight-bold pointer my-2 my-2" (click)="delete()">Delete

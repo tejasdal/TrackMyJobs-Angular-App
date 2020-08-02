@@ -27,24 +27,24 @@ export class SignInComponent implements OnInit {
 
   signinconfirmation(form: NgForm) {
 
-    if(!form.valid){
+    if (!form.valid) {
       return;
     }
     const email = form.value.email;
     const password = form.value.password;
     let authObs = new Observable<AuthReturnData>();
 
-    authObs = this.authService.Login(email,password);
-    
+    authObs = this.authService.Login(email, password);
+
     authObs.subscribe(
       (response) => {
         var msg = "SignIn Successful";
-        this.snackbar.open(msg, 'close', { duration: 3000, horizontalPosition: "center", verticalPosition: "top", panelClass: ["snackbar_confirm"] });
+        this.snackbar.open(msg, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] });
         this.router.navigate(['/home']);
       }
-    ,errorMessage => {
-      this.error = errorMessage;
-    });
+      , errorMessage => {
+        this.error = errorMessage;
+      });
 
     form.reset();
   }

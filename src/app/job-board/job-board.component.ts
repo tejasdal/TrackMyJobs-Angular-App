@@ -52,7 +52,7 @@ export class JobBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.getJobBoardId();
     // This method that handles deadline notification is implemented by Roshan Kirtikumar Patel
     this.notificationServiceDeadline.get_deadline_notificatione(this.user_id).subscribe(res => {
@@ -261,7 +261,7 @@ export class JobBoardComponent implements OnInit {
 
 
   showNotification(msg: any) {
-    localStorage.setItem('NotifyTheUser','true');
+    localStorage.setItem('NotifyTheUser', 'true');
     this.notifierDeadline.show({
       message: '"' + msg['data'] + '".' + 'Dealine for this activity is ' + msg['deadline'],
       type: "error",

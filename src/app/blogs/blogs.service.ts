@@ -29,12 +29,19 @@ export class BlogsService {
   getSpecificBlog(id: String) {
     let headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     var blog_id = encodeURIComponent(id.toString());
-    return this.http.get<BlogResponse>(`https://app-jobtracker.herokuapp.com/blogs/blogid?id=${blog_id}`, { headers })
+    return this.http.get<Blog>(`https://app-jobtracker.herokuapp.com/blogs/blogid?id=${blog_id}`, { headers })
   }
 
   insertBlog(body: Blog) {
     let API_URL = `https://app-jobtracker.herokuapp.com/blogs/`;
-    return this.http.post<BlogResponse>(API_URL, body)
+    let formdata = new FormData();
+    formdata.append('userId', body.userId);
+    formdata.append('title', body.title);
+    formdata.append('subTitle', body.subTitle);
+    formdata.append('content', body.content);
+    formdata.append('keyword', body.keyword);
+    formdata.append('blogImage', body.img);
+    return this.http.post<Response>(API_URL, formdata)
       .pipe(
         tap(data => data), catchError(this.handleError)
       );

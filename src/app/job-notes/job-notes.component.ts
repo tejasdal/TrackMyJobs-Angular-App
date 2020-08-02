@@ -19,10 +19,10 @@ export class JobNotesComponent implements OnInit {
   public readonly notifier: NotifierService;
   public maxNoteId: number = 1;
   public noteList: jobnotes[];
-  
+
   user_id = JSON.parse(localStorage.getItem('userData'))['email'];
 
-  constructor(public dialog: MatDialog, private router:Router, private noteService:JobNotesService,notifierService: NotifierService, private _snackBar : MatSnackBar) { 
+  constructor(public dialog: MatDialog, private router: Router, private noteService: JobNotesService, notifierService: NotifierService, private _snackBar: MatSnackBar) {
     this.notifier = notifierService;
   }
 
@@ -33,14 +33,14 @@ export class JobNotesComponent implements OnInit {
   private ADD_NOTE_SUCCESS_MSG = "Successfully added the note!";
   private ADD_NOTE_ERROR_MSG = "Failed to added the note!";
   private FETCH_NOTE_ERROR_MSG = "Failed to fetch notes from the server!";
-  
+
   ngOnInit(): void {
     this.getNotes();
   }
 
   // Function to open a dialog to create a new ActivityItem.
   addNewNote(): void {
-    let note:jobnotes = new Notes();
+    let note: jobnotes = new Notes();
 
     const dialogRef = this.dialog.open(CreateNoteDialogComponent, {
       width: '300px',
@@ -48,104 +48,98 @@ export class JobNotesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.add(result);
-    }
+      }
     });
 
   }
 
-  add(result: jobnotes){
+  add(result: jobnotes) {
     result.userID = this.user_id;
-    this.noteService.addNote(result).subscribe(jobNotes=>{
+    this.noteService.addNote(result).subscribe(jobNotes => {
       this.getNotes();
-      this._snackBar.open(this.ADD_NOTE_SUCCESS_MSG,'',{
-        duration:2000,
-      });
-    });    
+      this._snackBar.open(this.ADD_NOTE_SUCCESS_MSG, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] });
+    });
   }
 
-  onDeleteNote(deleteData:jobnotes){
+  onDeleteNote(deleteData: jobnotes) {
     const dialogRef = this.dialog.open(DeleteJobNotesComponent, {
       width: '300px',
       height: 'auto',
       data: deleteData
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.delete(deleteData);
-    }
+      }
     });
-  
+
   }
-  
+
   // Delete Note
-  delete(result:jobnotes){
+  delete(result: jobnotes) {
     this.noteService.deleteNote(result.noteID).subscribe(jobNote => {
-          this.getNotes();
-          this._snackBar.open(this.DELETE_SUCCESS_MSG,'',{
-            duration:2000,
-          });
-  
-        });  
+      this.getNotes();
+      this._snackBar.open(this.DELETE_SUCCESS_MSG, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] });
+
+    });
   }
-  
-  onUpdateNote(updateData:jobnotes){
-    
+
+  onUpdateNote(updateData: jobnotes) {
+
     const dialogRef = this.dialog.open(UpdateJobNotesComponent, {
       width: '300px',
       height: 'auto',
       data: updateData,
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.update(result);
       }
-      else{
+      else {
         this.getNotes();
       }
     });
   }
-  
+
   // Update Notes
-  update(result:jobnotes){
+  update(result: jobnotes) {
     this.noteService.updateNotes(result).subscribe(jobNotes => {
-          this.getNotes();
-          this._snackBar.open(this.CHANGE_SUCCESS_MSG,'',{
-            duration:2000,
-          });
-  
-        }); 
-   }
-  
-  public showSuccessNotification(message:string){
+      this.getNotes();
+      this._snackBar.open(this.CHANGE_SUCCESS_MSG, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] });
+
+    });
+  }
+
+  public showSuccessNotification(message: string) {
     this.notifier.show({
       type: "success",
       message: message
-  });
+    });
   }
-  
-  public showErrorNotification(message:string){
+
+  public showErrorNotification(message: string) {
     this.notifier.show({
       type: "error",
       message: message
-  });
+    });
   }
-  
-  getNotes(){
-   let userID: string = this.user_id;
-   this.noteService.getAllNotes(userID).subscribe((data: NoteResponse) => {
-    this.noteList = data as jobnotes[];
-   }, error => {
-    this.showErrorNotification(this.FETCH_NOTE_ERROR_MSG);
-  });
-}
+
+  getNotes() {
+    let userID: string = this.user_id;
+    this.noteService.getAllNotes(userID).subscribe((data: NoteResponse) => {
+      this.noteList = data as jobnotes[];
+    }, error => {
+      this.showErrorNotification(this.FETCH_NOTE_ERROR_MSG);
+    });
+  }
 
 }
 
-export interface NoteResponse{
-  status?:boolean;
-  notes?:any;
+export interface NoteResponse {
+  status?: boolean;
+  notes?: any;
 }

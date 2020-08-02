@@ -1,240 +1,227 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <!-- Font Awsome 
+<!-- Font Awsome 
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script> -->
 
-  <!--  Fonts  -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<!--  Fonts  -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
     type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /> -->
 
-  <!--Font awsome -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-  <script>
-    function validateForm() {
-      var x = document.forms["contact-form"]["name"].value;
-      if (x == "") {
-        alert("Name must be filled out");
-        return false;
-      }
+<!--Font awsome -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<script>
+  function validateForm() {
+    var x = document.forms["contact-form"]["name"].value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
     }
-    </script>
+  }
+</script>
 
 
 
-  <!-- Main heading-->
-  <header class="masthead" style="background-color: rgb(254, 227, 184);">
-    <div class="container">
-      <div class="masthead-subheading">“For every minute spent organizing, an hour is earned.”</div>
-      <div class="masthead-heading text-uppercase">Welcome to Track my job</div>
-      <div>
-      </div>
-      <button id="customeButton" (click)="registerNavigate()" style="width: 250px;" class="btn btn-primary" 
-      *ngIf="!isAuthenticated">Register
-        yourself</button>
-    </div>
-  </header>
-  <!-- Complete main heading -->
-
-  <!-- Detailed feature list with images-->
-  <div class="container" style=" overflow: hidden;" id="imagecontainer">
-    <div class="row">
-
-      <section class="card ie-block">
-        <img class="col-12" src="https://image.flaticon.com/icons/svg/3003/3003504.svg" alt="" />
-        <div class="col-12">
-          <h3>Search For job</h3>
-          <p class="h6">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
-            enim laudantium, animi veniam libero eveniet culpa unde perferendis
-            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
-            officia. Ab, delectus.
-          </p>
-        </div>
-      </section>
-
-      <section class="card ie-block" data-aos="fade-left" data-aos-duration="800">
-        <img src="https://image.flaticon.com/icons/svg/2957/2957925.svg" alt="" />
-        <div>
-          <h3>Analyze your Job applications</h3>
-          <p class="h6">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
-            enim laudantium, animi veniam libero eveniet culpa unde perferendis
-            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
-            officia. Ab, delectus.
-          </p>
-          <ul>
-            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card ie-block" data-aos="fade-right" data-aos-duration="800">
-        <img src="https://image.flaticon.com/icons/svg/2972/2972232.svg" alt="" />
-        <div>
-          <h3>Write A blog</h3>
-          <p class="h6">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
-            enim laudantium, animi veniam libero eveniet culpa unde perferendis
-            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
-            officia. Ab, delectus.
-          </p>
-          <ul>
-            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-          </ul>
-        </div>
-      </section>
-      <section class="card" data-aos="fade-left" data-aos-duration="800">
-        <img src="../../assets/images/kanbanStyle.png" alt="" />
-        <div>
-          <h3>Organize your Job applications</h3>
-          <p class="h6">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
-            enim laudantium, animi veniam libero eveniet culpa unde perferendis
-            illo fugit corporis, voluptatibus totam dolorum, maiores magnam
-            officia. Ab, delectus.
-          </p>
-          <ul>
-            <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  </div>
-  <!-- End of Detailed feature list with images-->
-
-  <!-- Feature list-->
-
-  <div class="container" id="featurelist" data-aos="zoom-in-down" data-aos-duration="1400">
-    <h2 class="text-center h2" style="margin-top: 50px;">Prominent feature</h2>
-    <div class="row">
-      <div class="col col-lg-4 col-md-4 col-12">
-        <div class="row icon-boxes" (click)="openDialog(1)">
-          <div class="icon-box">
-            <h4 class="title"><a>Organize Your Search</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4  col-md-4  col-12">
-        <div class="row icon-boxes" (click)="openDialog(2)">
-          <div class="icon-box">
-            <h4 class="title"><a>Manage Your job applications</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4  col-md-4  col-12">
-        <div class="row icon-boxes" (click)="openDialog(3)">
-          <div class="icon-box">
-            <h4 class="title"><a>Apply for jobs</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Get started component-->
-  <div class="container" style="margin-top: 100px;" *ngIf="!isAuthenticated">
+<!-- Main heading-->
+<header class="masthead" style="background-color: rgb(254, 227, 184);">
+  <div class="container">
+    <div class="masthead-subheading">“For every minute spent organizing, an hour is earned.”</div>
+    <div class="masthead-heading text-uppercase">Welcome to Track my job</div>
     <div>
-      <h2 class=" h2" style="margin-top: 50px;">Get started</h2>
-      <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, ipsam blanditiis soluta saepe libero, optio
-        molestias nihil, molestiae incidunt officia hic excepturi quae in corporis voluptatibus? Aspernatur
-        reprehenderit praesentium ullam?</h3>
-      <button type="button" class="btn btn-raised btn-primary" (click)="signInNavigate()">SignIn</button>
-      <button type="button" class="btn btn-raised btn-primary" (click)="registerNavigate()"
-        style="margin-left: 20px;">SignUp</button>
     </div>
+    <button id="customeButton" (click)="registerNavigate()" style="width: 250px;" class="btn btn-primary"
+      *ngIf="!isAuthenticated">Register
+      yourself</button>
   </div>
-  <!-- End started component-->
+</header>
+<!-- Complete main heading -->
 
-  <!--Contact Us Component-->
-  <section>
-    <div class="container"
-      style=" overflow: hidden; background-color:  #fdbd5656; margin-top: 100px;  margin-bottom: 100px; padding: 10px;">
-      <!--Section heading-->
-      <h2 class="h2" style="padding: 10px;">Contact us</h2>
+<!-- Detailed feature list with images-->
+<div class="container" style=" overflow: hidden;" id="imagecontainer">
+  <div class="row">
 
-      <div class="row">
-        <div class="col-md-9 mb-md-0 mb-5">
-          <form id="contact-form" name="contact-form">
-            <div class="row" style="padding: 10px;">
-              <div class="col-md-6 col-sm-12">
-                <div class="md-form mb-0  form-group">
-                  <mat-form-field style="width: 300px;" appearance="standard"> 
-                    <mat-label>First name</mat-label>
-                    <input #Fname="ngModel" matInput required ngModel name="Fname">
-                    <mat-error *ngIf="Fname.touched && !Fname.valid">
-                      <div *ngIf="Fname.errors.required">First name is required
-                      </div>
-                    </mat-error>
-                  </mat-form-field>
+    <section class="card ie-block">
+      <img class="col-12" src="https://image.flaticon.com/icons/svg/3003/3003504.svg" alt="" />
+      <div class="col-12">
+        <h3>Search For job</h3>
+        <p class="h6">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod error
+          enim laudantium, animi veniam libero eveniet culpa unde perferendis
+          illo fugit corporis, voluptatibus totam dolorum, maiores magnam
+          officia. Ab, delectus.
+        </p>
+      </div>
+    </section>
 
-                </div>
-              </div>
+    <section class="card ie-block" data-aos="fade-left" data-aos-duration="800">
+      <img src="https://image.flaticon.com/icons/svg/2957/2957925.svg" alt="" />
+      <div>
+        <h3>Analyze your Job applications</h3>
+        <p class="h6">
+          There are millions of jobs from thousands of the world’s top companies. Our jobs come directly from employer
+          career site
+          “Adzuna”, so we can ensure reliable and fresh opportunities. We don’t source from other aggregators, job
+          boards or allow
+          recruiter posts. Therefore, we ensure authenticity of the Job Posts.
+        </p>
+      </div>
+    </section>
 
-              <div class="col-md-6">
-                <div class="md-form mb-0 ">
-                  <mat-form-field style="width: 300px;" appearance="standard">
-                    <mat-label>Your email address</mat-label>
-                    <input #Email="ngModel" matInput required ngModel name="Email"
-                      pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
+    <section class="card ie-block" data-aos="fade-right" data-aos-duration="800">
+      <img src="https://image.flaticon.com/icons/svg/2972/2972232.svg" alt="" />
+      <div>
+        <h3>Write A blog</h3>
+        <p class="h6">
+          We think that it is important to educate users and share individual stories about their success. Therefore, we
+          provide blog for individual to share their stories which can inspire other users. Users can share their
+          knowledge with other users through short blog post.
+        </p>
+      </div>
+    </section>
+    <section class="card" data-aos="fade-left" data-aos-duration="800">
+      <img src="../../assets/images/kanbanStyle.png" alt="" />
+      <div>
+        <h3>Organize your Job applications</h3>
+        <p class="h6">
+          Why to use the messy spreadsheets when we are here for you. TrackMyJobs keeps the track of every detail about
+          your job
+          opportunities regardless of where you found them. Track contacts, notes, activities, Job Descriptions,
+          Locations,
+          Company Details, Job Applications and In-App Notifications regarding the tasks. It's like a CRM for you job
+          search.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- End of Detailed feature list with images-->
 
-                    <mat-error *ngIf=" Email.touched && !Email.valid">
-                      <div *ngIf="Email.errors.required">Email-id is required</div>
-                      <div *ngIf="Email.errors.pattern">Enter valid Email-id (xyz@xyz.com)</div>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
+<!-- Feature list-->
 
-            </div>
-
-            <div class="row" style="padding: 10px;">
-              <div class="col-md-12">
-
-                <div class="md-form">
-                  <mat-form-field class="userquery"  style="width: 300px;;" appearance="standard">
-                    <mat-label>Leave a comment</mat-label>
-                    <textarea matInput placeholder="I have a query..."></textarea>
-                  </mat-form-field>
-                </div>
-
-              </div>
-            </div>
-            <div class="text-center text-md-left" style="padding: 10px;">
-              <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
-          </form>
+<div class="container" id="featurelist" data-aos="zoom-in-down" data-aos-duration="1400">
+  <h2 class="text-center h2" style="margin-top: 50px;">Prominent feature</h2>
+  <div class="row">
+    <div class="col col-lg-4 col-md-4 col-12">
+      <div class="row icon-boxes" (click)="openDialog(1)">
+        <div class="icon-box">
+          <h4 class="title"><a>Organize Your Search</a></h4>
+          <p class="description">Search and different filter options makes it easy to find your dream job</p>
         </div>
-
-        <!--Grid column-->
-        <div class=" col-md-3  text-center">
-          <ul class="list-unstyled mb-0" style="margin-top:40px">
-            <li><i class="fa fa-phone"> <span style="padding-left: 10px;">+1 (902) 525 1234</span></i>
-            </li>
-            <li><i class="fa fa-envelope"> <span style="padding-left: 10px;">contact@jobtrackingteam.com</span></i>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-
       </div>
     </div>
-  </section>
-  <!--Section: Contact v.2-->
+    <div class="col col-lg-4  col-md-4  col-12">
+      <div class="row icon-boxes" (click)="openDialog(2)">
+        <div class="icon-box">
+          <h4 class="title"><a>Manage Your job applications</a></h4>
+          <p class="description">Organize your job application using the Kanban board</p>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-4  col-md-4  col-12">
+      <div class="row icon-boxes" (click)="openDialog(3)">
+        <div class="icon-box">
+          <h4 class="title"><a>Apply for jobs</a></h4>
+          <p class="description">Discover and Apply for your jobs in just few clicks</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Get started component-->
+<div class="container" style="margin-top: 100px;" *ngIf="!isAuthenticated">
+  <div>
+    <h2 class=" h2" style="margin-top: 50px;">Get started</h2>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, ipsam blanditiis soluta saepe libero, optio
+      molestias nihil, molestiae incidunt officia hic excepturi quae in corporis voluptatibus? Aspernatur
+      reprehenderit praesentium ullam?</h3>
+    <button type="button" class="btn btn-raised btn-primary" (click)="signInNavigate()">SignIn</button>
+    <button type="button" class="btn btn-raised btn-primary" (click)="registerNavigate()"
+      style="margin-left: 20px;">SignUp</button>
+  </div>
+</div>
+<!-- End started component-->
+
+<!--Contact Us Component-->
+<section>
+  <div class="container"
+    style=" overflow: hidden; background-color:  #fdbd5656; margin-top: 100px;  margin-bottom: 100px; padding: 10px;">
+    <!--Section heading-->
+    <h2 class="h2" style="padding: 10px;">Contact us</h2>
+
+    <div class="row">
+      <div class="col-md-9 mb-md-0 mb-5">
+        <form id="contact-form" name="contact-form">
+          <div class="row" style="padding: 10px;">
+            <div class="col-md-6 col-sm-12">
+              <div class="md-form mb-0  form-group">
+                <mat-form-field style="width: 300px;" appearance="standard">
+                  <mat-label>First name</mat-label>
+                  <input #Fname="ngModel" matInput required ngModel name="Fname">
+                  <mat-error *ngIf="Fname.touched && !Fname.valid">
+                    <div *ngIf="Fname.errors.required">First name is required
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="md-form mb-0 ">
+                <mat-form-field style="width: 300px;" appearance="standard">
+                  <mat-label>Your email address</mat-label>
+                  <input #Email="ngModel" matInput required ngModel name="Email"
+                    pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
+
+                  <mat-error *ngIf=" Email.touched && !Email.valid">
+                    <div *ngIf="Email.errors.required">Email-id is required</div>
+                    <div *ngIf="Email.errors.pattern">Enter valid Email-id (xyz@xyz.com)</div>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row" style="padding: 10px;">
+            <div class="col-md-12">
+
+              <div class="md-form">
+                <mat-form-field class="userquery" style="width: 300px;;" appearance="standard">
+                  <mat-label>Leave a comment</mat-label>
+                  <textarea matInput placeholder="I have a query..."></textarea>
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+          <div class="text-center text-md-left" style="padding: 10px;">
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </div>
+        </form>
+      </div>
+
+      <!--Grid column-->
+      <div class=" col-md-3  text-center">
+        <ul class="list-unstyled mb-0" style="margin-top:40px">
+          <li><i class="fa fa-phone"> <span style="padding-left: 10px;">+1 (902) 525 1234</span></i>
+          </li>
+          <li><i class="fa fa-envelope"> <span style="padding-left: 10px;">contact@jobtrackingteam.com</span></i>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
 
 
-  <!--End of contact Us Component-->
+    </div>
+  </div>
+</section>
+<!--Section: Contact v.2-->
 
 
+<!--End of contact Us Component-->

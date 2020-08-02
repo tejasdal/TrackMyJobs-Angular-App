@@ -26,6 +26,7 @@ export class WriteBlogsComponent implements OnInit {
   tagCOunt = 0;
 
 
+
   //Variables to store each string input
   heading: string;
   subHeading: string;
@@ -33,7 +34,8 @@ export class WriteBlogsComponent implements OnInit {
   bodyContentWithHtml: string;
   tagsList: string;
   btndisable: boolean;
-
+  blogimg: File;
+  public showSpinner: boolean;
 
   id: number;
   blog: Blog = new Blog();
@@ -44,20 +46,18 @@ export class WriteBlogsComponent implements OnInit {
   constructor(public dialog: MatDialog, private _router: Router, private blogsService: BlogsService, notifierService: NotifierService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 500);
   }
 
   add() {
     this.blogsService.insertBlog(this.blog).subscribe(blog => {
-      this.navigatetoblog();
-      this._snackBar.open(this.ADD_BlOG_SUCCESS_MSG, '', {
-        duration: 2000,
-
-      });
+      this._snackBar.open(this.ADD_BlOG_SUCCESS_MSG, 'close', { duration: 1500, horizontalPosition: "end", verticalPosition: "bottom", panelClass: ["snackbar_confirm"] }
+      );
+      this._router.navigate(['/blogs']);
     });
-  }
-
-  navigatetoblog() {
-    this._router.navigate(['/blogs']);
   }
 
   onTagChange(value) {
@@ -84,8 +84,12 @@ export class WriteBlogsComponent implements OnInit {
     this.bodyCounter = value.length
   }
 
+  onImgChange(event) {
+    this.blogimg = event.target.files[0];
+  }
+
   checkValue() {
-    if (this.headingCounter > 0 && this.bodyCounter > 0 && this.subHeadingCounter > 0 && this.tagCOunt > 0) {
+    if (this.headingCounter > 0 && this.bodyCounter > 0 && this.subHeadingCounter > 0 && this.tagCOunt > 0 && this.blogimg != null) {
       return true;
     }
     return false;
@@ -104,6 +108,7 @@ export class WriteBlogsComponent implements OnInit {
       this.blog.subTitle = this.subHeading;
       this.blog.content = this.bodyContentWithHtml;
       this.blog.keyword = this.tagsList;
+      this.blog.img = this.blogimg;
       this.add();
     });
   }

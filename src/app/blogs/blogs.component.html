@@ -1,4 +1,10 @@
 <!-- @author Zankrut Thakkar B00856858 -->
+<!-- Spinner Component -->
+<div class="spinner-mat"
+    style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
+
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
 <div class="container">
     <div>
         <div>
@@ -20,11 +26,10 @@
             <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let blog of blogposts | blogsfilter:blogSearch"
                 (click)="onBlogCard(blog)">
                 <div class="card" class="blog-card">
-                    <img style="margin:5px;" class=" card-img-top" width="150" height="150"
-                        src="/assets/undraw_accept_tasks_po1c.svg" alt="Blog-image">
+                    <img class=" card-img-top" width="150" height="150" [src]="blog.image" alt="Blog-image">
                     <div class="card-body">
-                        <h4 class="card-title font-style">{{blog.title}}</h4>
-                        <p class="card-text">{{blog.subTitle}}
+                        <h4 class="card-title font-style title">{{blog.title}}</h4>
+                        <p class="card-text sub-title">{{blog.subTitle}}
                         </p>
                         <button (click)="onBlogCard(blog)" class="btn create-blog-btn">View More</button>
                     </div>

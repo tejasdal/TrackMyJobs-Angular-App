@@ -39,13 +39,15 @@ body
 }
 .btn.submitBtn
 {
-         margin-top: 30px;
+        margin-top: 30px;
         width: auto;
         border: 0px;
         color: black;
         background-color: #fdbd56;     
 }
-
+.spinner-mat ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #fdbd56;
+}
 
 
 

@@ -1,9 +1,11 @@
 <!-- @author Zankrut Thakkar B00856858 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="../../assets/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
+<div class="spinner-mat"
+   style="display: flex; justify-content: center; align-items: center; z-index: 1; position: absolute; top: 300px; left: 700px;">
 
-
-
+   <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
 <div class="container-fluid text-center">
    <div>
       <div class="panel panel-default">
@@ -37,7 +39,7 @@
                <label class="label"><b>Blog's main body</b></label>
                <div id="MainBodyedit" contenteditable="true"
                   (blur)="onBodyTextChnage($event.target.innerHTML,$event.target.textContent)"
-                  style=" padding: 5px; min-height: 200px; height: auto; text-align: left;border: 1px solid black;"
+                  style="padding: 5px; min-height: 200px; height: auto; text-align: left;border: 1px solid #e7e9ec;"
                   data-text=" you can write your main content here">
                </div>
             </div>
@@ -83,14 +85,10 @@
                   <h5 style="color: red;"><b>Maximum five tags are allowed</b> </h5>
                </div>
             </div>
-            <!-- <div style="text-align: left; margin-top: 30px;" class="form-group">
-               <div class="form-group form-check">
-                  <label class="form-check-label">
-                     <input class=" form-check-input" type="checkbox"> Allow Comments(By checking this you will allow
-                     other user to comment on your blog)
-                  </label>
-               </div>
-            </div> -->
+            <div style="text-align: left; margin-top: 5px;" class="form-group">
+               <label class="label"><b>Upload Image for your blog</b></label><br>
+               <input class="btn" type="file" (change)="onImgChange($event)" required>
+            </div>
             <button [disabled]="!checkValue()" (click)="openDialog(6)" type="submit"
                class=" submitBtn btn btn-primary">Submit my blog</button><br>
             <div *ngIf="!checkValue()"><small> You must fill all the field</small></div>
